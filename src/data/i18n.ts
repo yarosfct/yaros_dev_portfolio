@@ -176,9 +176,38 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       }
     ],
     techGroups: [
-      { title: "Frontend", items: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Framer Motion"] },
-      { title: "Backend", items: ["Node.js", "Express", "PostgreSQL", "Prisma", "REST APIs"] },
-      { title: "Tools & Workflow", items: ["GitHub Actions", "Docker", "Figma", "Vercel", "Jest"] }
+      {
+        title: "Languages",
+        items: ["C", "Java", "Python", "JavaScript", "TypeScript", "Dart", "Kotlin", "SQL"]
+      },
+      {
+        title: "Web Frontend",
+        items: ["React.js", "Next.js", "Vue.js", "Angular", "Three.js", "Tailwind CSS", "HTML", "CSS"]
+      },
+      {
+        title: "Backend & APIs",
+        items: ["Node.js", "Supabase", "Web3.js", "API Design", "Microservices"]
+      },
+      {
+        title: "Mobile & Cross‑platform",
+        items: ["Flutter", "React Native", "Android SDK"]
+      },
+      {
+        title: "Databases",
+        items: ["PostgreSQL", "MongoDB", "Firebase"]
+      },
+      {
+        title: "Cloud & DevOps",
+        items: ["AWS", "GCP", "Docker", "Kubernetes", "Vercel"]
+      },
+      {
+        title: "Tools & Collaboration",
+        items: ["Git", "GitHub", "Figma"]
+      },
+      {
+        title: "Core Concepts",
+        items: ["System Design", "Data Structures & Algorithms", "Distributed Systems"]
+      }
     ],
     about: [
       "I am a full stack developer with strong frontend depth, focused on crafting user-centric interfaces with clean architecture.",
@@ -324,9 +353,38 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       }
     ],
     techGroups: [
-      { title: "Frontend", items: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Framer Motion"] },
-      { title: "Backend", items: ["Node.js", "Express", "PostgreSQL", "Prisma", "REST APIs"] },
-      { title: "Ferramentas & Workflow", items: ["GitHub Actions", "Docker", "Figma", "Vercel", "Jest"] }
+      {
+        title: "Linguagens",
+        items: ["C", "Java", "Python", "JavaScript", "TypeScript", "Dart", "Kotlin", "SQL"]
+      },
+      {
+        title: "Web Frontend",
+        items: ["React.js", "Next.js", "Vue.js", "Angular", "Three.js", "Tailwind CSS", "HTML", "CSS"]
+      },
+      {
+        title: "Backend & APIs",
+        items: ["Node.js", "Supabase", "Web3.js", "API Design", "Microservices"]
+      },
+      {
+        title: "Mobile & Cross‑platform",
+        items: ["Flutter", "React Native", "Android SDK"]
+      },
+      {
+        title: "Bancos de dados",
+        items: ["PostgreSQL", "MongoDB", "Firebase"]
+      },
+      {
+        title: "Cloud & DevOps",
+        items: ["AWS", "GCP", "Docker", "Kubernetes", "Vercel"]
+      },
+      {
+        title: "Ferramentas & Colaboração",
+        items: ["Git", "GitHub", "Figma"]
+      },
+      {
+        title: "Conceitos centrais",
+        items: ["System Design", "Data Structures & Algorithms", "Distributed Systems"]
+      }
     ],
     about: [
       "Sou desenvolvedor full stack com forte profundidade em frontend, focado em interfaces centradas no usuário com arquitetura limpa.",

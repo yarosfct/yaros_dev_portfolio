@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 220 25% 98%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 224 82% 58%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 220 16% 95%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 220 15% 94%;
+  --muted-foreground: 216 14% 42%;
+  --accent: 220 18% 92%;
+  --accent-foreground: 222 47% 11%;
+  --border: 220 14% 88%;
+  --input: 220 14% 88%;
+  --ring: 224 82% 58%;
+  --radius: 1rem;
+}
+
+.dark {
+  --background: 226 30% 6%;
+  --foreground: 210 40% 96%;
+  --card: 226 28% 9%;
+  --card-foreground: 210 40% 96%;
+  --popover: 226 28% 9%;
+  --popover-foreground: 210 40% 96%;
+  --primary: 217 91% 62%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 225 17% 15%;
+  --secondary-foreground: 210 40% 96%;
+  --muted: 225 17% 15%;
+  --muted-foreground: 216 18% 68%;
+  --accent: 225 18% 19%;
+  --accent-foreground: 210 40% 96%;
+  --border: 225 16% 21%;
+  --input: 225 16% 21%;
+  --ring: 217 91% 62%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  background-image: radial-gradient(circle at 20% 0%, hsl(var(--primary) / 0.12), transparent 40%),
+    radial-gradient(circle at 80% 0%, hsl(var(--primary) / 0.08), transparent 35%);
+}
+
+::selection {
+  @apply bg-primary/30;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-title {
+    @apply text-2xl font-semibold tracking-tight md:text-4xl;
+  }
+
+  .section-copy {
+    @apply text-sm leading-relaxed text-muted-foreground md:text-base;
+  }
+
+  .surface {
+    @apply border border-border/80 bg-card/70 shadow-sm backdrop-blur;
+  }
+}

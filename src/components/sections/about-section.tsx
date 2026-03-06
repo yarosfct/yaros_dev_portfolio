@@ -12,10 +12,10 @@ export function AboutSection({ content }: AboutSectionProps) {
 
   return (
     <SectionShell id="about" {...heading}>
-      <Card className="bg-card/70">
-        <CardContent className="space-y-4 p-6 md:p-8">
+      <Card className="surface rounded-2xl">
+        <CardContent className="grid gap-6 p-6 md:grid-cols-3 md:p-8">
           {content.about.map((paragraph) => (
-            <p key={paragraph} className="section-copy max-w-3xl">
+            <p key={paragraph} className="section-copy">
               {paragraph}
             </p>
           ))}

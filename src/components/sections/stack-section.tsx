@@ -15,9 +15,9 @@ export function StackSection({ content }: StackSectionProps) {
     <SectionShell id="stack" {...heading}>
       <div className="grid gap-4 md:grid-cols-3">
         {content.techGroups.map((group) => (
-          <Card key={group.title} className="bg-card/70">
-            <CardHeader>
-              <CardTitle>{group.title}</CardTitle>
+          <Card key={group.title} className="surface rounded-2xl">
+            <CardHeader className="pb-4">
+              <CardTitle className="font-[var(--font-display)] text-lg">{group.title}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
               {group.items.map((item) => (

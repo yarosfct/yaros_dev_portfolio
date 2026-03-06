@@ -21,7 +21,7 @@ export default function HomePage() {
       <Navbar content={content} locale={locale} setLocale={setLocale} />
       <main>
         <HeroSection content={content} />
-        <ProjectsSection content={content} />
+        <ProjectsSection content={content} locale={locale} />
         <StackSection content={content} />
         <AboutSection content={content} />
         <TimelineSection id="experience" content={content} items={content.experience} />

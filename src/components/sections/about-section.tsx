@@ -1,10 +1,10 @@
-import { PortfolioContent } from "@/data/portfolio-data";
+import { PortfolioDictionary } from "@/data/i18n";
 
 import { Card, CardContent } from "../ui/card";
 import { SectionShell } from "./section-shell";
 
 type AboutSectionProps = {
-  content: PortfolioContent;
+  content: PortfolioDictionary;
 };
 
 export function AboutSection({ content }: AboutSectionProps) {

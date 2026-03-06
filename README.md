@@ -13,7 +13,7 @@ npm run dev
 
 All portfolio copy and translation content lives in:
 
-- `src/data/portfolio-data.ts`
+- `src/data/i18n.ts`
 
 Sections and UI are split into reusable components under:
 

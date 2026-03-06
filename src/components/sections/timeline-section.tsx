@@ -1,12 +1,12 @@
-import { PortfolioContent } from "@/data/portfolio-data";
+import { PortfolioDictionary } from "@/data/i18n";
 
 import { Card, CardContent } from "../ui/card";
 import { SectionShell } from "./section-shell";
 
 type TimelineSectionProps = {
   id: "experience" | "education";
-  content: PortfolioContent;
-  items: PortfolioContent["experience"];
+  content: PortfolioDictionary;
+  items: PortfolioDictionary["experience"];
 };
 
 export function TimelineSection({ id, content, items }: TimelineSectionProps) {

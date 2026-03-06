@@ -2,7 +2,7 @@
 
 import { Github } from "lucide-react";
 
-import { Locale, PortfolioContent } from "@/data/portfolio-data";
+import { Locale, PortfolioDictionary } from "@/data/i18n";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +11,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { Button } from "../ui/button";
 
 type NavbarProps = {
-  content: PortfolioContent;
+  content: PortfolioDictionary;
   locale: Locale;
   setLocale: (locale: Locale) => void;
 };
@@ -47,12 +47,12 @@ export function Navbar({ content, locale, setLocale }: NavbarProps) {
             </nav>
 
             <div className="flex items-center gap-1.5 md:gap-2">
-              <LanguageToggle locale={locale} setLocale={setLocale} />
-              <ThemeToggle />
+              <LanguageToggle locale={locale} setLocale={setLocale} label={content.ui.languageLabel} />
+              <ThemeToggle label={content.ui.themeLabel} />
               <a href="https://github.com/your-profile" target="_blank" rel="noreferrer" className="hidden md:block">
                 <Button variant="outline" size="sm" className="gap-2 border-border/70 bg-background/50">
                   <Github className="h-4 w-4" />
-                  GitHub
+                  {content.ui.navGitHub}
                 </Button>
               </a>
             </div>

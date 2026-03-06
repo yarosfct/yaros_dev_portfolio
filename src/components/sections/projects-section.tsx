@@ -1,23 +1,18 @@
 import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 
-import { Locale, PortfolioContent } from "@/data/portfolio-data";
+import { PortfolioDictionary } from "@/data/i18n";
 
 import { Badge } from "../ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { SectionShell } from "./section-shell";
 
 type ProjectsSectionProps = {
-  content: PortfolioContent;
-  locale: Locale;
+  content: PortfolioDictionary;
 };
 
-export function ProjectsSection({ content, locale }: ProjectsSectionProps) {
+export function ProjectsSection({ content }: ProjectsSectionProps) {
   const heading = content.sectionHeadings.projects;
-  const labels =
-    locale === "pt"
-      ? { contribution: "Minha contribuição", demo: "Demo" }
-      : { contribution: "My contribution", demo: "Demo" };
 
   return (
     <SectionShell id="projects" {...heading}>
@@ -55,7 +50,7 @@ export function ProjectsSection({ content, locale }: ProjectsSectionProps) {
                 ))}
               </div>
               <p className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">{labels.contribution}:</span> {project.impact}
+                <span className="font-medium text-foreground">{content.ui.projectContributionLabel}:</span> {project.impact}
               </p>
               <div className="flex gap-3">
                 {project.github && (
@@ -65,7 +60,7 @@ export function ProjectsSection({ content, locale }: ProjectsSectionProps) {
                 )}
                 {project.demo && (
                   <a href={project.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                    <ExternalLink className="h-4 w-4" /> {labels.demo}
+                    <ExternalLink className="h-4 w-4" /> {content.ui.demoLabel}
                   </a>
                 )}
               </div>

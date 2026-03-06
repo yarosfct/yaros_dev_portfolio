@@ -1,11 +1,11 @@
-import { PortfolioContent } from "@/data/portfolio-data";
+import { PortfolioDictionary } from "@/data/i18n";
 
 import { Badge } from "../ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { SectionShell } from "./section-shell";
 
 type StackSectionProps = {
-  content: PortfolioContent;
+  content: PortfolioDictionary;
 };
 
 export function StackSection({ content }: StackSectionProps) {

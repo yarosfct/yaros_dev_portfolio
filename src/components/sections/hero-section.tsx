@@ -1,11 +1,11 @@
 import { ArrowRight, BriefcaseBusiness, Github, Mail } from "lucide-react";
 
-import { PortfolioContent } from "@/data/portfolio-data";
+import { PortfolioDictionary } from "@/data/i18n";
 
 import { Button } from "../ui/button";
 
 type HeroSectionProps = {
-  content: PortfolioContent;
+  content: PortfolioDictionary;
 };
 
 export function HeroSection({ content }: HeroSectionProps) {
@@ -14,7 +14,7 @@ export function HeroSection({ content }: HeroSectionProps) {
       <div className="container">
         <div className="mx-auto max-w-5xl space-y-10">
           <div className="inline-flex items-center rounded-full border border-border/80 bg-card/70 px-4 py-1 text-xs text-muted-foreground">
-            Open to frontend and full-stack opportunities
+            {content.ui.availability}
           </div>
 
           <div className="space-y-6">
@@ -53,14 +53,10 @@ export function HeroSection({ content }: HeroSectionProps) {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
-            {[
-              ["4+", "Years building production web products"],
-              ["20+", "Delivered features across SaaS and marketplaces"],
-              ["100%", "Focus on UX quality, accessibility, and performance"]
-            ].map(([value, label]) => (
-              <div key={label} className="surface rounded-xl p-4">
-                <p className="font-[var(--font-display)] text-2xl text-foreground">{value}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{label}</p>
+            {content.hero.highlights.map((item) => (
+              <div key={item.label} className="surface rounded-xl p-4">
+                <p className="font-[var(--font-display)] text-2xl text-foreground">{item.value}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{item.label}</p>
               </div>
             ))}
           </div>

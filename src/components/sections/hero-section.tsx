@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { ArrowRight, BriefcaseBusiness, Github, Mail } from "lucide-react";
+import { ArrowRight, Github, Mail } from "lucide-react";
 
 import { PortfolioDictionary } from "@/data/i18n";
+import { cn } from "@/lib/utils";
 
 import { Button } from "../ui/button";
 
@@ -41,13 +42,7 @@ export function HeroSection({ content }: HeroSectionProps) {
                     {content.hero.ctas.contact}
                   </Button>
                 </a>
-                <a href="#experience">
-                  <Button size="lg" variant="outline" className="gap-2 border-border/70 bg-background/40">
-                    <BriefcaseBusiness className="h-4 w-4" />
-                    {content.hero.ctas.experience}
-                  </Button>
-                </a>
-                <a href="https://github.com/your-profile" target="_blank" rel="noreferrer">
+                <a href={content.contact.github} target="_blank" rel="noreferrer">
                   <Button size="lg" variant="ghost" className="gap-2">
                     <Github className="h-4 w-4" />
                     {content.hero.ctas.github}
@@ -55,9 +50,12 @@ export function HeroSection({ content }: HeroSectionProps) {
                 </a>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-3">
+              <div className={cn("grid gap-3", content.hero.highlights.length > 2 ? "sm:grid-cols-3" : "sm:grid-cols-2")}>
                 {content.hero.highlights.map((item) => (
-                  <div key={item.label} className="surface rounded-xl p-4">
+                  <div
+                    key={item.label}
+                    className="surface rounded-xl p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
+                  >
                     <p className="font-[var(--font-display)] text-2xl text-foreground">{item.value}</p>
                     <p className="mt-1 text-sm text-muted-foreground">{item.label}</p>
                   </div>
@@ -66,14 +64,22 @@ export function HeroSection({ content }: HeroSectionProps) {
             </div>
 
             <div className="shrink-0">
-              <div className="relative mx-auto h-72 w-72 overflow-hidden rounded-full shadow-xl ring-1 ring-border/50 sm:h-80 sm:w-80 md:mx-0 md:h-[22rem] md:w-[22rem]">
+              <div className="group relative mx-auto h-72 w-72 overflow-hidden rounded-full shadow-xl ring-1 ring-border/60 transition-all duration-300 hover:-translate-y-1 hover:ring-primary/40 hover:shadow-2xl hover:shadow-primary/20 sm:h-80 sm:w-80 md:mx-0 md:h-[22rem] md:w-[22rem]">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-primary/25 via-primary/10 to-transparent opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-primary/25 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
                 <Image
                   src="/images/yaros1.jpg"
                   alt="Yaroslav Hayduk"
                   fill
                   sizes="(min-width: 768px) 352px, (min-width: 640px) 320px, 288px"
                   quality={95}
-                  className="object-cover [object-position:50%_18%]"
+                  className="object-cover object-[50%_28%] scale-[1.18] transition-transform duration-500 ease-out group-hover:scale-[1.24] group-hover:-translate-y-1"
                   priority
                 />
               </div>

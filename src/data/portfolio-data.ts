@@ -64,7 +64,6 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       { id: "projects", label: "Projects" },
       { id: "stack", label: "Stack" },
       { id: "about", label: "About" },
-      { id: "experience", label: "Experience" },
       { id: "contact", label: "Contact" }
     ],
     hero: {
@@ -186,9 +185,9 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       "Speaker at local frontend meetup: " + "Designing for perceived performance"
     ],
     contact: {
-      email: "yaroslav@example.com",
-      linkedin: "https://linkedin.com/in/your-profile",
-      github: "https://github.com/your-profile",
+      email: "slavikcp@gmail.com",
+      linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
+      github: "https://github.com/yarosfct",
       location: "Europe · Open to remote/hybrid"
     },
     footer: "© 2026 Yaroslav Hayduk. Built with Next.js and Tailwind CSS."
@@ -199,13 +198,12 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       { id: "projects", label: "Projetos" },
       { id: "stack", label: "Stack" },
       { id: "about", label: "Sobre" },
-      { id: "experience", label: "Experiência" },
       { id: "contact", label: "Contato" }
     ],
     hero: {
       name: "Yaroslav Hayduk",
       title: "Desenvolvedor full stack focado em experiências frontend modernas",
-      pitch: "Projeto e entrego produtos performáticos e acessíveis, com acabamento cuidadoso em cada interação.",
+      pitch: "Desenvolvo e entrego produtos de alto desempenho e acessiveis, com atencao aos detalhes em cada interacao.",
       ctas: {
         projects: "Ver Projetos",
         contact: "Entrar em Contato",
@@ -321,9 +319,9 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       "Palestrante em meetup de frontend: " + "Design para performance percebida"
     ],
     contact: {
-      email: "yaroslav@example.com",
-      linkedin: "https://linkedin.com/in/your-profile",
-      github: "https://github.com/your-profile",
+      email: "slavikcp@gmail.com",
+      linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
+      github: "https://github.com/yarosfct",
       location: "Europa · Aberto a remoto/híbrido"
     },
     footer: "© 2026 Yaroslav Hayduk. Construído com Next.js e Tailwind CSS."

@@ -15,6 +15,8 @@ type Project = {
   impact: string;
   role: string;
   image: string;
+  imageFit?: "cover" | "contain";
+  gallery?: string[];
   github?: string;
   demo?: string;
 };
@@ -86,7 +88,6 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       { id: "projects", label: "Projects" },
       { id: "stack", label: "Stack" },
       { id: "about", label: "About" },
-      { id: "experience", label: "Experience" },
       { id: "contact", label: "Contact" }
     ],
     hero: {
@@ -100,8 +101,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         github: "GitHub"
       },
       highlights: [
-        { value: "4+", label: "Years building production web products" },
-        { value: "20+", label: "Delivered features across SaaS and marketplaces" },
+        { value: "2+", label: "Years building real-world web apps" },
         { value: "100%", label: "Focus on UX quality, accessibility, and performance" }
       ]
     },
@@ -114,7 +114,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       stack: {
         eyebrow: "Tech Stack",
         title: "Tools I rely on to build production-ready products",
-        description: "Grouped by domain for clarity and quick updates when your stack evolves."
+        description: "Curated around frontend impact and full-stack delivery, with supporting tools I use in production."
       },
       about: {
         eyebrow: "About Me",
@@ -144,69 +144,52 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     projects: [
       {
-        id: "project-1",
-        title: "SaaS Analytics Dashboard",
-        summary: "Built a responsive analytics platform with role-based views, chart-heavy screens, and excellent performance metrics.",
-        stack: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-        impact: "Designed UI architecture and implemented reusable data visualization patterns.",
-        role: "Frontend / Full stack",
-        image: "/projects/project-1.svg",
-        github: "https://github.com/",
-        demo: "https://example.com"
+        id: "project-safetyscope",
+        title: "SafetyScope Platform",
+        summary: "Full-stack safety management platform with incident tracking, role-based dashboards, and clear reporting flows.",
+        stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
+        impact: "Built end-to-end features with stronger ownership on frontend architecture, UX flows, and component implementation.",
+        role: "Full stack (Frontend-focused)",
+        image: "/images/SafetyMain.png",
+        gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"]
       },
       {
-        id: "project-2",
-        title: "Developer Hiring Platform",
-        summary: "Created a job marketplace with advanced filtering, profile pages, and streamlined recruiter workflows.",
-        stack: ["React", "Next.js", "Node.js", "PostgreSQL"],
-        impact: "Owned onboarding funnel UX and delivered major conversion improvements.",
-        role: "Product-focused Full stack",
-        image: "/projects/project-2.svg",
-        github: "https://github.com/"
+        id: "project-kinesis",
+        title: "Kinesis Event Platform",
+        summary: "Event management platform that supports ticket buying, ticket reselling, event hosting, and attendee management.",
+        stack: ["React", "Node.js", "TypeScript", "PostgreSQL"],
+        impact: "Contributed across the full stack with bigger ownership on frontend implementation, UX flows, and interactive pages.",
+        role: "Full stack (Frontend-focused)",
+        image: "/images/KinesisHero.png",
+        gallery: ["/images/KinesisHero.png", "/images/KinesisLogin.png"]
       },
       {
-        id: "project-3",
-        title: "Real-time Collaboration App",
-        summary: "Implemented collaborative document editing with real-time updates, comments, and permission management.",
-        stack: ["TypeScript", "WebSockets", "Redis", "Docker"],
-        impact: "Led frontend architecture and collaborated on real-time reliability strategy.",
-        role: "Frontend Lead",
-        image: "/projects/project-3.svg",
-        demo: "https://example.com"
+        id: "project-ecotrecko",
+        title: "EcoTrecko Mobile App",
+        summary: "Mobile app concept focused on helping users track eco-friendly habits and reduce their daily environmental footprint.",
+        stack: ["Flutter", "Dart", "Firebase", "Figma"],
+        impact: "Designed and built the app experience from concept to poster-ready prototype, including UI flow and sustainability features.",
+        role: "Mobile App Developer",
+        image: "/images/ecotrecko_poster.jpeg",
+        imageFit: "contain"
       }
     ],
     techGroups: [
       {
-        title: "Languages",
-        items: ["C", "Java", "Python", "JavaScript", "TypeScript", "Dart", "Kotlin", "SQL"]
+        title: "Frontend Engineering",
+        items: ["Next.js", "React.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML", "CSS"]
       },
       {
-        title: "Web Frontend",
-        items: ["React.js", "Next.js", "Vue.js", "Angular", "Three.js", "Tailwind CSS", "HTML", "CSS"]
+        title: "Full stack Delivery",
+        items: ["Node.js", "PostgreSQL", "Supabase", "API Design", "Microservices", "SQL"]
       },
       {
-        title: "Backend & APIs",
-        items: ["Node.js", "Supabase", "Web3.js", "API Design", "Microservices"]
+        title: "Platform & DevOps",
+        items: ["Docker", "AWS", "Vercel", "GCP", "Kubernetes", "MongoDB"]
       },
       {
-        title: "Mobile & Cross‑platform",
-        items: ["Flutter", "React Native", "Android SDK"]
-      },
-      {
-        title: "Databases",
-        items: ["PostgreSQL", "MongoDB", "Firebase"]
-      },
-      {
-        title: "Cloud & DevOps",
-        items: ["AWS", "GCP", "Docker", "Kubernetes", "Vercel"]
-      },
-      {
-        title: "Tools & Collaboration",
-        items: ["Git", "GitHub", "Figma"]
-      },
-      {
-        title: "Core Concepts",
-        items: ["System Design", "Data Structures & Algorithms", "Distributed Systems"]
+        title: "Workflow & Product Craft",
+        items: ["Git", "GitHub", "Figma", "Three.js", "Flutter", "Firebase"]
       }
     ],
     about: [
@@ -242,9 +225,9 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       "Speaker at local frontend meetup: Designing for perceived performance"
     ],
     contact: {
-      email: "yaroslav@example.com",
-      linkedin: "https://linkedin.com/in/your-profile",
-      github: "https://github.com/your-profile",
+      email: "slavikcp@gmail.com",
+      linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
+      github: "https://github.com/yarosfct",
       location: "Europe · Open to remote/hybrid"
     },
     footer: "© 2026 Yaroslav Hayduk. Built with Next.js and Tailwind CSS."
@@ -263,13 +246,12 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       { id: "projects", label: "Projetos" },
       { id: "stack", label: "Stack" },
       { id: "about", label: "Sobre" },
-      { id: "experience", label: "Experiência" },
       { id: "contact", label: "Contato" }
     ],
     hero: {
       name: "Yaroslav Hayduk",
       title: "Desenvolvedor full stack focado em experiências frontend modernas",
-      pitch: "Projeto e entrego produtos performáticos e acessíveis, com acabamento cuidadoso em cada interação.",
+      pitch: "Desenvolvo e entrego produtos de alto desempenho e acessiveis, com atencao aos detalhes em cada interacao.",
       ctas: {
         projects: "Ver Projetos",
         contact: "Entrar em Contato",
@@ -277,8 +259,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         github: "GitHub"
       },
       highlights: [
-        { value: "4+", label: "Anos construindo produtos web em produção" },
-        { value: "20+", label: "Features entregues em SaaS e marketplaces" },
+        { value: "2+", label: "Anos a desenvolver apps web reais" },
         { value: "100%", label: "Foco em UX, acessibilidade e performance" }
       ]
     },
@@ -291,7 +272,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       stack: {
         eyebrow: "Tecnologias",
         title: "Ferramentas que uso para construir produtos prontos para produção",
-        description: "Organizadas por domínio para facilitar manutenção e futuras atualizações."
+        description: "Curado para destacar impacto em frontend, entrega full stack e ferramentas que uso em producao."
       },
       about: {
         eyebrow: "Sobre Mim",
@@ -321,69 +302,52 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     projects: [
       {
-        id: "project-1",
-        title: "Dashboard de Analytics SaaS",
-        summary: "Plataforma responsiva de análise com visão por perfil, telas orientadas a gráficos e alta performance.",
-        stack: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-        impact: "Defini a arquitetura de interface e implementei padrões reutilizáveis de visualização de dados.",
-        role: "Frontend / Full stack",
-        image: "/projects/project-1.svg",
-        github: "https://github.com/",
-        demo: "https://example.com"
+        id: "project-safetyscope",
+        title: "Plataforma SafetyScope",
+        summary: "Plataforma full stack para gestao de seguranca com registro de incidentes, dashboards por perfil e fluxos de relatorios.",
+        stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
+        impact: "Implementei funcionalidades end-to-end com maior foco em frontend, arquitetura de interface e UX.",
+        role: "Full stack (foco em frontend)",
+        image: "/images/SafetyMain.png",
+        gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"]
       },
       {
-        id: "project-2",
-        title: "Plataforma de Contratação de Devs",
-        summary: "Marketplace de vagas com filtros avançados, páginas de perfil e fluxo otimizado para recrutadores.",
-        stack: ["React", "Next.js", "Node.js", "PostgreSQL"],
-        impact: "Conduzi o UX do funil de onboarding e melhorei significativamente a conversão.",
-        role: "Full stack com foco em produto",
-        image: "/projects/project-2.svg",
-        github: "https://github.com/"
+        id: "project-kinesis",
+        title: "Plataforma de Eventos Kinesis",
+        summary: "Plataforma de eventos que permite compra de ingressos, revenda de ingressos, criacao de eventos e gestao de participantes.",
+        stack: ["React", "Node.js", "TypeScript", "PostgreSQL"],
+        impact: "Contribui no full stack com maior foco em frontend, fluxos de UX e implementacao de telas interativas.",
+        role: "Full stack (foco em frontend)",
+        image: "/images/KinesisHero.png",
+        gallery: ["/images/KinesisHero.png", "/images/KinesisLogin.png"]
       },
       {
-        id: "project-3",
-        title: "App de Colaboração em Tempo Real",
-        summary: "Edição colaborativa de documentos com atualizações em tempo real, comentários e gestão de permissões.",
-        stack: ["TypeScript", "WebSockets", "Redis", "Docker"],
-        impact: "Liderei a arquitetura frontend e colaborei na estratégia de confiabilidade em tempo real.",
-        role: "Líder de Frontend",
-        image: "/projects/project-3.svg",
-        demo: "https://example.com"
+        id: "project-ecotrecko",
+        title: "Aplicativo Mobile EcoTrecko",
+        summary: "Conceito de app mobile focado em ajudar pessoas a acompanhar habitos sustentaveis e reduzir o impacto ambiental no dia a dia.",
+        stack: ["Flutter", "Dart", "Firebase", "Figma"],
+        impact: "Desenhei e desenvolvi a experiencia do app do conceito ao prototipo com poster, incluindo fluxo de UI e funcionalidades de sustentabilidade.",
+        role: "Desenvolvedor Mobile",
+        image: "/images/ecotrecko_poster.jpeg",
+        imageFit: "contain"
       }
     ],
     techGroups: [
       {
-        title: "Linguagens",
-        items: ["C", "Java", "Python", "JavaScript", "TypeScript", "Dart", "Kotlin", "SQL"]
+        title: "Engenharia Frontend",
+        items: ["Next.js", "React.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML", "CSS"]
       },
       {
-        title: "Web Frontend",
-        items: ["React.js", "Next.js", "Vue.js", "Angular", "Three.js", "Tailwind CSS", "HTML", "CSS"]
+        title: "Entrega Full stack",
+        items: ["Node.js", "PostgreSQL", "Supabase", "API Design", "Microservices", "SQL"]
       },
       {
-        title: "Backend & APIs",
-        items: ["Node.js", "Supabase", "Web3.js", "API Design", "Microservices"]
+        title: "Plataforma e DevOps",
+        items: ["Docker", "AWS", "Vercel", "GCP", "Kubernetes", "MongoDB"]
       },
       {
-        title: "Mobile & Cross‑platform",
-        items: ["Flutter", "React Native", "Android SDK"]
-      },
-      {
-        title: "Bancos de dados",
-        items: ["PostgreSQL", "MongoDB", "Firebase"]
-      },
-      {
-        title: "Cloud & DevOps",
-        items: ["AWS", "GCP", "Docker", "Kubernetes", "Vercel"]
-      },
-      {
-        title: "Ferramentas & Colaboração",
-        items: ["Git", "GitHub", "Figma"]
-      },
-      {
-        title: "Conceitos centrais",
-        items: ["System Design", "Data Structures & Algorithms", "Distributed Systems"]
+        title: "Workflow e Produto",
+        items: ["Git", "GitHub", "Figma", "Three.js", "Flutter", "Firebase"]
       }
     ],
     about: [
@@ -419,9 +383,9 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       "Palestrante em meetup de frontend: Design para performance percebida"
     ],
     contact: {
-      email: "yaroslav@example.com",
-      linkedin: "https://linkedin.com/in/your-profile",
-      github: "https://github.com/your-profile",
+      email: "slavikcp@gmail.com",
+      linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
+      github: "https://github.com/yarosfct",
       location: "Europa · Aberto a remoto/híbrido"
     },
     footer: "© 2026 Yaroslav Hayduk. Construído com Next.js e Tailwind CSS."

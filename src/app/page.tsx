@@ -8,7 +8,6 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { StackSection } from "@/components/sections/stack-section";
-import { TimelineSection } from "@/components/sections/timeline-section";
 import { getDictionary } from "@/data/i18n";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -24,7 +23,6 @@ export default function HomePage() {
         <ProjectsSection content={content} />
         <StackSection content={content} />
         <AboutSection content={content} />
-        <TimelineSection id="experience" content={content} items={content.experience} />
         <ContactSection content={content} />
       </main>
       <footer className="container pb-10 pt-4 text-sm text-muted-foreground">{content.footer}</footer>

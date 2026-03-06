@@ -49,7 +49,7 @@ export function Navbar({ content, locale, setLocale }: NavbarProps) {
             <div className="flex items-center gap-1.5 md:gap-2">
               <LanguageToggle locale={locale} setLocale={setLocale} label={content.ui.languageLabel} />
               <ThemeToggle label={content.ui.themeLabel} />
-              <a href="https://github.com/your-profile" target="_blank" rel="noreferrer" className="hidden md:block">
+              <a href={content.contact.github} target="_blank" rel="noreferrer" className="hidden md:block">
                 <Button variant="outline" size="sm" className="gap-2 border-border/70 bg-background/50">
                   <Github className="h-4 w-4" />
                   {content.ui.navGitHub}

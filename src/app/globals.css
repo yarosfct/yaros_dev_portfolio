@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 220 25% 98%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 225 84% 57%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 220 14% 95%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 220 14% 95%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 220 14% 93%;
+  --accent-foreground: 222 47% 11%;
+  --border: 220 13% 89%;
+  --input: 220 13% 89%;
+  --ring: 225 84% 57%;
+  --radius: 0.95rem;
+}
+
+.dark {
+  --background: 225 20% 7%;
+  --foreground: 210 40% 96%;
+  --card: 225 24% 10%;
+  --card-foreground: 210 40% 96%;
+  --popover: 225 24% 10%;
+  --popover-foreground: 210 40% 96%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 226 15% 17%;
+  --secondary-foreground: 210 40% 96%;
+  --muted: 226 15% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 226 15% 21%;
+  --accent-foreground: 210 40% 96%;
+  --border: 226 15% 22%;
+  --input: 226 15% 22%;
+  --ring: 217 91% 60%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+}
+
+::selection {
+  @apply bg-primary/30;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-title {
+    @apply text-2xl font-semibold tracking-tight md:text-3xl;
+  }
+
+  .section-copy {
+    @apply text-sm leading-relaxed text-muted-foreground md:text-base;
+  }
+}

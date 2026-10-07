@@ -135,30 +135,35 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/45 via-transparent to-transparent" />
                     <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/90 px-2.5 py-1 text-[11px] font-medium text-foreground">
                       <Maximize2 className="h-3.5 w-3.5" />
-                      {mediaCount > 1 ? `${mediaCount} screenshots` : "Expand"}
+                      {mediaCount > 1
+                        ? content.ui.screenshotsLabel.replace("{count}", String(mediaCount))
+                        : content.ui.expandLabel}
                     </div>
                   </div>
                 </button>
 
                 <CardHeader className="space-y-3 p-5 md:p-6">
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="flex flex-col items-start gap-3 sm:flex-row sm:justify-between">
                     <CardTitle className="font-[var(--font-display)] text-xl">{project.title}</CardTitle>
-                    <p className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] font-medium text-primary">{project.role}</p>
+                    <p className="shrink-0 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] font-medium text-primary">{project.role}</p>
                   </div>
                   <CardDescription className="text-sm leading-relaxed">{project.summary}</CardDescription>
                 </CardHeader>
 
                 <CardContent className="space-y-4 p-5 pt-0 md:p-6 md:pt-0">
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack.map((item) => (
-                      <Badge key={item} variant="outline" className="border-border/70 bg-background/25">
-                        {item}
-                      </Badge>
-                    ))}
-                  </div>
+                  {project.stack.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {project.stack.map((item) => (
+                        <Badge key={item} variant="outline" className="border-border/70 bg-background/25">
+                          {item}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
                   <p className="text-sm text-muted-foreground">
                     <span className="font-medium text-foreground">{content.ui.projectContributionLabel}:</span> {project.impact}
                   </p>
+                  {project.note && <p className="text-sm text-muted-foreground">{project.note}</p>}
                   <div className="flex flex-wrap gap-3">
                     {project.github && (
                       <a
@@ -193,19 +198,19 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
           <div className="w-full max-w-7xl" onClick={(event) => event.stopPropagation()}>
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="truncate text-sm font-medium text-foreground">{lightbox.title}</p>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setLightboxFitWidth((prev) => !prev)}
                   className="inline-flex h-9 items-center justify-center rounded-md border border-border/70 bg-background/80 px-3 text-xs font-medium text-foreground transition-colors hover:border-primary/30 hover:bg-primary/5"
                 >
-                  {lightboxFitWidth ? "Fit screen" : "Fit width"}
+                  {lightboxFitWidth ? content.ui.fitScreen : content.ui.fitWidth}
                 </button>
                 <button
                   type="button"
                   onClick={zoomOut}
                   className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border/70 bg-background/80 text-foreground transition-colors hover:border-primary/30 hover:bg-primary/5"
-                  aria-label="Zoom out"
+                  aria-label={content.ui.zoomOut}
                 >
                   <Minus className="h-4 w-4" />
                 </button>
@@ -214,7 +219,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                   type="button"
                   onClick={zoomIn}
                   className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border/70 bg-background/80 text-foreground transition-colors hover:border-primary/30 hover:bg-primary/5"
-                  aria-label="Zoom in"
+                  aria-label={content.ui.zoomIn}
                 >
                   <Plus className="h-4 w-4" />
                 </button>
@@ -224,7 +229,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                       type="button"
                       onClick={showPrev}
                       className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border/70 bg-background/80 text-foreground transition-colors hover:border-primary/30 hover:bg-primary/5"
-                      aria-label="Previous image"
+                      aria-label={content.ui.previousImage}
                     >
                       <ChevronLeft className="h-5 w-5" />
                     </button>
@@ -232,7 +237,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                       type="button"
                       onClick={showNext}
                       className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border/70 bg-background/80 text-foreground transition-colors hover:border-primary/30 hover:bg-primary/5"
-                      aria-label="Next image"
+                      aria-label={content.ui.nextImage}
                     >
                       <ChevronRight className="h-5 w-5" />
                     </button>
@@ -242,7 +247,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                   type="button"
                   onClick={closeLightbox}
                   className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border/70 bg-background/80 text-foreground transition-colors hover:border-primary/30 hover:bg-primary/5"
-                  aria-label="Close image viewer"
+                  aria-label={content.ui.closeViewer}
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -254,7 +259,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={lightboxImage}
-                  alt={`${lightbox.title} enlarged screenshot`}
+                  alt={`${lightbox.title} ${content.ui.enlargedAlt}`}
                   className={cn(
                     "select-none transition-transform duration-150",
                     lightboxFitWidth ? "h-auto w-full max-w-none" : "h-auto w-auto max-h-[75vh] max-w-full"

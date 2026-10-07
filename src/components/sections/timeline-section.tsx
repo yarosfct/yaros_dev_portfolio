@@ -4,7 +4,7 @@ import { Card, CardContent } from "../ui/card";
 import { SectionShell } from "./section-shell";
 
 type TimelineSectionProps = {
-  id: "experience" | "education";
+  id: "experience";
   content: PortfolioDictionary;
   items: PortfolioDictionary["experience"];
 };
@@ -25,6 +25,16 @@ export function TimelineSection({ id, content, items }: TimelineSectionProps) {
               <h3 className="font-[var(--font-display)] text-lg">{item.title}</h3>
               <p className="text-sm text-muted-foreground">{item.subtitle}</p>
               <p className="section-copy">{item.description}</p>
+              {item.link && (
+                <a
+                  href={item.link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex text-sm font-medium text-primary underline-offset-4 hover:underline"
+                >
+                  {item.link.label}
+                </a>
+              )}
             </CardContent>
           </Card>
         ))}

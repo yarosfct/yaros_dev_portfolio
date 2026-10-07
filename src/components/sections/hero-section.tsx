@@ -4,7 +4,7 @@ import { ArrowRight, Github, Mail } from "lucide-react";
 import { PortfolioDictionary } from "@/data/i18n";
 import { cn } from "@/lib/utils";
 
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 
 type HeroSectionProps = {
   content: PortfolioDictionary;
@@ -30,23 +30,25 @@ export function HeroSection({ content }: HeroSectionProps) {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <a href="#projects">
-                  <Button size="lg" className="gap-2">
-                    {content.hero.ctas.projects}
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
+                <a href="#projects" className={cn(buttonVariants({ size: "lg" }), "gap-2")}>
+                  {content.hero.ctas.projects}
+                  <ArrowRight className="h-4 w-4" />
                 </a>
-                <a href="#contact">
-                  <Button size="lg" variant="secondary" className="gap-2">
-                    <Mail className="h-4 w-4" />
-                    {content.hero.ctas.contact}
-                  </Button>
+                <a href="#experience" className={cn(buttonVariants({ size: "lg", variant: "secondary" }), "gap-2")}>
+                  {content.hero.ctas.experience}
                 </a>
-                <a href={content.contact.github} target="_blank" rel="noreferrer">
-                  <Button size="lg" variant="ghost" className="gap-2">
-                    <Github className="h-4 w-4" />
-                    {content.hero.ctas.github}
-                  </Button>
+                <a href="#contact" className={cn(buttonVariants({ size: "lg", variant: "ghost" }), "gap-2")}>
+                  <Mail className="h-4 w-4" />
+                  {content.hero.ctas.contact}
+                </a>
+                <a
+                  href={content.contact.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={cn(buttonVariants({ size: "lg", variant: "ghost" }), "gap-2")}
+                >
+                  <Github className="h-4 w-4" />
+                  {content.hero.ctas.github}
                 </a>
               </div>
 

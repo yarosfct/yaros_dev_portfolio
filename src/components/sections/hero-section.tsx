@@ -79,7 +79,7 @@ export function HeroSection({ content }: HeroSectionProps) {
                   fill
                   sizes="(min-width: 768px) 352px, (min-width: 640px) 320px, 288px"
                   quality={95}
-                  className="object-cover object-[50%_28%] scale-[1.18] transition-transform duration-500 ease-out group-hover:scale-[1.24] group-hover:-translate-y-1"
+                  className="object-cover object-[50%_28%] scale-[1.28] -translate-x-[8.5%] transition-transform duration-500 ease-out group-hover:scale-[1.34] group-hover:-translate-y-1"
                   priority
                 />
               </div>

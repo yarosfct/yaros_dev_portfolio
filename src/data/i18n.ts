@@ -225,7 +225,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       "Speaker at local frontend meetup: Designing for perceived performance"
     ],
     contact: {
-      email: "slavikcp@gmail.com",
+      email: "yaroslav.hayduk8@gmail.com",
       linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
       github: "https://github.com/yarosfct",
       location: "Europe · Open to remote/hybrid"
@@ -383,7 +383,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       "Palestrante em meetup de frontend: Design para performance percebida"
     ],
     contact: {
-      email: "slavikcp@gmail.com",
+      email: "yaroslav.hayduk8@gmail.com",
       linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
       github: "https://github.com/yarosfct",
       location: "Europa · Aberto a remoto/híbrido"

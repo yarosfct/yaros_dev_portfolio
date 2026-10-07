@@ -21,6 +21,8 @@ type LightboxState = {
   index: number;
 };
 
+type Project = PortfolioDictionary["projects"][number];
+
 export function ProjectsSection({ content }: ProjectsSectionProps) {
   const heading = content.sectionHeadings.projects;
   const totalProjects = content.projects.length;
@@ -92,104 +94,148 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
     return lightbox.media[lightbox.index];
   }, [lightbox]);
 
+  const renderProjectCard = (project: Project, className?: string, imageAspect = "aspect-[16/10]") => {
+    const gallery = project.gallery && project.gallery.length > 0 ? project.gallery : undefined;
+    const media = (gallery ?? (project.image ? [project.image] : [])).slice(0, 3);
+    const mediaCount = media.length;
+    const mainImage = media[0];
+
+    return (
+      <Card
+        key={project.id}
+        className={cn(
+          "group overflow-hidden rounded-2xl border border-border/80 bg-card/75 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10",
+          className
+        )}
+      >
+        {mainImage && (
+          <button
+            type="button"
+            onClick={() => openLightbox(media, project.title)}
+            aria-label={`${content.ui.expandLabel}: ${project.title}`}
+            className="relative block w-full cursor-pointer overflow-hidden border-b border-border/80 bg-muted/20 text-left"
+          >
+            <div className={cn("relative", imageAspect)}>
+              <Image
+                src={mainImage}
+                alt={project.imageAlt ?? `${project.title} preview`}
+                fill
+                quality={96}
+                sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                className={cn(
+                  "transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transform-none",
+                  project.imageFit === "contain" ? "object-contain p-3" : "object-cover object-top"
+                )}
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/45 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/90 px-2.5 py-1 text-[11px] font-medium text-foreground">
+                <Maximize2 className="h-3.5 w-3.5" />
+                {mediaCount > 1 ? content.ui.screenshotsLabel.replace("{count}", String(mediaCount)) : content.ui.expandLabel}
+              </div>
+            </div>
+          </button>
+        )}
+
+        <CardHeader className="space-y-3 p-5 md:p-6">
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:justify-between">
+            <CardTitle className="font-[var(--font-display)] text-xl">{project.title}</CardTitle>
+            {project.role && (
+              <p className="shrink-0 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] font-medium text-primary">{project.role}</p>
+            )}
+          </div>
+          <CardDescription className="text-sm leading-relaxed">{project.summary}</CardDescription>
+        </CardHeader>
+
+        <CardContent className="space-y-4 p-5 pt-0 md:p-6 md:pt-0">
+          {project.stack.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {project.stack.map((item) => (
+                <Badge key={item} variant="outline" className="border-border/70 bg-background/25">
+                  {item}
+                </Badge>
+              ))}
+            </div>
+          )}
+          {project.impact && (
+            <p className="text-sm text-muted-foreground">
+              <span className="font-medium text-foreground">{content.ui.projectContributionLabel}:</span> {project.impact}
+            </p>
+          )}
+          {project.note && <p className="text-sm text-muted-foreground">{project.note}</p>}
+          {(project.github || project.demo) && (
+            <div className="flex flex-wrap gap-3">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-border/70 px-2.5 py-1.5 text-sm text-primary transition-all duration-200 hover:border-primary/30 hover:bg-primary/5"
+                >
+                  <Github className="h-4 w-4" /> GitHub
+                </a>
+              )}
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-border/70 px-2.5 py-1.5 text-sm text-primary transition-all duration-200 hover:border-primary/30 hover:bg-primary/5"
+                >
+                  <ExternalLink className="h-4 w-4" /> {content.ui.demoLabel}
+                </a>
+              )}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    );
+  };
+
   return (
     <>
       <SectionShell id="projects" {...heading}>
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-6">
-          {content.projects.map((project, index) => {
-            const cardSpanClass =
-              totalProjects === 1
-                ? "md:col-span-2 xl:col-span-6"
-                : totalProjects === 2
-                  ? "xl:col-span-3"
-                  : index === 0
-                    ? "md:col-span-2 xl:col-span-4"
-                    : "xl:col-span-2";
+        <div className="space-y-12">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-6">
+            {content.projects.map((project, index) => {
+              const cardSpanClass =
+                totalProjects === 1
+                  ? "md:col-span-2 xl:col-span-6"
+                  : totalProjects === 2
+                    ? "xl:col-span-3"
+                    : index === 0
+                      ? "md:col-span-2 xl:col-span-4"
+                      : "xl:col-span-2";
 
-            const media = (project.gallery && project.gallery.length > 0 ? project.gallery : [project.image]).slice(0, 3);
-            const mediaCount = media.length;
-            const mainImage = media[0];
+              return renderProjectCard(project, cardSpanClass);
+            })}
+          </div>
 
-            return (
-              <Card
-                key={project.id}
-                className={`group overflow-hidden rounded-2xl border border-border/80 bg-card/75 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10 ${cardSpanClass}`}
-              >
-                <button
-                  type="button"
-                  onClick={() => openLightbox(media, project.title)}
-                  className="relative block w-full cursor-pointer overflow-hidden border-b border-border/80 bg-muted/20 text-left"
-                >
-                  <div className="relative aspect-[16/10]">
-                    <Image
-                      src={mainImage}
-                      alt={`${project.title} preview`}
-                      fill
-                      quality={96}
-                      sizes="(min-width: 1280px) 66vw, (min-width: 768px) 50vw, 100vw"
-                      className={cn(
-                        "transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transform-none",
-                        project.imageFit === "contain" ? "object-contain p-3" : "object-cover object-top"
-                      )}
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/45 via-transparent to-transparent" />
-                    <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/90 px-2.5 py-1 text-[11px] font-medium text-foreground">
-                      <Maximize2 className="h-3.5 w-3.5" />
-                      {mediaCount > 1
-                        ? content.ui.screenshotsLabel.replace("{count}", String(mediaCount))
-                        : content.ui.expandLabel}
-                    </div>
-                  </div>
-                </button>
+          {content.publicProjects.length > 0 && (
+            <div className="space-y-5">
+              <h3 className="font-[var(--font-display)] text-2xl">{content.ui.publicProjectsTitle}</h3>
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {content.publicProjects.map((project) => renderProjectCard(project))}
+              </div>
+            </div>
+          )}
 
-                <CardHeader className="space-y-3 p-5 md:p-6">
-                  <div className="flex flex-col items-start gap-3 sm:flex-row sm:justify-between">
-                    <CardTitle className="font-[var(--font-display)] text-xl">{project.title}</CardTitle>
-                    <p className="shrink-0 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] font-medium text-primary">{project.role}</p>
-                  </div>
-                  <CardDescription className="text-sm leading-relaxed">{project.summary}</CardDescription>
-                </CardHeader>
+          {content.moreProjects.length > 0 && (
+            <div className="space-y-5">
+              <h3 className="font-[var(--font-display)] text-2xl">{content.ui.moreProjectsTitle}</h3>
+              <div className="grid gap-6 md:grid-cols-2">
+                {content.moreProjects.map((project) => renderProjectCard(project, undefined, "aspect-[2/1]"))}
+              </div>
+            </div>
+          )}
 
-                <CardContent className="space-y-4 p-5 pt-0 md:p-6 md:pt-0">
-                  {project.stack.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {project.stack.map((item) => (
-                        <Badge key={item} variant="outline" className="border-border/70 bg-background/25">
-                          {item}
-                        </Badge>
-                      ))}
-                    </div>
-                  )}
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-medium text-foreground">{content.ui.projectContributionLabel}:</span> {project.impact}
-                  </p>
-                  {project.note && <p className="text-sm text-muted-foreground">{project.note}</p>}
-                  <div className="flex flex-wrap gap-3">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-border/70 px-2.5 py-1.5 text-sm text-primary transition-all duration-200 hover:border-primary/30 hover:bg-primary/5"
-                      >
-                        <Github className="h-4 w-4" /> GitHub
-                      </a>
-                    )}
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-border/70 px-2.5 py-1.5 text-sm text-primary transition-all duration-200 hover:border-primary/30 hover:bg-primary/5"
-                      >
-                        <ExternalLink className="h-4 w-4" /> {content.ui.demoLabel}
-                      </a>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+          {content.clientProjects.length > 0 && (
+            <div className="space-y-5">
+              <h3 className="font-[var(--font-display)] text-2xl">{content.ui.clientWorkTitle}</h3>
+              <div className="grid gap-6 md:grid-cols-2">
+                {content.clientProjects.map((project) => renderProjectCard(project))}
+              </div>
+            </div>
+          )}
         </div>
       </SectionShell>
 

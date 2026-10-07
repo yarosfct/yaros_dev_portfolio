@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { FileDown, Github, Linkedin, Mail, MapPin } from "lucide-react";
 
 import { PortfolioDictionary } from "@/data/i18n";
 
@@ -20,6 +20,12 @@ export function ContactSection({ content }: ContactSectionProps) {
             <Mail className="h-4 w-4 text-primary" />
             <span className="text-sm">{content.contact.email}</span>
           </a>
+          {content.contact.cv && (
+            <a href={content.contact.cv.href} download className="flex cursor-pointer items-center gap-3 rounded-xl border border-border/80 bg-background/35 p-4 transition-all duration-200 hover:border-primary/30 hover:bg-accent/60 hover:shadow-sm">
+              <FileDown className="h-4 w-4 text-primary" />
+              <span className="text-sm">{content.contact.cv.label}</span>
+            </a>
+          )}
           <a href={content.contact.linkedin} target="_blank" rel="noreferrer" className="flex cursor-pointer items-center gap-3 rounded-xl border border-border/80 bg-background/35 p-4 transition-all duration-200 hover:border-primary/30 hover:bg-accent/60 hover:shadow-sm">
             <Linkedin className="h-4 w-4 text-primary" />
             <span className="text-sm">LinkedIn</span>

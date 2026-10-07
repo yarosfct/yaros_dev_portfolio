@@ -59,7 +59,7 @@ export function StackSection({ content }: StackSectionProps) {
         })}
 
         {secondaryGroups.length > 0 && (
-          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-12">
+          <div className={cn("grid gap-4 lg:col-span-12", secondaryGroups.length > 1 && "sm:grid-cols-2")}>
             {secondaryGroups.map((group, index) => {
               const Icon = secondaryIcons[index % secondaryIcons.length];
 

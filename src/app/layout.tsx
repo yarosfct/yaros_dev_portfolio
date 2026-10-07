@@ -9,22 +9,22 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const grotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
 
 export const metadata: Metadata = {
-  title: "Yaroslav Hayduk | Computer Engineering, NOVA FCT, Lisbon",
+  title: "Yaroslav Hayduk | Computer Engineering, NOVA FCT",
   description:
-    "Yaroslav Hayduk is finishing an Integrated Master's in Computer Engineering at NOVA FCT in Lisbon and is co-founder of CrestPoint Tech. Portfolio with client work, university projects, and contact details.",
+    "Yaroslav Hayduk is finishing an Integrated Master's in Computer Engineering at NOVA FCT and is co-founder of CrestPoint Tech. Based in Aveiro, Portugal, and open to roles, remote preferred.",
   keywords: [
     "Yaroslav Hayduk",
     "NOVA FCT",
-    "Lisbon",
+    "Aveiro",
     "Computer Engineering",
     "Engenharia Informática",
     "CrestPoint Tech",
     "Portfolio"
   ],
   openGraph: {
-    title: "Yaroslav Hayduk | Computer Engineering, NOVA FCT, Lisbon",
+    title: "Yaroslav Hayduk | Computer Engineering, NOVA FCT",
     description:
-      "Integrated Master's in Computer Engineering at NOVA FCT, Lisbon, and co-founder of CrestPoint Tech.",
+      "Integrated Master's in Computer Engineering at NOVA FCT. Co-founder of CrestPoint Tech, based in Aveiro, Portugal.",
     type: "website"
   }
 };

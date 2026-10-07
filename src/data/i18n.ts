@@ -12,9 +12,10 @@ type Project = {
   title: string;
   summary: string;
   stack: string[];
-  impact: string;
-  role: string;
-  image: string;
+  impact?: string;
+  role?: string;
+  image?: string;
+  imageAlt?: string;
   imageFit?: "cover" | "contain";
   gallery?: string[];
   github?: string;
@@ -40,11 +41,14 @@ type Contact = {
   linkedin: string;
   github: string;
   location: string;
+  cv?: { href: string; label: string };
 };
 
 type Achievement = {
   title: string;
   detail: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 type Language = {
@@ -78,6 +82,9 @@ export type PortfolioDictionary = {
     nextImage: string;
     closeViewer: string;
     enlargedAlt: string;
+    publicProjectsTitle: string;
+    moreProjectsTitle: string;
+    clientWorkTitle: string;
   };
   nav: NavItem[];
   hero: {
@@ -94,6 +101,9 @@ export type PortfolioDictionary = {
   };
   sectionHeadings: Record<"projects" | "stack" | "about" | "experience" | "achievements" | "contact", SectionHeading>;
   projects: Project[];
+  publicProjects: Project[];
+  moreProjects: Project[];
+  clientProjects: Project[];
   techGroups: TechGroup[];
   about: {
     leadBefore: string;
@@ -120,7 +130,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ui: {
       languageLabel: "Language",
       themeLabel: "Toggle theme",
-      availability: "Co-founder at CrestPoint Tech · Lisbon",
+      availability: "Open to roles · remote preferred",
       projectContributionLabel: "My part in it",
       demoLabel: "Demo",
       navGitHub: "GitHub",
@@ -136,7 +146,10 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       previousImage: "Previous image",
       nextImage: "Next image",
       closeViewer: "Close image viewer",
-      enlargedAlt: "enlarged screenshot"
+      enlargedAlt: "enlarged screenshot",
+      publicProjectsTitle: "Public projects",
+      moreProjectsTitle: "More projects",
+      clientWorkTitle: "Client work"
     },
     nav: [
       { id: "hero", label: "Home" },
@@ -150,7 +163,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       name: "Yaroslav Hayduk",
       title: "Finishing Computer Engineering at NOVA FCT, and building CrestPoint Tech",
       pitch:
-        "I co-founded CrestPoint Tech with two colleagues. I also build web and mobile products, including client work at Fractory and university projects at NOVA FCT in Lisbon.",
+        "I co-founded CrestPoint Tech with two colleagues. I also build for the web and for mobile, with some machine-learning work: client projects at Fractory, public repositories, and university projects at NOVA FCT.",
       ctas: {
         projects: "View projects",
         contact: "Get in touch",
@@ -165,14 +178,14 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     sectionHeadings: {
       projects: {
         eyebrow: "Selected work",
-        title: "Client screenshots and a university project",
+        title: "Client work, university work, and public repositories",
         description:
-          "SafetyScope and Kinesis are client work from Fractory, shown as screenshots under NDA. EcoTrecko is a 3rd-year team project."
+          "SafetyScope and Kinesis are Fractory client work, shown as screenshots under NDA. EcoTrecko is a 3rd-year team project. Public GitHub projects, two smaller repositories, and CrestPoint client work are below."
       },
       stack: {
         eyebrow: "Tech stack",
         title: "Tools behind the work on this page",
-        description: "What this site is built with, and what EcoTrecko was built with. I leave off tools I cannot point to here."
+        description: "What the projects on this page use: web apps, Flutter, and a smaller set for 3D and machine learning."
       },
       about: {
         eyebrow: "About me",
@@ -192,7 +205,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       contact: {
         eyebrow: "Contact",
         title: "Say hello",
-        description: "Email is the most direct way to reach me. CrestPoint Tech has a public site."
+        description: "I'm based in Aveiro and open to roles, remote preferred. Email is the most direct way to reach me."
       }
     },
     projects: [
@@ -232,14 +245,83 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         note: "There is no demo or code link. The app is offline, the repository is on another account, and it depended on Google Cloud services that are no longer available."
       }
     ],
+    publicProjects: [
+      {
+        id: "project-polski-od-zera",
+        title: "PolskiOdZera",
+        summary:
+          "A web app for learning Polish from zero. It includes an A1 curriculum, six exercise types, SM-2 spaced repetition, a mistakes notebook, grammar pages, vocabulary lists, and an offline-first PWA.",
+        stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand", "IndexedDB"],
+        github: "https://github.com/yarosfct/Language_School_PL"
+      },
+      {
+        id: "project-goal-tracker",
+        title: "GoalTracker",
+        summary:
+          "A goal-tracking web app built for a UX course group project, with a dashboard, goals, a weekly schedule, analytics, and settings.",
+        stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+        role: "UX course group project",
+        github: "https://github.com/yarosfct/GoalTracker_UX_PWR"
+      },
+      {
+        id: "project-sudoku-3d",
+        title: "Sudoku3D",
+        summary: "A personal 3D Sudoku project, with a difficulty menu and a timer.",
+        stack: ["React", "Three.js", "Spline", "Vite"],
+        role: "Personal project",
+        github: "https://github.com/yarosfct/Sudoku3D"
+      }
+    ],
+    moreProjects: [
+      {
+        id: "project-census-ml",
+        title: "census_ml_project",
+        summary:
+          "A Python study on the UCI Adult Census Income dataset. It looks at how preprocessing and hyperparameter tuning affect classical models that predict whether income exceeds $50,000.",
+        stack: ["Python", "scikit-learn", "pandas"],
+        github: "https://github.com/yarosfct/census_ml_project"
+      },
+      {
+        id: "project-market-dashboard",
+        title: "MarketDashboard",
+        summary: "A Flutter sales dashboard with line, bar, and donut charts, category filtering, a time range, and a responsive layout.",
+        stack: ["Flutter", "Dart"],
+        image: "/images/market-dashboard.png",
+        imageAlt: "MarketDashboard sales charts",
+        github: "https://github.com/yarosfct/MarketDashboard"
+      }
+    ],
+    clientProjects: [
+      {
+        id: "project-soregi",
+        title: "Soregi",
+        summary:
+          "A scroll-animated landing page for SOREGI – Frutas e Legumes, Lda., a Portuguese carrot and potato farm in Alcochete. It includes a scroll-locked seed-to-carrot hero, a product crate reveal, and a harvest-to-packing conveyor animation.",
+        stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Motion"],
+        role: "CrestPoint Tech · client work",
+        note: "No public code or live link."
+      },
+      {
+        id: "project-nato-interpret",
+        title: "Nato·Interpret",
+        summary: "A professional German–Georgian interpreting and translation website, multilingual (i18n).",
+        stack: ["React", "TypeScript"],
+        role: "CrestPoint Tech · client work",
+        note: "No public code or live link."
+      }
+    ],
     techGroups: [
       {
         title: "Web",
-        items: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "HTML", "CSS", "Git", "GitHub"]
+        items: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "Vite", "Framer Motion"]
       },
       {
         title: "Mobile",
         items: ["Flutter", "Dart", "Firebase", "Figma"]
+      },
+      {
+        title: "3D & ML",
+        items: ["Three.js", "Spline", "Python"]
       }
     ],
     about: {
@@ -251,7 +333,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       paragraphs: [
         "I'm easy-going, and I like people to feel comfortable around me. Humor is part of how I work with others, and I'm serious when the work calls for it. Creativity is the strength I trust most: I like coming up with answers to everyday problems, which is how I got into 3D printing and electronics.",
         "I stay active and I like trying new things. Right now that is combat sports, especially kickboxing. It has taught me confidence, restraint, and respect for other people. Before kickboxing I skated, which taught me to talk to strangers and to learn by practicing on my own.",
-        "An Erasmus exchange in Poland, while I was writing my thesis and taking courses, took me out of my comfort zone. I had to be more autonomous and keep several things going in a country that was not mine. I made close friendships there, and I came home with a deeper appreciation of my Ukrainian heritage. I already spoke Ukrainian; in Poland I learned to read and write it, and I learned a lot of Polish."
+        "An Erasmus exchange in Wrocław, Poland, from October 2025 to February 2026, at Wrocław University of Science and Technology (Politechnika Wrocławska), took me out of my comfort zone while I was writing my thesis and taking courses. I had to be more autonomous and keep several things going in a country that was not mine. I made close friendships there, and I came home with a deeper appreciation of my Ukrainian heritage. I already spoke Ukrainian; in Poland I learned to read and write it, and I learned a lot of Polish."
       ],
       languagesLabel: "Languages",
       languages: [
@@ -268,7 +350,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         },
         {
           title: "Autonomy",
-          detail: "Erasmus in Poland meant handling the thesis and coursework at the same time, away from home."
+          detail: "Erasmus in Wrocław, from October 2025 to February 2026, meant handling the thesis and coursework at the same time, away from home."
         },
         {
           title: "Restraint and respect",
@@ -282,7 +364,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         title: "Co-founder",
         subtitle: "CrestPoint Tech",
         description:
-          "I founded CrestPoint Tech with two colleagues. The company was previously named Infinitech. The work includes Soregi and Nato-Interpret, both private client projects, with no public links.",
+          "I founded CrestPoint Tech with two colleagues. The company was previously named Infinitech. Client work includes Soregi, a scroll-animated landing page for SOREGI – Frutas e Legumes, Lda., a Portuguese carrot and potato farm in Alcochete, built with React 18, TypeScript, Vite, Tailwind CSS 4, and Motion (Framer Motion). It has a scroll-locked seed-to-carrot hero, a product crate reveal, and a harvest-to-packing conveyor animation. Nato·Interpret is a professional German–Georgian interpreting and translation website, multilingual (i18n), built with React and TypeScript. Both are private client projects, with no public code or live links.",
         link: { href: crestPointHref, label: "crestpoint.pt" }
       },
       {
@@ -290,13 +372,13 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         title: "Web Developer",
         subtitle: "Fractory",
         description:
-          "Fractory was founded by several of my university colleagues. I worked on SafetyScope, Kinesis, and SeekData. The work is under NDA, so I can show screenshots only, with no public demos or code. SafetyScope's company has since closed, so its product dashboards cannot be shown."
+          "Fractory was founded by several of my university colleagues. I worked on SafetyScope, Kinesis, and SeekData. SeekData is an industrial project for printing advertising posters for companies. It did not go forward commercially, but I still work on it. There are no screenshots for SeekData. The work is under NDA, so SafetyScope and Kinesis are shown as screenshots only, with no public demos or code. SafetyScope's company has since closed, so its product dashboards cannot be shown."
       },
       {
-        period: "During the Integrated Master's",
+        period: "October 2025 — February 2026",
         title: "Erasmus exchange",
-        subtitle: "Poland",
-        description: "I spent part of my studies on exchange in Poland, while managing my thesis and my courses abroad."
+        subtitle: "Wrocław University of Science and Technology (Politechnika Wrocławska)",
+        description: "Erasmus in Wrocław, Poland, while managing my thesis and my courses."
       },
       {
         period: "Submitted — defense to be scheduled",
@@ -309,7 +391,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         period: "2021 — 2026",
         title: "Integrated Master's in Computer Engineering",
-        subtitle: "NOVA FCT, Lisbon",
+        subtitle: "NOVA FCT",
         description:
           "Engenharia Informática at Faculdade de Ciências e Tecnologia, Universidade NOVA de Lisboa. I chose not to split the degree into a separate bachelor's and master's."
       }
@@ -330,7 +412,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       email: "yaroslav.hayduk8@gmail.com",
       linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
       github: "https://github.com/yarosfct",
-      location: "Lisbon, Portugal"
+      location: "Aveiro, Portugal"
     },
     footer: "© 2026 Yaroslav Hayduk. Built with Next.js and Tailwind CSS."
   },
@@ -338,7 +420,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ui: {
       languageLabel: "Idioma",
       themeLabel: "Alternar tema",
-      availability: "Cofundador na CrestPoint Tech · Lisboa",
+      availability: "Aberto a oportunidades · remoto de preferência",
       projectContributionLabel: "O meu contributo",
       demoLabel: "Demonstração",
       navGitHub: "GitHub",
@@ -354,7 +436,10 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       previousImage: "Imagem anterior",
       nextImage: "Imagem seguinte",
       closeViewer: "Fechar visualizador",
-      enlargedAlt: "captura ampliada"
+      enlargedAlt: "captura ampliada",
+      publicProjectsTitle: "Projetos públicos",
+      moreProjectsTitle: "Mais projetos",
+      clientWorkTitle: "Trabalho de cliente"
     },
     nav: [
       { id: "hero", label: "Início" },
@@ -368,7 +453,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       name: "Yaroslav Hayduk",
       title: "A terminar Engenharia Informática na NOVA FCT, e a construir a CrestPoint Tech",
       pitch:
-        "Cofundei a CrestPoint Tech com dois colegas. Também desenvolvo produtos para a web e para telemóvel, incluindo trabalho de cliente na Fractory e projetos na NOVA FCT, em Lisboa.",
+        "Cofundei a CrestPoint Tech com dois colegas. Também desenvolvo para a web e para telemóvel, com algum trabalho de machine learning: projetos de cliente na Fractory, repositórios públicos e projetos na NOVA FCT.",
       ctas: {
         projects: "Ver projetos",
         contact: "Falar comigo",
@@ -383,14 +468,14 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     sectionHeadings: {
       projects: {
         eyebrow: "Trabalho selecionado",
-        title: "Capturas de cliente e um projeto de universidade",
+        title: "Trabalho de cliente, trabalho de universidade e repositórios públicos",
         description:
-          "A SafetyScope e a Kinesis são trabalho de cliente na Fractory, mostrado em capturas sob NDA. O EcoTrecko é um projeto de equipa do 3.º ano."
+          "A SafetyScope e a Kinesis são trabalho de cliente na Fractory, mostrado em capturas sob NDA. O EcoTrecko é um projeto de equipa do 3.º ano. Abaixo estão projetos públicos no GitHub, dois repositórios mais pequenos e trabalho de cliente da CrestPoint Tech."
       },
       stack: {
         eyebrow: "Tecnologias",
         title: "Ferramentas por trás do que está nesta página",
-        description: "O que este site usa, e o que o EcoTrecko usou. Deixo de fora ferramentas que não consigo apontar aqui."
+        description: "O que os projetos desta página usam: aplicações web, Flutter, e um conjunto mais pequeno para 3D e machine learning."
       },
       about: {
         eyebrow: "Sobre mim",
@@ -410,7 +495,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       contact: {
         eyebrow: "Contacto",
         title: "Olá",
-        description: "O email é a forma mais direta de falar comigo. A CrestPoint Tech tem um site público."
+        description: "Estou em Aveiro e aberto a oportunidades, remoto de preferência. O email é a forma mais direta de falar comigo."
       }
     },
     projects: [
@@ -450,14 +535,84 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         note: "Não há demonstração nem ligação para o código. A aplicação está offline, o repositório está noutra conta, e dependia de serviços Google Cloud que já não existem."
       }
     ],
+    publicProjects: [
+      {
+        id: "project-polski-od-zera",
+        title: "PolskiOdZera",
+        summary:
+          "Uma aplicação web para aprender polaco a partir do zero. Inclui um currículo A1, seis tipos de exercício, repetição espaçada SM-2, um caderno de erros, páginas de gramática, listas de vocabulário e uma PWA que funciona offline.",
+        stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand", "IndexedDB"],
+        github: "https://github.com/yarosfct/Language_School_PL"
+      },
+      {
+        id: "project-goal-tracker",
+        title: "GoalTracker",
+        summary:
+          "Uma aplicação web de acompanhamento de objetivos, feita como projeto de grupo de uma cadeira de UX, com painel, objetivos, horário semanal, análise e definições.",
+        stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+        role: "Projeto de grupo, cadeira de UX",
+        github: "https://github.com/yarosfct/GoalTracker_UX_PWR"
+      },
+      {
+        id: "project-sudoku-3d",
+        title: "Sudoku3D",
+        summary: "Um projeto pessoal de Sudoku em 3D, com um menu de dificuldade e um temporizador.",
+        stack: ["React", "Three.js", "Spline", "Vite"],
+        role: "Projeto pessoal",
+        github: "https://github.com/yarosfct/Sudoku3D"
+      }
+    ],
+    moreProjects: [
+      {
+        id: "project-census-ml",
+        title: "census_ml_project",
+        summary:
+          "Um estudo em Python sobre o conjunto de dados UCI Adult Census Income. Avalia como o pré-processamento e o ajuste de hiperparâmetros afetam modelos clássicos que preveem se o rendimento ultrapassa 50 000 dólares.",
+        stack: ["Python", "scikit-learn", "pandas"],
+        github: "https://github.com/yarosfct/census_ml_project"
+      },
+      {
+        id: "project-market-dashboard",
+        title: "MarketDashboard",
+        summary:
+          "Um painel de vendas em Flutter, com gráficos de linha, barras e donut, filtro por categoria, intervalo de tempo e um layout responsivo.",
+        stack: ["Flutter", "Dart"],
+        image: "/images/market-dashboard.png",
+        imageAlt: "Gráficos de vendas do MarketDashboard",
+        github: "https://github.com/yarosfct/MarketDashboard"
+      }
+    ],
+    clientProjects: [
+      {
+        id: "project-soregi",
+        title: "Soregi",
+        summary:
+          "Uma landing page com animação no scroll para a SOREGI – Frutas e Legumes, Lda., uma exploração agrícola portuguesa de cenoura e batata em Alcochete. Inclui um hero com scroll bloqueado, da semente à cenoura, a revelação de uma caixa de produto e uma animação de tapete rolante da colheita à embalagem.",
+        stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Motion"],
+        role: "CrestPoint Tech · trabalho de cliente",
+        note: "Sem código público nem ligação ao vivo."
+      },
+      {
+        id: "project-nato-interpret",
+        title: "Nato·Interpret",
+        summary: "Um site profissional de interpretação e tradução alemão–georgiano, multilingue (i18n).",
+        stack: ["React", "TypeScript"],
+        role: "CrestPoint Tech · trabalho de cliente",
+        note: "Sem código público nem ligação ao vivo."
+      }
+    ],
     techGroups: [
       {
         title: "Web",
-        items: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "HTML", "CSS", "Git", "GitHub"]
+        items: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "Vite", "Framer Motion"]
       },
       {
         title: "Telemóvel",
         items: ["Flutter", "Dart", "Firebase", "Figma"]
+      },
+      {
+        title: "3D e ML",
+        items: ["Three.js", "Spline", "Python"]
       }
     ],
     about: {
@@ -469,7 +624,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       paragraphs: [
         "Sou descontraído e gosto que as pessoas se sintam à vontade comigo. O humor faz parte da forma como trabalho com os outros, e sou sério quando o trabalho o pede. A criatividade é a força em que mais confio: gosto de encontrar respostas para problemas do dia a dia, e foi assim que comecei com a impressão 3D e a eletrónica.",
         "Mantenho-me ativo e gosto de experimentar coisas novas. Neste momento é o desporto de combate, sobretudo o kickboxing, que me tem dado confiança, contenção e respeito pelos outros. Antes do kickboxing andei de skate, e aprendi a falar com desconhecidos e a aprender sozinho, à força de praticar.",
-        "Um Erasmus na Polónia, enquanto escrevia a tese e fazia cadeiras, tirou-me da zona de conforto. Tive de ser mais autónomo e de manter várias coisas ao mesmo tempo, num país que não era o meu. Fiz amizades fortes e voltei com mais apreço pela minha herança ucraniana. Já falava ucraniano; na Polónia aprendi a lê-lo e a escrevê-lo, e aprendi bastante polaco."
+        "Um Erasmus em Wrocław, na Polónia, de outubro de 2025 a fevereiro de 2026, na Wrocław University of Science and Technology (Politechnika Wrocławska), tirou-me da zona de conforto enquanto escrevia a tese e fazia cadeiras. Tive de ser mais autónomo e de manter várias coisas ao mesmo tempo, num país que não era o meu. Fiz amizades fortes e voltei com mais apreço pela minha herança ucraniana. Já falava ucraniano; na Polónia aprendi a lê-lo e a escrevê-lo, e aprendi bastante polaco."
       ],
       languagesLabel: "Línguas",
       languages: [
@@ -486,7 +641,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         },
         {
           title: "Autonomia",
-          detail: "O Erasmus na Polónia significou gerir a tese e as cadeiras ao mesmo tempo, longe de casa."
+          detail: "O Erasmus em Wrocław, de outubro de 2025 a fevereiro de 2026, significou gerir a tese e as cadeiras ao mesmo tempo, longe de casa."
         },
         {
           title: "Contenção e respeito",
@@ -500,7 +655,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         title: "Cofundador",
         subtitle: "CrestPoint Tech",
         description:
-          "Fundei a CrestPoint Tech com dois colegas. A empresa chamava-se antes Infinitech. O trabalho inclui a Soregi e o Nato-Interpret, ambos projetos privados de clientes, sem ligações públicas.",
+          "Fundei a CrestPoint Tech com dois colegas. A empresa chamava-se antes Infinitech. O trabalho de cliente inclui a Soregi, uma landing page com animação no scroll para a SOREGI – Frutas e Legumes, Lda., uma exploração agrícola portuguesa de cenoura e batata em Alcochete, feita com React 18, TypeScript, Vite, Tailwind CSS 4 e Motion (Framer Motion). Tem um hero com scroll bloqueado, da semente à cenoura, a revelação de uma caixa de produto e uma animação de tapete rolante da colheita à embalagem. O Nato·Interpret é um site profissional de interpretação e tradução alemão–georgiano, multilingue (i18n), feito com React e TypeScript. São ambos projetos privados de clientes, sem código público nem ligações ao vivo.",
         link: { href: crestPointHref, label: "crestpoint.pt" }
       },
       {
@@ -508,13 +663,13 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         title: "Programador web",
         subtitle: "Fractory",
         description:
-          "A Fractory foi fundada por vários colegas da universidade. Trabalhei na SafetyScope, na Kinesis e na SeekData. O trabalho está sob NDA, por isso só posso mostrar capturas de ecrã, sem demonstrações públicas nem código. A empresa da SafetyScope entretanto encerrou, pelo que os painéis do produto não podem ser mostrados."
+          "A Fractory foi fundada por vários colegas da universidade. Trabalhei na SafetyScope, na Kinesis e na SeekData. A SeekData é um projeto industrial para impressão de cartazes publicitários para empresas. Não avançou comercialmente, mas continuo a trabalhar nele. Não há capturas da SeekData. O trabalho está sob NDA, por isso a SafetyScope e a Kinesis aparecem só em capturas, sem demonstrações públicas nem código. A empresa da SafetyScope entretanto encerrou, pelo que os painéis do produto não podem ser mostrados."
       },
       {
-        period: "Durante o Mestrado Integrado",
+        period: "Outubro 2025 — Fevereiro 2026",
         title: "Intercâmbio Erasmus",
-        subtitle: "Polónia",
-        description: "Passei parte do curso em Erasmus na Polónia, a gerir a tese e as cadeiras no estrangeiro."
+        subtitle: "Wrocław University of Science and Technology (Politechnika Wrocławska)",
+        description: "Erasmus em Wrocław, na Polónia, a gerir a tese e as cadeiras."
       },
       {
         period: "Entregue — defesa por marcar",
@@ -527,7 +682,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         period: "2021 — 2026",
         title: "Mestrado Integrado em Engenharia Informática",
-        subtitle: "NOVA FCT, Lisboa",
+        subtitle: "NOVA FCT",
         description:
           "Engenharia Informática na Faculdade de Ciências e Tecnologia da Universidade NOVA de Lisboa. Optei por não dividir o curso num bacharelato e num mestrado separados."
       }
@@ -548,7 +703,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       email: "yaroslav.hayduk8@gmail.com",
       linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
       github: "https://github.com/yarosfct",
-      location: "Lisboa, Portugal"
+      location: "Aveiro, Portugal"
     },
     footer: "© 2026 Yaroslav Hayduk. Feito com Next.js e Tailwind CSS."
   }

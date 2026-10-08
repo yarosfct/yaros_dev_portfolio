@@ -1,6 +1,5 @@
 import { PortfolioDictionary } from "@/data/i18n";
 
-import { Card, CardContent } from "../ui/card";
 import { SectionShell } from "./section-shell";
 
 type TimelineSectionProps = {
@@ -14,31 +13,38 @@ export function TimelineSection({ id, content, items }: TimelineSectionProps) {
 
   return (
     <SectionShell id={id} {...heading}>
-      <div className="space-y-4 border-l border-border/80 pl-6">
+      <ol className="relative space-y-0 border-l border-border/70 pl-6 md:pl-8">
         {items.map((item) => (
-          <Card
-            key={`${item.title}-${item.period}`}
-            className="surface relative rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 before:absolute before:-left-[31px] before:top-8 before:h-3 before:w-3 before:rounded-full before:bg-primary"
-          >
-            <CardContent className="space-y-2 p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.14em] text-primary">{item.period}</p>
-              <h3 className="font-[var(--font-display)] text-lg">{item.title}</h3>
-              <p className="text-sm text-muted-foreground">{item.subtitle}</p>
-              <p className="section-copy">{item.description}</p>
-              {item.link && (
-                <a
-                  href={item.link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex text-sm font-medium text-primary underline-offset-4 hover:underline"
-                >
-                  {item.link.label}
-                </a>
-              )}
-            </CardContent>
-          </Card>
+          <li key={`${item.title}-${item.period}`} className="relative pb-8 last:pb-0">
+            <span
+              aria-hidden
+              className="absolute -left-[1.55rem] top-1.5 h-2.5 w-2.5 rounded-full border border-primary/40 bg-primary md:-left-[2.05rem]"
+            />
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+              <div className="min-w-0 space-y-1.5">
+                <h3 className="font-[var(--font-display)] text-xl font-semibold leading-tight tracking-tight md:text-2xl">
+                  {item.subtitle}
+                </h3>
+                <p className="text-base text-muted-foreground md:text-lg">{item.title}</p>
+                <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">{item.description}</p>
+                {item.link && (
+                  <a
+                    href={item.link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex pt-1 text-sm font-medium text-primary underline-offset-4 hover:underline"
+                  >
+                    {item.link.label}
+                  </a>
+                )}
+              </div>
+              <p className="shrink-0 text-sm font-medium text-muted-foreground sm:pt-1 sm:text-right md:text-base">
+                {item.period}
+              </p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ol>
     </SectionShell>
   );
 }

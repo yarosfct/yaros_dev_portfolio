@@ -72,7 +72,11 @@ body {
   }
 
   .section-title {
-    @apply text-2xl font-semibold tracking-tight md:text-4xl;
+    @apply text-2xl font-semibold tracking-tight md:text-3xl;
+  }
+
+  .section-subtitle {
+    @apply text-base font-medium leading-relaxed text-muted-foreground md:text-lg;
   }
 
   .section-copy {

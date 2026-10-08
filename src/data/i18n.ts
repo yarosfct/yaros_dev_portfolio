@@ -194,8 +194,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       },
       experience: {
         eyebrow: "Experience",
-        title: "CrestPoint, Fractory, and NOVA FCT",
-        description: "The company I co-founded, client work, my thesis, Erasmus, and the degree."
+        title: "My journey",
+        description: "My personal and professional path."
       },
       achievements: {
         eyebrow: "Achievements",
@@ -364,36 +364,34 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         title: "Co-founder",
         subtitle: "CrestPoint Tech",
         description:
-          "I founded CrestPoint Tech with two colleagues. The company was previously named Infinitech. Client work includes Soregi, a scroll-animated landing page for SOREGI – Frutas e Legumes, Lda., a Portuguese carrot and potato farm in Alcochete, built with React 18, TypeScript, Vite, Tailwind CSS 4, and Motion (Framer Motion). It has a scroll-locked seed-to-carrot hero, a product crate reveal, and a harvest-to-packing conveyor animation. Nato·Interpret is a professional German–Georgian interpreting and translation website, multilingual (i18n), built with React and TypeScript. Both are private client projects, with no public code or live links.",
+          "Delivers custom websites, apps, and automation for SMEs as a managed monthly software service.",
         link: { href: crestPointHref, label: "crestpoint.pt" }
       },
       {
-        period: "May 2025 — January 2026",
-        title: "Web Developer",
-        subtitle: "Fractory",
+        period: "2026 — Defense pending",
+        title: "Master's thesis",
+        subtitle: "NOVA FCT",
         description:
-          "Fractory was founded by several of my university colleagues. I worked on SafetyScope, Kinesis, and SeekData. SeekData is an industrial project for printing advertising posters for companies. It did not go forward commercially, but I still work on it. There are no screenshots for SeekData. The work is under NDA, so SafetyScope and Kinesis are shown as screenshots only, with no public demos or code. SafetyScope's company has since closed, so its product dashboards cannot be shown."
+          "The Challenges in Learning and Teaching Software Modelling. Submitted and accepted; defense to be scheduled.",
+        link: { href: thesisHref, label: "Thesis repository" }
       },
       {
         period: "October 2025 — February 2026",
         title: "Erasmus exchange",
         subtitle: "Wrocław University of Science and Technology (Politechnika Wrocławska)",
-        description: "Erasmus in Wrocław, Poland, while managing my thesis and my courses."
+        description: "Exchange in Wrocław, Poland, while managing my thesis and courses."
       },
       {
-        period: "Submitted — defense to be scheduled",
-        title: "Master's thesis",
-        subtitle: "NOVA FCT",
-        description:
-          "The Challenges in Learning and Teaching Software Modelling. The thesis is submitted and accepted. I am waiting for the defense date to be set, after which my studies are complete.",
-        link: { href: thesisHref, label: "Thesis repository" }
+        period: "May 2025 — January 2026",
+        title: "Web Developer",
+        subtitle: "Fractory",
+        description: "Web developer at a studio founded by university colleagues."
       },
       {
         period: "2021 — 2026",
         title: "Integrated Master's in Computer Engineering",
         subtitle: "NOVA FCT",
-        description:
-          "Engenharia Informática at Faculdade de Ciências e Tecnologia, Universidade NOVA de Lisboa. I chose not to split the degree into a separate bachelor's and master's."
+        description: "Engenharia Informática at Faculdade de Ciências e Tecnologia, Universidade NOVA de Lisboa."
       }
     ],
     achievements: [
@@ -484,8 +482,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       },
       experience: {
         eyebrow: "Percurso",
-        title: "CrestPoint, Fractory e NOVA FCT",
-        description: "A empresa que cofundei, o trabalho de cliente, a tese, o Erasmus e o curso."
+        title: "O meu percurso",
+        description: "O meu caminho pessoal e profissional."
       },
       achievements: {
         eyebrow: "Prémios",
@@ -655,36 +653,34 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         title: "Cofundador",
         subtitle: "CrestPoint Tech",
         description:
-          "Fundei a CrestPoint Tech com dois colegas. A empresa chamava-se antes Infinitech. O trabalho de cliente inclui a Soregi, uma landing page com animação no scroll para a SOREGI – Frutas e Legumes, Lda., uma exploração agrícola portuguesa de cenoura e batata em Alcochete, feita com React 18, TypeScript, Vite, Tailwind CSS 4 e Motion (Framer Motion). Tem um hero com scroll bloqueado, da semente à cenoura, a revelação de uma caixa de produto e uma animação de tapete rolante da colheita à embalagem. O Nato·Interpret é um site profissional de interpretação e tradução alemão–georgiano, multilingue (i18n), feito com React e TypeScript. São ambos projetos privados de clientes, sem código público nem ligações ao vivo.",
+          "Entrega websites, aplicações e automação para PME como serviço de software gerido, com mensalidade.",
         link: { href: crestPointHref, label: "crestpoint.pt" }
       },
       {
-        period: "Maio 2025 — Janeiro 2026",
-        title: "Programador web",
-        subtitle: "Fractory",
+        period: "2026 — Defesa por marcar",
+        title: "Tese de mestrado",
+        subtitle: "NOVA FCT",
         description:
-          "A Fractory foi fundada por vários colegas da universidade. Trabalhei na SafetyScope, na Kinesis e na SeekData. A SeekData é um projeto industrial para impressão de cartazes publicitários para empresas. Não avançou comercialmente, mas continuo a trabalhar nele. Não há capturas da SeekData. O trabalho está sob NDA, por isso a SafetyScope e a Kinesis aparecem só em capturas, sem demonstrações públicas nem código. A empresa da SafetyScope entretanto encerrou, pelo que os painéis do produto não podem ser mostrados."
+          "The Challenges in Learning and Teaching Software Modelling. Entregue e aceite; defesa por marcar.",
+        link: { href: thesisHref, label: "Repositório da tese" }
       },
       {
         period: "Outubro 2025 — Fevereiro 2026",
         title: "Intercâmbio Erasmus",
         subtitle: "Wrocław University of Science and Technology (Politechnika Wrocławska)",
-        description: "Erasmus em Wrocław, na Polónia, a gerir a tese e as cadeiras."
+        description: "Intercâmbio em Wrocław, na Polónia, a gerir a tese e as cadeiras."
       },
       {
-        period: "Entregue — defesa por marcar",
-        title: "Tese de mestrado",
-        subtitle: "NOVA FCT",
-        description:
-          "The Challenges in Learning and Teaching Software Modelling. A tese foi entregue e aceite. Estou à espera que seja marcada a defesa; depois disso, o curso fica concluído.",
-        link: { href: thesisHref, label: "Repositório da tese" }
+        period: "Maio 2025 — Janeiro 2026",
+        title: "Programador web",
+        subtitle: "Fractory",
+        description: "Programador web num estúdio fundado por colegas da universidade."
       },
       {
         period: "2021 — 2026",
         title: "Mestrado Integrado em Engenharia Informática",
         subtitle: "NOVA FCT",
-        description:
-          "Engenharia Informática na Faculdade de Ciências e Tecnologia da Universidade NOVA de Lisboa. Optei por não dividir o curso num bacharelato e num mestrado separados."
+        description: "Engenharia Informática na Faculdade de Ciências e Tecnologia da Universidade NOVA de Lisboa."
       }
     ],
     achievements: [

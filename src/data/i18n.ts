@@ -100,15 +100,17 @@ export type PortfolioDictionary = {
   projects: Project[];
   techGroups: TechGroup[];
   about: {
-    leadBefore: string;
-    leadAfter: string;
+    intro: string[];
     companyName: string;
     companyHref: string;
-    paragraphs: string[];
+    quote: {
+      text: string;
+      latin?: string;
+      note: string;
+    };
     languagesLabel: string;
     languages: Language[];
-    strengthsLabel: string;
-    strengths: Strength[];
+    highlights: Strength[];
   };
   experience: TimelineItem[];
   achievements: Achievement[];
@@ -179,8 +181,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       },
       about: {
         eyebrow: "About me",
-        title: "How I work, and what I care about",
-        description: "A short background, the things I keep practicing, and the languages I use."
+        title: "A bit about who I am",
+        description: "Ukraine roots, Portugal home — Aveiro base."
       },
       experience: {
         eyebrow: "Experience",
@@ -281,6 +283,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         summary:
           "A web app for learning Polish from zero, with an A1 curriculum, spaced repetition, and an offline-first PWA.",
         stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand", "IndexedDB"],
+        role: "Personal project",
         github: "https://github.com/yarosfct/Language_School_PL"
       },
       {
@@ -311,16 +314,17 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       }
     ],
     about: {
-      leadBefore:
-        "I was born in Ukraine and raised in Portugal. I'm finishing an Integrated Master's in Computer Engineering at NOVA FCT, where I enrolled in 2021, and I co-founded ",
-      leadAfter: " with two colleagues.",
+      intro: [
+        "I was born in Ukraine, raised in Portugal, and I'm based in Aveiro. I'm finishing an Integrated Master's in Computer Engineering at NOVA FCT, and I co-founded CrestPoint Tech with two colleagues.",
+        "I'm easygoing and sociable — humor comes naturally — and creativity is the strength I trust most."
+      ],
       companyName: "CrestPoint Tech",
       companyHref: crestPointHref,
-      paragraphs: [
-        "I'm easy-going, and I like people to feel comfortable around me. Humor is part of how I work with others, and I'm serious when the work calls for it. Creativity is the strength I trust most: I like coming up with answers to everyday problems, which is how I got into 3D printing and electronics.",
-        "I stay active and I like trying new things. Right now that is combat sports, especially kickboxing. It has taught me confidence, restraint, and respect for other people. Before kickboxing I skated, which taught me to talk to strangers and to learn by practicing on my own.",
-        "An Erasmus exchange in Wrocław, Poland, from October 2025 to February 2026, at Wrocław University of Science and Technology (Politechnika Wrocławska), took me out of my comfort zone while I was writing my thesis and taking courses. I had to be more autonomous and keep several things going in a country that was not mine. I made close friendships there, and I came home with a deeper appreciation of my Ukrainian heritage. I already spoke Ukrainian; in Poland I learned to read and write it, and I learned a lot of Polish."
-      ],
+      quote: {
+        text: "A healthy mind starts with a healthy body.",
+        latin: "Mens sana in corpore sano",
+        note: "Kickboxing keeps me honest. Before that, I skated."
+      },
       languagesLabel: "Languages",
       languages: [
         { name: "Portuguese", level: "Native" },
@@ -328,19 +332,18 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         { name: "Ukrainian", level: "Fluent" },
         { name: "Polish", level: "Conversational" }
       ],
-      strengthsLabel: "How I work",
-      strengths: [
+      highlights: [
         {
           title: "Creativity",
-          detail: "I like solving everyday problems. 3D printing and electronics grew out of that, as hobbies."
+          detail: "Everyday problems turn into hobbies — 3D printing and electronics."
         },
         {
-          title: "Autonomy",
-          detail: "Erasmus in Wrocław, from October 2025 to February 2026, meant handling the thesis and coursework at the same time, away from home."
+          title: "Erasmus · Wrocław",
+          detail: "Politechnika Wrocławska, Oct 2025–Feb 2026. Learned to read and write Ukrainian, and picked up a lot of Polish."
         },
         {
-          title: "Restraint and respect",
-          detail: "Kickboxing has been teaching me confidence, restraint, and respect for other people."
+          title: "Open to roles",
+          detail: "Based in Aveiro. Remote preferred."
         }
       ]
     },
@@ -459,8 +462,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       },
       about: {
         eyebrow: "Sobre mim",
-        title: "Como trabalho, e o que me importa",
-        description: "Um pouco de percurso, o que continuo a praticar, e as línguas que uso."
+        title: "Um pouco de quem sou",
+        description: "Raízes na Ucrânia, casa em Portugal — base em Aveiro."
       },
       experience: {
         eyebrow: "Percurso",
@@ -561,6 +564,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         summary:
           "Uma aplicação web para aprender polaco a partir do zero, com currículo A1, repetição espaçada e uma PWA que funciona offline.",
         stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand", "IndexedDB"],
+        role: "Projeto pessoal",
         github: "https://github.com/yarosfct/Language_School_PL"
       },
       {
@@ -591,16 +595,17 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       }
     ],
     about: {
-      leadBefore:
-        "Nasci na Ucrânia e cresci em Portugal. Estou a terminar o Mestrado Integrado em Engenharia Informática na NOVA FCT, onde entrei em 2021, e cofundei a ",
-      leadAfter: " com dois colegas.",
+      intro: [
+        "Nasci na Ucrânia, cresci em Portugal e estou baseado em Aveiro. Estou a terminar o Mestrado Integrado em Engenharia Informática na NOVA FCT, e cofundei a CrestPoint Tech com dois colegas.",
+        "Sou descontraído e sociável — o humor sai-me naturalmente — e a criatividade é a força em que mais confio."
+      ],
       companyName: "CrestPoint Tech",
       companyHref: crestPointHref,
-      paragraphs: [
-        "Sou descontraído e gosto que as pessoas se sintam à vontade comigo. O humor faz parte da forma como trabalho com os outros, e sou sério quando o trabalho o pede. A criatividade é a força em que mais confio: gosto de encontrar respostas para problemas do dia a dia, e foi assim que comecei com a impressão 3D e a eletrónica.",
-        "Mantenho-me ativo e gosto de experimentar coisas novas. Neste momento é o desporto de combate, sobretudo o kickboxing, que me tem dado confiança, contenção e respeito pelos outros. Antes do kickboxing andei de skate, e aprendi a falar com desconhecidos e a aprender sozinho, à força de praticar.",
-        "Um Erasmus em Wrocław, na Polónia, de outubro de 2025 a fevereiro de 2026, na Wrocław University of Science and Technology (Politechnika Wrocławska), tirou-me da zona de conforto enquanto escrevia a tese e fazia cadeiras. Tive de ser mais autónomo e de manter várias coisas ao mesmo tempo, num país que não era o meu. Fiz amizades fortes e voltei com mais apreço pela minha herança ucraniana. Já falava ucraniano; na Polónia aprendi a lê-lo e a escrevê-lo, e aprendi bastante polaco."
-      ],
+      quote: {
+        text: "Mente sã, corpo são.",
+        latin: "Mens sana in corpore sano",
+        note: "O kickboxing mantém-me com os pés na terra. Antes disso, andei de skate."
+      },
       languagesLabel: "Línguas",
       languages: [
         { name: "Português", level: "Nativo" },
@@ -608,19 +613,18 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         { name: "Ucraniano", level: "Fluente" },
         { name: "Polaco", level: "Conversacional" }
       ],
-      strengthsLabel: "Como trabalho",
-      strengths: [
+      highlights: [
         {
           title: "Criatividade",
-          detail: "Gosto de encontrar soluções para problemas do dia a dia. A impressão 3D e a eletrónica vieram daí, como passatempos."
+          detail: "Problemas do dia a dia viram passatempos — impressão 3D e eletrónica."
         },
         {
-          title: "Autonomia",
-          detail: "O Erasmus em Wrocław, de outubro de 2025 a fevereiro de 2026, significou gerir a tese e as cadeiras ao mesmo tempo, longe de casa."
+          title: "Erasmus · Wrocław",
+          detail: "Politechnika Wrocławska, out. 2025–fev. 2026. Aprendi a ler e a escrever ucraniano, e apanhei bastante polaco."
         },
         {
-          title: "Contenção e respeito",
-          detail: "O kickboxing tem-me ensinado confiança, contenção e respeito pelos outros."
+          title: "Aberto a oportunidades",
+          detail: "Baseado em Aveiro. Remoto de preferência."
         }
       ]
     },

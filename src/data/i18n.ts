@@ -256,15 +256,6 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         stack: ["React", "Three.js", "Spline", "Vite"],
         role: "Personal project",
         github: "https://github.com/yarosfct/Sudoku3D"
-      },
-      {
-        id: "project-goal-tracker",
-        title: "GoalTracker",
-        summary:
-          "A goal-tracking web app for a UX course group project, with a dashboard, goals, weekly schedule, and analytics.",
-        stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-        role: "UX course group project",
-        github: "https://github.com/yarosfct/GoalTracker_UX_PWR"
       }
     ],
     techGroups: [
@@ -504,15 +495,6 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         stack: ["React", "Three.js", "Spline", "Vite"],
         role: "Projeto pessoal",
         github: "https://github.com/yarosfct/Sudoku3D"
-      },
-      {
-        id: "project-goal-tracker",
-        title: "GoalTracker",
-        summary:
-          "Uma aplicação web de acompanhamento de objetivos, feita como projeto de grupo de uma cadeira de UX, com painel, objetivos, horário semanal e análise.",
-        stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-        role: "Projeto de grupo, cadeira de UX",
-        github: "https://github.com/yarosfct/GoalTracker_UX_PWR"
       }
     ],
     techGroups: [

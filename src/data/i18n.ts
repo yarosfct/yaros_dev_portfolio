@@ -164,7 +164,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         github: "GitHub"
       },
       highlights: [
-        { value: "2021–2026", label: "Integrated Master's in Computer Engineering, NOVA FCT" },
+        { value: "2021 – 2026", label: "Integrated Master's in Computer Engineering, NOVA FCT" },
         { value: "Apr 2026", label: "Co-founder of CrestPoint Tech" }
       ]
     },
@@ -182,7 +182,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       about: {
         eyebrow: "About me",
         title: "A bit about who I am",
-        description: "Ukraine roots, Portugal home — Aveiro base."
+        description: "Born in Ukraine, raised in Portugal. Based in Aveiro."
       },
       experience: {
         eyebrow: "Experience",
@@ -228,7 +228,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         id: "project-safetyscope",
         title: "SafetyScope",
-        summary: "Marketing site for a safety product — homepage, about, and contact pages.",
+        summary: "Marketing site for a safety product: homepage, about, and contact pages.",
         stack: [],
         role: "Fractory · client work",
         image: "/images/SafetyMain.png",
@@ -238,7 +238,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         id: "project-kinesis",
         title: "Kinesis",
-        summary: "An events product — public landing page and sign-in screen.",
+        summary: "An events product: public landing page and sign-in screen.",
         stack: [],
         role: "Fractory · client work",
         image: "/images/KinesisHero.png",
@@ -255,7 +255,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         image: "/images/ecotrecko_poster.jpeg",
         imageAlt: "EcoTrecko project poster",
         imageFit: "contain",
-        note: "Ranked 2nd of more than 20 projects that year. Offline now — no demo; repository is on another account; depended on Google Cloud services that are no longer available."
+        note: "Ranked 2nd of more than 20 projects that year. Offline now: no demo, the repository is on another account, and it depended on Google Cloud services that are no longer available."
       },
       {
         id: "project-goal-tracker",
@@ -315,15 +315,15 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     about: {
       intro: [
-        "I was born in Ukraine, raised in Portugal, and I'm based in Aveiro. I'm finishing an Integrated Master's in Computer Engineering at NOVA FCT, and I co-founded CrestPoint Tech with two colleagues.",
-        "I'm easygoing and sociable — humor comes naturally — and creativity is the strength I trust most."
+        "I was born in Ukraine (hence the name) and raised in Portugal. I'm based in Aveiro, finishing an Integrated Master's in Computer Engineering at NOVA FCT, and I co-founded CrestPoint Tech with two colleagues.",
+        "I'm easy to work with: easygoing, sociable, and I bring energy and good humor to a team. Creativity is my biggest strength, and I like approaching problems from that angle."
       ],
       companyName: "CrestPoint Tech",
       companyHref: crestPointHref,
       quote: {
         text: "A healthy mind starts with a healthy body.",
         latin: "Mens sana in corpore sano",
-        note: "Kickboxing keeps me honest. Before that, I skated."
+        note: "I love staying active: the gym, running, team sports with friends, whatever gets me moving. Right now I'm invested in kickboxing, and it has taught me a lot."
       },
       languagesLabel: "Languages",
       languages: [
@@ -335,11 +335,11 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       highlights: [
         {
           title: "Creativity",
-          detail: "Everyday problems turn into hobbies — 3D printing and electronics."
+          detail: "I like picking up random side projects. I took a 3D modelling course in parametric modelling because I enjoyed the topic, and that fits with my hobbies in 3D printing and electronics."
         },
         {
           title: "Erasmus · Wrocław",
-          detail: "Politechnika Wrocławska, Oct 2025–Feb 2026. Learned to read and write Ukrainian, and picked up a lot of Polish."
+          detail: "Politechnika Wrocławska, Oct 2025 – Feb 2026. Learned to read and write Ukrainian, and picked up a lot of Polish."
         },
         {
           title: "Open to roles",
@@ -349,7 +349,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     experience: [
       {
-        period: "April 2026 — Present",
+        period: "April 2026 – Present",
         title: "Co-founder",
         subtitle: "CrestPoint Tech",
         description:
@@ -357,7 +357,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         link: { href: crestPointHref, label: "crestpoint.pt" }
       },
       {
-        period: "2026 — Defense pending",
+        period: "2026 – Defense pending",
         title: "Master's thesis",
         subtitle: "NOVA FCT",
         description:
@@ -365,19 +365,19 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         link: { href: thesisHref, label: "Thesis repository" }
       },
       {
-        period: "October 2025 — February 2026",
+        period: "October 2025 – February 2026",
         title: "Erasmus exchange · Wrocław, Poland",
         subtitle: "Politechnika Wrocławska",
         description: "Exchange while managing my thesis and courses."
       },
       {
-        period: "May 2025 — January 2026",
+        period: "May 2025 – January 2026",
         title: "Web Developer",
         subtitle: "Fractory",
         description: "Web developer at a studio founded by university colleagues."
       },
       {
-        period: "2021 — 2026",
+        period: "2021 – 2026",
         title: "Integrated Master's in Computer Engineering",
         subtitle: "NOVA FCT",
         description: "Engenharia Informática at Faculdade de Ciências e Tecnologia, Universidade NOVA de Lisboa."
@@ -385,14 +385,14 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     achievements: [
       {
-        title: "2nd best project of the year — EcoTrecko",
+        title: "2nd best project of the year: EcoTrecko",
         detail:
           "Team project in the 3rd year, the last year of the bachelor's phase of my Integrated Master's. Ranked 2nd out of more than 20 projects that year."
       },
       {
-        title: "Connecting Humanity Award — Hive Control",
+        title: "Connecting Humanity Award: Hive Control",
         detail:
-          "Team project in the entrepreneurship course in my 1st master's year (4th year). The course is common to all degrees at FCT and had more than 50 teams. Hive Control, an open-source distributed IoT system connector, received the Connecting Humanity Award from NOS — one of five awards given."
+          "Team project in the entrepreneurship course in my 1st master's year (4th year). The course is common to all degrees at FCT and had more than 50 teams. Hive Control, an open-source distributed IoT system connector, received the Connecting Humanity Award from NOS, one of five awards given."
       }
     ],
     contact: {
@@ -445,7 +445,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         github: "GitHub"
       },
       highlights: [
-        { value: "2021–2026", label: "Mestrado Integrado em Engenharia Informática na NOVA FCT" },
+        { value: "2021 – 2026", label: "Mestrado Integrado em Engenharia Informática na NOVA FCT" },
         { value: "Abr 2026", label: "Cofundador da CrestPoint Tech" }
       ]
     },
@@ -463,7 +463,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       about: {
         eyebrow: "Sobre mim",
         title: "Um pouco de quem sou",
-        description: "Raízes na Ucrânia, casa em Portugal — base em Aveiro."
+        description: "Nascido na Ucrânia, crescido em Portugal. Base em Aveiro."
       },
       experience: {
         eyebrow: "Percurso",
@@ -509,7 +509,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         id: "project-safetyscope",
         title: "SafetyScope",
-        summary: "Site de apresentação de um produto de segurança — página inicial, sobre e contacto.",
+        summary: "Site de apresentação de um produto de segurança: página inicial, sobre e contacto.",
         stack: [],
         role: "Fractory · trabalho de cliente",
         image: "/images/SafetyMain.png",
@@ -519,7 +519,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         id: "project-kinesis",
         title: "Kinesis",
-        summary: "Um produto de eventos — página pública de apresentação e ecrã de início de sessão.",
+        summary: "Um produto de eventos: página pública de apresentação e ecrã de início de sessão.",
         stack: [],
         role: "Fractory · trabalho de cliente",
         image: "/images/KinesisHero.png",
@@ -536,7 +536,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         image: "/images/ecotrecko_poster.jpeg",
         imageAlt: "Póster do projeto EcoTrecko",
         imageFit: "contain",
-        note: "Classificado em 2.º lugar entre mais de 20 projetos desse ano. Está offline — sem demonstração; o repositório está noutra conta; dependia de serviços Google Cloud que já não existem."
+        note: "Classificado em 2.º lugar entre mais de 20 projetos desse ano. Está offline: sem demonstração, o repositório está noutra conta, e dependia de serviços Google Cloud que já não existem."
       },
       {
         id: "project-goal-tracker",
@@ -596,15 +596,15 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     about: {
       intro: [
-        "Nasci na Ucrânia, cresci em Portugal e estou baseado em Aveiro. Estou a terminar o Mestrado Integrado em Engenharia Informática na NOVA FCT, e cofundei a CrestPoint Tech com dois colegas.",
-        "Sou descontraído e sociável — o humor sai-me naturalmente — e a criatividade é a força em que mais confio."
+        "Nasci na Ucrânia (daí o nome) e cresci em Portugal. Estou em Aveiro, a terminar o Mestrado Integrado em Engenharia Informática na NOVA FCT, e cofundei a CrestPoint Tech com dois colegas.",
+        "Sou fácil de trabalhar: descontraído, sociável, e trago energia e bom humor a uma equipa. A criatividade é a minha maior força, e gosto de olhar para os problemas por esse lado."
       ],
       companyName: "CrestPoint Tech",
       companyHref: crestPointHref,
       quote: {
         text: "Mente sã, corpo são.",
         latin: "Mens sana in corpore sano",
-        note: "O kickboxing mantém-me com os pés na terra. Antes disso, andei de skate."
+        note: "Gosto de manter-me ativo: ginásio, corrida, desporto de equipa com amigos, o que for. Neste momento estou investido no kickboxing, e tem-me ensinado muito."
       },
       languagesLabel: "Línguas",
       languages: [
@@ -616,11 +616,11 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       highlights: [
         {
           title: "Criatividade",
-          detail: "Problemas do dia a dia viram passatempos — impressão 3D e eletrónica."
+          detail: "Gosto de pegar em projetos paralelos ao calhas. Fiz um curso de modelação 3D (modelação paramétrica) porque gostava do tema, e isso liga-se aos meus passatempos de impressão 3D e eletrónica."
         },
         {
           title: "Erasmus · Wrocław",
-          detail: "Politechnika Wrocławska, out. 2025–fev. 2026. Aprendi a ler e a escrever ucraniano, e apanhei bastante polaco."
+          detail: "Politechnika Wrocławska, out. 2025 – fev. 2026. Aprendi a ler e a escrever ucraniano, e apanhei bastante polaco."
         },
         {
           title: "Aberto a oportunidades",
@@ -630,7 +630,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     experience: [
       {
-        period: "Abril 2026 — Presente",
+        period: "Abril 2026 – Presente",
         title: "Cofundador",
         subtitle: "CrestPoint Tech",
         description:
@@ -638,7 +638,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         link: { href: crestPointHref, label: "crestpoint.pt" }
       },
       {
-        period: "2026 — Defesa por marcar",
+        period: "2026 – Defesa por marcar",
         title: "Tese de mestrado",
         subtitle: "NOVA FCT",
         description:
@@ -646,19 +646,19 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         link: { href: thesisHref, label: "Repositório da tese" }
       },
       {
-        period: "Outubro 2025 — Fevereiro 2026",
+        period: "Outubro 2025 – Fevereiro 2026",
         title: "Intercâmbio Erasmus · Wrocław, Polónia",
         subtitle: "Politechnika Wrocławska",
         description: "Intercâmbio a gerir a tese e as cadeiras."
       },
       {
-        period: "Maio 2025 — Janeiro 2026",
+        period: "Maio 2025 – Janeiro 2026",
         title: "Programador web",
         subtitle: "Fractory",
         description: "Programador web num estúdio fundado por colegas da universidade."
       },
       {
-        period: "2021 — 2026",
+        period: "2021 – 2026",
         title: "Mestrado Integrado em Engenharia Informática",
         subtitle: "NOVA FCT",
         description: "Engenharia Informática na Faculdade de Ciências e Tecnologia da Universidade NOVA de Lisboa."
@@ -666,14 +666,14 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     achievements: [
       {
-        title: "2.º melhor projeto do ano — EcoTrecko",
+        title: "2.º melhor projeto do ano: EcoTrecko",
         detail:
           "Projeto de equipa no 3.º ano, o último ano da fase de licenciatura do Mestrado Integrado. Ficou em 2.º lugar entre mais de 20 projetos desse ano."
       },
       {
-        title: "Connecting Humanity Award — Hive Control",
+        title: "Connecting Humanity Award: Hive Control",
         detail:
-          "Projeto de equipa na cadeira de empreendedorismo, no 1.º ano de mestrado (4.º ano). A cadeira é comum a todos os cursos da FCT e teve mais de 50 equipas. O Hive Control, um conector open-source para sistemas IoT distribuídos, recebeu o Connecting Humanity Award da NOS — um de cinco prémios atribuídos."
+          "Projeto de equipa na cadeira de empreendedorismo, no 1.º ano de mestrado (4.º ano). A cadeira é comum a todos os cursos da FCT e teve mais de 50 equipas. O Hive Control, um conector open-source para sistemas IoT distribuídos, recebeu o Connecting Humanity Award da NOS, um de cinco prémios atribuídos."
       }
     ],
     contact: {

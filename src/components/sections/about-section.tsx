@@ -56,7 +56,7 @@ export function AboutSection({ content }: AboutSectionProps) {
   return (
     <SectionShell id="about" {...heading}>
       <div className="grid gap-4 lg:grid-cols-12">
-        <article className={cn(cardClass, "flex flex-col justify-between p-6 md:p-7 lg:col-span-5")}>
+        <article className={cn(cardClass, "flex flex-col justify-center p-6 md:p-7 lg:col-span-5")}>
           <div className="space-y-4">
             {about.intro.map((paragraph) => (
               <p key={paragraph} className="text-sm leading-relaxed text-muted-foreground md:text-base">

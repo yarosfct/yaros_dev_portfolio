@@ -66,11 +66,10 @@ export type PortfolioDictionary = {
     languageLabel: string;
     themeLabel: string;
     availability: string;
-    projectContributionLabel: string;
     demoLabel: string;
-      navGitHub: string;
-      sectionsLabel: string;
-      openMenu: string;
+    navGitHub: string;
+    sectionsLabel: string;
+    openMenu: string;
     closeMenu: string;
     screenshotsLabel: string;
     expandLabel: string;
@@ -82,9 +81,6 @@ export type PortfolioDictionary = {
     nextImage: string;
     closeViewer: string;
     enlargedAlt: string;
-    publicProjectsTitle: string;
-    moreProjectsTitle: string;
-    clientWorkTitle: string;
   };
   nav: NavItem[];
   hero: {
@@ -101,9 +97,6 @@ export type PortfolioDictionary = {
   };
   sectionHeadings: Record<"projects" | "stack" | "about" | "experience" | "achievements" | "contact", SectionHeading>;
   projects: Project[];
-  publicProjects: Project[];
-  moreProjects: Project[];
-  clientProjects: Project[];
   techGroups: TechGroup[];
   about: {
     leadBefore: string;
@@ -131,7 +124,6 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       languageLabel: "Language",
       themeLabel: "Toggle theme",
       availability: "Open to roles · remote preferred",
-      projectContributionLabel: "My part in it",
       demoLabel: "Demo",
       navGitHub: "GitHub",
       sectionsLabel: "Sections",
@@ -146,10 +138,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       previousImage: "Previous image",
       nextImage: "Next image",
       closeViewer: "Close image viewer",
-      enlargedAlt: "enlarged screenshot",
-      publicProjectsTitle: "Public projects",
-      moreProjectsTitle: "More projects",
-      clientWorkTitle: "Client work"
+      enlargedAlt: "enlarged screenshot"
     },
     nav: [
       { id: "hero", label: "Home" },
@@ -178,14 +167,13 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     sectionHeadings: {
       projects: {
         eyebrow: "Selected work",
-        title: "Client work, university work, and public repositories",
-        description:
-          "SafetyScope and Kinesis are Fractory client work, shown as screenshots under NDA. EcoTrecko is a 3rd-year team project. Public GitHub projects, two smaller repositories, and CrestPoint client work are below."
+        title: "Projects I've built",
+        description: "Client work and public repositories."
       },
       stack: {
         eyebrow: "Tech stack",
         title: "Tools behind the work on this page",
-        description: "What the projects on this page use: web apps, Flutter, and a smaller set for 3D and machine learning."
+        description: "What the projects on this page use: web apps, and a smaller set for 3D."
       },
       about: {
         eyebrow: "About me",
@@ -211,95 +199,15 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     projects: [
       {
-        id: "project-safetyscope",
-        title: "SafetyScope",
-        summary:
-          "Marketing site for a safety product. The screenshots are the public pages: the homepage, an about page, and a contact page.",
-        stack: [],
-        impact: "Client work from my time at Fractory. Shown as screenshots only, because the project is under NDA.",
-        role: "Fractory · client work",
-        image: "/images/SafetyMain.png",
-        gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"],
-        note: "SafetyScope's company has since closed, so the product dashboards are not available to show. There is no public demo or code link."
-      },
-      {
-        id: "project-kinesis",
-        title: "Kinesis",
-        summary: "An events product. The screenshots show the public landing page and the sign-in screen.",
-        stack: [],
-        impact: "Client work from my time at Fractory. Shown as screenshots only, because the project is under NDA.",
-        role: "Fractory · client work",
-        image: "/images/KinesisHero.png",
-        gallery: ["/images/KinesisHero.png", "/images/KinesisLogin.png"],
-        note: "There is no public demo or code link."
-      },
-      {
-        id: "project-ecotrecko",
-        title: "EcoTrecko",
-        summary:
-          "A mobile app for tracking more eco-friendly habits, built as a 3rd-year team project — the last year of the bachelor's phase. The image is the project poster.",
-        stack: ["Flutter", "Dart", "Firebase", "Figma"],
-        impact: "Ranked 2nd best project of that year, out of more than 20 projects.",
-        role: "3rd-year team project",
-        image: "/images/ecotrecko_poster.jpeg",
-        imageFit: "contain",
-        note: "There is no demo or code link. The app is offline, the repository is on another account, and it depended on Google Cloud services that are no longer available."
-      }
-    ],
-    publicProjects: [
-      {
-        id: "project-polski-od-zera",
-        title: "PolskiOdZera",
-        summary:
-          "A web app for learning Polish from zero. It includes an A1 curriculum, six exercise types, SM-2 spaced repetition, a mistakes notebook, grammar pages, vocabulary lists, and an offline-first PWA.",
-        stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand", "IndexedDB"],
-        github: "https://github.com/yarosfct/Language_School_PL"
-      },
-      {
-        id: "project-goal-tracker",
-        title: "GoalTracker",
-        summary:
-          "A goal-tracking web app built for a UX course group project, with a dashboard, goals, a weekly schedule, analytics, and settings.",
-        stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-        role: "UX course group project",
-        github: "https://github.com/yarosfct/GoalTracker_UX_PWR"
-      },
-      {
-        id: "project-sudoku-3d",
-        title: "Sudoku3D",
-        summary: "A personal 3D Sudoku project, with a difficulty menu and a timer.",
-        stack: ["React", "Three.js", "Spline", "Vite"],
-        role: "Personal project",
-        github: "https://github.com/yarosfct/Sudoku3D"
-      }
-    ],
-    moreProjects: [
-      {
-        id: "project-census-ml",
-        title: "census_ml_project",
-        summary:
-          "A Python study on the UCI Adult Census Income dataset. It looks at how preprocessing and hyperparameter tuning affect classical models that predict whether income exceeds $50,000.",
-        stack: ["Python", "scikit-learn", "pandas"],
-        github: "https://github.com/yarosfct/census_ml_project"
-      },
-      {
-        id: "project-market-dashboard",
-        title: "MarketDashboard",
-        summary: "A Flutter sales dashboard with line, bar, and donut charts, category filtering, a time range, and a responsive layout.",
-        stack: ["Flutter", "Dart"],
-        image: "/images/market-dashboard.png",
-        imageAlt: "MarketDashboard sales charts",
-        github: "https://github.com/yarosfct/MarketDashboard"
-      }
-    ],
-    clientProjects: [
-      {
         id: "project-soregi",
         title: "Soregi",
         summary:
-          "A scroll-animated landing page for SOREGI – Frutas e Legumes, Lda., a Portuguese carrot and potato farm in Alcochete. It includes a scroll-locked seed-to-carrot hero, a product crate reveal, and a harvest-to-packing conveyor animation.",
+          "A scroll-animated landing page for SOREGI – Frutas e Legumes, Lda., a Portuguese carrot and potato farm in Alcochete.",
         stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Motion"],
         role: "CrestPoint Tech · client work",
+        image: "/images/soregi-hero.webp",
+        imageAlt: "Soregi landing page hero",
+        gallery: ["/images/soregi-hero.webp", "/images/soregi-products.webp"],
         note: "No public code or live link."
       },
       {
@@ -308,21 +216,65 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         summary: "A professional German–Georgian interpreting and translation website, multilingual (i18n).",
         stack: ["React", "TypeScript"],
         role: "CrestPoint Tech · client work",
+        image: "/images/nato-hero.webp",
+        imageAlt: "Nato·Interpret homepage hero",
+        gallery: ["/images/nato-hero.webp", "/images/nato-about.webp"],
         note: "No public code or live link."
+      },
+      {
+        id: "project-safetyscope",
+        title: "SafetyScope",
+        summary: "Marketing site for a safety product — homepage, about, and contact pages.",
+        stack: [],
+        role: "Fractory · client work",
+        image: "/images/SafetyMain.png",
+        gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"],
+        note: "Shown as screenshots under NDA. No public demo or code."
+      },
+      {
+        id: "project-kinesis",
+        title: "Kinesis",
+        summary: "An events product — public landing page and sign-in screen.",
+        stack: [],
+        role: "Fractory · client work",
+        image: "/images/KinesisHero.png",
+        gallery: ["/images/KinesisHero.png", "/images/KinesisLogin.png"],
+        note: "Shown as screenshots under NDA. No public demo or code."
+      },
+      {
+        id: "project-polski-od-zera",
+        title: "PolskiOdZera",
+        summary:
+          "A web app for learning Polish from zero, with an A1 curriculum, spaced repetition, and an offline-first PWA.",
+        stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand", "IndexedDB"],
+        github: "https://github.com/yarosfct/Language_School_PL"
+      },
+      {
+        id: "project-sudoku-3d",
+        title: "Sudoku3D",
+        summary: "A personal 3D Sudoku project, with a difficulty menu and a timer.",
+        stack: ["React", "Three.js", "Spline", "Vite"],
+        role: "Personal project",
+        github: "https://github.com/yarosfct/Sudoku3D"
+      },
+      {
+        id: "project-goal-tracker",
+        title: "GoalTracker",
+        summary:
+          "A goal-tracking web app for a UX course group project, with a dashboard, goals, weekly schedule, and analytics.",
+        stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+        role: "UX course group project",
+        github: "https://github.com/yarosfct/GoalTracker_UX_PWR"
       }
     ],
     techGroups: [
       {
         title: "Web",
-        items: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "Vite", "Framer Motion"]
+        items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vite", "Motion", "Zustand"]
       },
       {
-        title: "Mobile",
-        items: ["Flutter", "Dart", "Firebase", "Figma"]
-      },
-      {
-        title: "3D & ML",
-        items: ["Three.js", "Spline", "Python"]
+        title: "3D",
+        items: ["Three.js", "Spline"]
       }
     ],
     about: {
@@ -420,7 +372,6 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       languageLabel: "Idioma",
       themeLabel: "Alternar tema",
       availability: "Aberto a oportunidades · remoto de preferência",
-      projectContributionLabel: "O meu contributo",
       demoLabel: "Demonstração",
       navGitHub: "GitHub",
       sectionsLabel: "Secções",
@@ -435,10 +386,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       previousImage: "Imagem anterior",
       nextImage: "Imagem seguinte",
       closeViewer: "Fechar visualizador",
-      enlargedAlt: "captura ampliada",
-      publicProjectsTitle: "Projetos públicos",
-      moreProjectsTitle: "Mais projetos",
-      clientWorkTitle: "Trabalho de cliente"
+      enlargedAlt: "captura ampliada"
     },
     nav: [
       { id: "hero", label: "Início" },
@@ -467,14 +415,13 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     sectionHeadings: {
       projects: {
         eyebrow: "Trabalho selecionado",
-        title: "Trabalho de cliente, trabalho de universidade e repositórios públicos",
-        description:
-          "A SafetyScope e a Kinesis são trabalho de cliente na Fractory, mostrado em capturas sob NDA. O EcoTrecko é um projeto de equipa do 3.º ano. Abaixo estão projetos públicos no GitHub, dois repositórios mais pequenos e trabalho de cliente da CrestPoint Tech."
+        title: "Projetos que construí",
+        description: "Trabalho de cliente e repositórios públicos."
       },
       stack: {
         eyebrow: "Tecnologias",
         title: "Ferramentas por trás do que está nesta página",
-        description: "O que os projetos desta página usam: aplicações web, Flutter, e um conjunto mais pequeno para 3D e machine learning."
+        description: "O que os projetos desta página usam: aplicações web, e um conjunto mais pequeno para 3D."
       },
       about: {
         eyebrow: "Sobre mim",
@@ -500,96 +447,15 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     projects: [
       {
-        id: "project-safetyscope",
-        title: "SafetyScope",
-        summary:
-          "Site de apresentação de um produto de segurança. As capturas são as páginas públicas: a página inicial, uma página sobre o produto e a página de contacto.",
-        stack: [],
-        impact: "Trabalho de cliente do tempo em que estive na Fractory. Mostro apenas capturas, porque o projeto está sob NDA.",
-        role: "Fractory · trabalho de cliente",
-        image: "/images/SafetyMain.png",
-        gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"],
-        note: "A empresa da SafetyScope entretanto encerrou, por isso os painéis do produto não estão disponíveis. Não há demonstração pública nem ligação para o código."
-      },
-      {
-        id: "project-kinesis",
-        title: "Kinesis",
-        summary: "Um produto de eventos. As capturas mostram a página pública de apresentação e o ecrã de início de sessão.",
-        stack: [],
-        impact: "Trabalho de cliente do tempo em que estive na Fractory. Mostro apenas capturas, porque o projeto está sob NDA.",
-        role: "Fractory · trabalho de cliente",
-        image: "/images/KinesisHero.png",
-        gallery: ["/images/KinesisHero.png", "/images/KinesisLogin.png"],
-        note: "Não há demonstração pública nem ligação para o código."
-      },
-      {
-        id: "project-ecotrecko",
-        title: "EcoTrecko",
-        summary:
-          "Uma aplicação móvel para acompanhar hábitos mais ecológicos, feita como projeto de equipa no 3.º ano — o último ano da fase de licenciatura. A imagem é o póster do projeto.",
-        stack: ["Flutter", "Dart", "Firebase", "Figma"],
-        impact: "Classificado como o 2.º melhor projeto desse ano, entre mais de 20.",
-        role: "Projeto de equipa, 3.º ano",
-        image: "/images/ecotrecko_poster.jpeg",
-        imageFit: "contain",
-        note: "Não há demonstração nem ligação para o código. A aplicação está offline, o repositório está noutra conta, e dependia de serviços Google Cloud que já não existem."
-      }
-    ],
-    publicProjects: [
-      {
-        id: "project-polski-od-zera",
-        title: "PolskiOdZera",
-        summary:
-          "Uma aplicação web para aprender polaco a partir do zero. Inclui um currículo A1, seis tipos de exercício, repetição espaçada SM-2, um caderno de erros, páginas de gramática, listas de vocabulário e uma PWA que funciona offline.",
-        stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand", "IndexedDB"],
-        github: "https://github.com/yarosfct/Language_School_PL"
-      },
-      {
-        id: "project-goal-tracker",
-        title: "GoalTracker",
-        summary:
-          "Uma aplicação web de acompanhamento de objetivos, feita como projeto de grupo de uma cadeira de UX, com painel, objetivos, horário semanal, análise e definições.",
-        stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-        role: "Projeto de grupo, cadeira de UX",
-        github: "https://github.com/yarosfct/GoalTracker_UX_PWR"
-      },
-      {
-        id: "project-sudoku-3d",
-        title: "Sudoku3D",
-        summary: "Um projeto pessoal de Sudoku em 3D, com um menu de dificuldade e um temporizador.",
-        stack: ["React", "Three.js", "Spline", "Vite"],
-        role: "Projeto pessoal",
-        github: "https://github.com/yarosfct/Sudoku3D"
-      }
-    ],
-    moreProjects: [
-      {
-        id: "project-census-ml",
-        title: "census_ml_project",
-        summary:
-          "Um estudo em Python sobre o conjunto de dados UCI Adult Census Income. Avalia como o pré-processamento e o ajuste de hiperparâmetros afetam modelos clássicos que preveem se o rendimento ultrapassa 50 000 dólares.",
-        stack: ["Python", "scikit-learn", "pandas"],
-        github: "https://github.com/yarosfct/census_ml_project"
-      },
-      {
-        id: "project-market-dashboard",
-        title: "MarketDashboard",
-        summary:
-          "Um painel de vendas em Flutter, com gráficos de linha, barras e donut, filtro por categoria, intervalo de tempo e um layout responsivo.",
-        stack: ["Flutter", "Dart"],
-        image: "/images/market-dashboard.png",
-        imageAlt: "Gráficos de vendas do MarketDashboard",
-        github: "https://github.com/yarosfct/MarketDashboard"
-      }
-    ],
-    clientProjects: [
-      {
         id: "project-soregi",
         title: "Soregi",
         summary:
-          "Uma landing page com animação no scroll para a SOREGI – Frutas e Legumes, Lda., uma exploração agrícola portuguesa de cenoura e batata em Alcochete. Inclui um hero com scroll bloqueado, da semente à cenoura, a revelação de uma caixa de produto e uma animação de tapete rolante da colheita à embalagem.",
+          "Uma landing page com animação no scroll para a SOREGI – Frutas e Legumes, Lda., uma exploração agrícola portuguesa de cenoura e batata em Alcochete.",
         stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Motion"],
         role: "CrestPoint Tech · trabalho de cliente",
+        image: "/images/soregi-hero.webp",
+        imageAlt: "Hero da landing page da Soregi",
+        gallery: ["/images/soregi-hero.webp", "/images/soregi-products.webp"],
         note: "Sem código público nem ligação ao vivo."
       },
       {
@@ -598,21 +464,65 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         summary: "Um site profissional de interpretação e tradução alemão–georgiano, multilingue (i18n).",
         stack: ["React", "TypeScript"],
         role: "CrestPoint Tech · trabalho de cliente",
+        image: "/images/nato-hero.webp",
+        imageAlt: "Hero da página inicial da Nato·Interpret",
+        gallery: ["/images/nato-hero.webp", "/images/nato-about.webp"],
         note: "Sem código público nem ligação ao vivo."
+      },
+      {
+        id: "project-safetyscope",
+        title: "SafetyScope",
+        summary: "Site de apresentação de um produto de segurança — página inicial, sobre e contacto.",
+        stack: [],
+        role: "Fractory · trabalho de cliente",
+        image: "/images/SafetyMain.png",
+        gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"],
+        note: "Mostrado em capturas sob NDA. Sem demonstração pública nem código."
+      },
+      {
+        id: "project-kinesis",
+        title: "Kinesis",
+        summary: "Um produto de eventos — página pública de apresentação e ecrã de início de sessão.",
+        stack: [],
+        role: "Fractory · trabalho de cliente",
+        image: "/images/KinesisHero.png",
+        gallery: ["/images/KinesisHero.png", "/images/KinesisLogin.png"],
+        note: "Mostrado em capturas sob NDA. Sem demonstração pública nem código."
+      },
+      {
+        id: "project-polski-od-zera",
+        title: "PolskiOdZera",
+        summary:
+          "Uma aplicação web para aprender polaco a partir do zero, com currículo A1, repetição espaçada e uma PWA que funciona offline.",
+        stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand", "IndexedDB"],
+        github: "https://github.com/yarosfct/Language_School_PL"
+      },
+      {
+        id: "project-sudoku-3d",
+        title: "Sudoku3D",
+        summary: "Um projeto pessoal de Sudoku em 3D, com um menu de dificuldade e um temporizador.",
+        stack: ["React", "Three.js", "Spline", "Vite"],
+        role: "Projeto pessoal",
+        github: "https://github.com/yarosfct/Sudoku3D"
+      },
+      {
+        id: "project-goal-tracker",
+        title: "GoalTracker",
+        summary:
+          "Uma aplicação web de acompanhamento de objetivos, feita como projeto de grupo de uma cadeira de UX, com painel, objetivos, horário semanal e análise.",
+        stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+        role: "Projeto de grupo, cadeira de UX",
+        github: "https://github.com/yarosfct/GoalTracker_UX_PWR"
       }
     ],
     techGroups: [
       {
         title: "Web",
-        items: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "Vite", "Framer Motion"]
+        items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vite", "Motion", "Zustand"]
       },
       {
-        title: "Telemóvel",
-        items: ["Flutter", "Dart", "Firebase", "Figma"]
-      },
-      {
-        title: "3D e ML",
-        items: ["Three.js", "Spline", "Python"]
+        title: "3D",
+        items: ["Three.js", "Spline"]
       }
     ],
     about: {

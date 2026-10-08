@@ -299,11 +299,11 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     techGroups: [
       {
         title: "Languages",
-        items: ["Java", "OCaml", "C", "C#", "Python", "JavaScript", "TypeScript", "SQL", "HTML", "Dart"]
+        items: ["JavaScript", "TypeScript", "Java", "OCaml", "C", "C#", "Python", "SQL", "HTML", "Dart"]
       },
       {
         title: "Frontend & Graphics",
-        items: ["React", "Next.js", "AngularJS", "Tailwind CSS", "Flutter", "Three.js", "WebGL", "OpenGL", "Spline"]
+        items: ["React", "Next.js", "Tailwind CSS", "AngularJS", "Flutter", "Three.js", "WebGL", "OpenGL", "Spline"]
       },
       {
         title: "Backend & Data",
@@ -311,15 +311,19 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       },
       {
         title: "ML & Data Science",
-        items: ["PyTorch", "scikit-learn", "pandas", "NumPy", "CUDA"]
+        items: ["PyTorch", "scikit-learn", "pandas", "NumPy"]
       },
       {
         title: "Cloud & DevOps",
-        items: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Git"]
+        items: ["Git", "AWS", "Google Cloud", "Docker", "Kubernetes"]
       },
       {
         title: "Tools",
-        items: ["VS Code", "Cursor", "Android Studio", "Figma", "Postman", "LaTeX"]
+        items: ["Cursor", "Figma", "VS Code", "Android Studio", "Postman", "LaTeX"]
+      },
+      {
+        title: "Software Modelling",
+        items: ["Software Modelling", "UML", "Requirements Engineering"]
       },
       {
         title: "Practices",
@@ -604,11 +608,11 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     techGroups: [
       {
         title: "Linguagens",
-        items: ["Java", "OCaml", "C", "C#", "Python", "JavaScript", "TypeScript", "SQL", "HTML", "Dart"]
+        items: ["JavaScript", "TypeScript", "Java", "OCaml", "C", "C#", "Python", "SQL", "HTML", "Dart"]
       },
       {
         title: "Frontend e gráficos",
-        items: ["React", "Next.js", "AngularJS", "Tailwind CSS", "Flutter", "Three.js", "WebGL", "OpenGL", "Spline"]
+        items: ["React", "Next.js", "Tailwind CSS", "AngularJS", "Flutter", "Three.js", "WebGL", "OpenGL", "Spline"]
       },
       {
         title: "Backend e dados",
@@ -616,15 +620,19 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       },
       {
         title: "ML e ciência de dados",
-        items: ["PyTorch", "scikit-learn", "pandas", "NumPy", "CUDA"]
+        items: ["PyTorch", "scikit-learn", "pandas", "NumPy"]
       },
       {
         title: "Cloud e DevOps",
-        items: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Git"]
+        items: ["Git", "AWS", "Google Cloud", "Docker", "Kubernetes"]
       },
       {
         title: "Ferramentas",
-        items: ["VS Code", "Cursor", "Android Studio", "Figma", "Postman", "LaTeX"]
+        items: ["Cursor", "Figma", "VS Code", "Android Studio", "Postman", "LaTeX"]
+      },
+      {
+        title: "Modelação de Software",
+        items: ["Modelação de Software", "UML", "Engenharia de Requisitos"]
       },
       {
         title: "Práticas",

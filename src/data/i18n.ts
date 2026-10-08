@@ -193,6 +193,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         description: "A short background, the things I keep practicing, and the languages I use."
       },
       experience: {
+        eyebrow: "Experience",
         title: "My journey",
         description: "My personal and professional path.",
         align: "center"
@@ -481,6 +482,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         description: "Um pouco de percurso, o que continuo a praticar, e as línguas que uso."
       },
       experience: {
+        eyebrow: "Percurso",
         title: "O meu percurso",
         description: "O meu caminho pessoal e profissional.",
         align: "center"

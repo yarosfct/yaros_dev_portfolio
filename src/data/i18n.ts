@@ -5,7 +5,7 @@ export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
 
 type NavItem = { id: string; label: string };
-type SectionHeading = { eyebrow: string; title: string; description: string };
+type SectionHeading = { eyebrow?: string; title: string; description: string; align?: "start" | "center" };
 
 type Project = {
   id: string;
@@ -193,9 +193,9 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         description: "A short background, the things I keep practicing, and the languages I use."
       },
       experience: {
-        eyebrow: "Experience",
         title: "My journey",
-        description: "My personal and professional path."
+        description: "My personal and professional path.",
+        align: "center"
       },
       achievements: {
         eyebrow: "Achievements",
@@ -377,9 +377,9 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       },
       {
         period: "October 2025 — February 2026",
-        title: "Erasmus exchange",
-        subtitle: "Wrocław University of Science and Technology (Politechnika Wrocławska)",
-        description: "Exchange in Wrocław, Poland, while managing my thesis and courses."
+        title: "Erasmus exchange · Wrocław, Poland",
+        subtitle: "Politechnika Wrocławska",
+        description: "Exchange while managing my thesis and courses."
       },
       {
         period: "May 2025 — January 2026",
@@ -481,9 +481,9 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         description: "Um pouco de percurso, o que continuo a praticar, e as línguas que uso."
       },
       experience: {
-        eyebrow: "Percurso",
         title: "O meu percurso",
-        description: "O meu caminho pessoal e profissional."
+        description: "O meu caminho pessoal e profissional.",
+        align: "center"
       },
       achievements: {
         eyebrow: "Prémios",
@@ -666,9 +666,9 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       },
       {
         period: "Outubro 2025 — Fevereiro 2026",
-        title: "Intercâmbio Erasmus",
-        subtitle: "Wrocław University of Science and Technology (Politechnika Wrocławska)",
-        description: "Intercâmbio em Wrocław, na Polónia, a gerir a tese e as cadeiras."
+        title: "Intercâmbio Erasmus · Wrocław, Polónia",
+        subtitle: "Politechnika Wrocławska",
+        description: "Intercâmbio a gerir a tese e as cadeiras."
       },
       {
         period: "Maio 2025 — Janeiro 2026",

@@ -98,6 +98,9 @@ export type PortfolioDictionary = {
   sectionHeadings: Record<"projects" | "stack" | "about" | "experience" | "achievements" | "contact", SectionHeading>;
   projects: Project[];
   techGroups: TechGroup[];
+  /** Skills used most across recent CrestPoint, portfolio, and selected work. */
+  dailyDrivers: string[];
+  dailyDriversLabel: string;
   about: {
     intro: string[];
     companyName: string;
@@ -174,8 +177,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       },
       stack: {
         eyebrow: "Skills",
-        title: "What I work with",
-        description: "Languages, frameworks, data tools, and platforms."
+        title: "What I've worked with so far",
+        description: "A broad toolkit from school, client work, and side projects. Highlighted chips are my daily drivers."
       },
       about: {
         eyebrow: "About me",
@@ -296,21 +299,46 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     techGroups: [
       {
         title: "Languages",
-        items: ["Java", "OCaml", "C", "C#", "Python", "JavaScript", "TypeScript", "SQL", "Dart"]
+        items: ["Java", "OCaml", "C", "C#", "Python", "JavaScript", "TypeScript", "SQL", "HTML", "Dart"]
       },
       {
-        title: "Frameworks & Libraries",
-        items: ["Next.js", "Node.js", "React", "Tailwind CSS", "Three.js", "Flutter"]
+        title: "Frontend & Graphics",
+        items: ["React", "Next.js", "AngularJS", "Tailwind CSS", "Flutter", "Three.js", "WebGL", "OpenGL", "Spline"]
       },
       {
-        title: "Data & ML",
-        items: ["scikit-learn", "pandas", "CUDA"]
+        title: "Backend & Data",
+        items: ["Node.js", "PostgreSQL", "Redis", "Firebase"]
       },
       {
-        title: "Tools & Platforms",
-        items: ["Figma", "Firebase", "Spline", "UI design"]
+        title: "ML & Data Science",
+        items: ["PyTorch", "scikit-learn", "pandas", "NumPy", "CUDA"]
+      },
+      {
+        title: "Cloud & DevOps",
+        items: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Git"]
+      },
+      {
+        title: "Tools",
+        items: ["VS Code", "Cursor", "Android Studio", "Figma", "Postman", "LaTeX"]
+      },
+      {
+        title: "Practices",
+        items: ["UI/UX", "Responsive Design", "Performance Optimization"]
       }
     ],
+    dailyDrivers: [
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Git",
+      "Figma",
+      "Cursor",
+      "UI/UX",
+      "Responsive Design"
+    ],
+    dailyDriversLabel: "Daily drivers",
     about: {
       intro: [
         "I was born in Ukraine (hence the name) and raised in Portugal. I'm based in Aveiro, finishing an Integrated Master's in Computer Engineering at NOVA FCT, and I co-founded CrestPoint Tech with two colleagues.",
@@ -454,8 +482,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       },
       stack: {
         eyebrow: "Competências",
-        title: "Com o que trabalho",
-        description: "Linguagens, frameworks, ferramentas de dados e plataformas."
+        title: "Com o que já trabalhei até agora",
+        description: "Um conjunto alargado da faculdade, de trabalho com clientes e de projetos pessoais. Os chips destacados são as minhas ferramentas do dia a dia."
       },
       about: {
         eyebrow: "Sobre mim",
@@ -576,21 +604,46 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     techGroups: [
       {
         title: "Linguagens",
-        items: ["Java", "OCaml", "C", "C#", "Python", "JavaScript", "TypeScript", "SQL", "Dart"]
+        items: ["Java", "OCaml", "C", "C#", "Python", "JavaScript", "TypeScript", "SQL", "HTML", "Dart"]
       },
       {
-        title: "Frameworks e bibliotecas",
-        items: ["Next.js", "Node.js", "React", "Tailwind CSS", "Three.js", "Flutter"]
+        title: "Frontend e gráficos",
+        items: ["React", "Next.js", "AngularJS", "Tailwind CSS", "Flutter", "Three.js", "WebGL", "OpenGL", "Spline"]
       },
       {
-        title: "Dados e ML",
-        items: ["scikit-learn", "pandas", "CUDA"]
+        title: "Backend e dados",
+        items: ["Node.js", "PostgreSQL", "Redis", "Firebase"]
       },
       {
-        title: "Ferramentas e plataformas",
-        items: ["Figma", "Firebase", "Spline", "UI design"]
+        title: "ML e ciência de dados",
+        items: ["PyTorch", "scikit-learn", "pandas", "NumPy", "CUDA"]
+      },
+      {
+        title: "Cloud e DevOps",
+        items: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Git"]
+      },
+      {
+        title: "Ferramentas",
+        items: ["VS Code", "Cursor", "Android Studio", "Figma", "Postman", "LaTeX"]
+      },
+      {
+        title: "Práticas",
+        items: ["UI/UX", "Responsive Design", "Performance Optimization"]
       }
     ],
+    dailyDrivers: [
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Git",
+      "Figma",
+      "Cursor",
+      "UI/UX",
+      "Responsive Design"
+    ],
+    dailyDriversLabel: "Do dia a dia",
     about: {
       intro: [
         "Nasci na Ucrânia (daí o nome) e cresci em Portugal. Estou em Aveiro, a terminar o Mestrado Integrado em Engenharia Informática na NOVA FCT, e cofundei a CrestPoint Tech com dois colegas.",

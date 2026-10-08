@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, ExternalLink, Github, Maximize2, Minus, Plus, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Code2, ExternalLink, Github, Maximize2, Minus, Plus, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { PortfolioDictionary } from "@/data/i18n";
@@ -133,20 +133,17 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
             </div>
           </button>
         ) : (
-          <div
-            aria-hidden
-            className="relative aspect-[16/10] overflow-hidden border-b border-border/80 bg-gradient-to-br from-primary/15 via-muted/40 to-background"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.18),transparent_55%)]" />
-            <div className="relative flex h-full flex-col justify-end p-5">
-              <p className="font-[var(--font-display)] text-2xl font-semibold tracking-tight text-foreground/90">
-                {project.title}
-              </p>
-            </div>
+          <div className="flex items-center gap-2.5 border-b border-border/70 px-5 py-3.5">
+            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary">
+              <Code2 className="h-4 w-4" />
+            </span>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              {content.ui.codeProjectLabel}
+            </p>
           </div>
         )}
 
-        <CardHeader className="space-y-3 p-5 md:p-5">
+        <CardHeader className="space-y-3 p-5">
           <div className="flex flex-col items-start gap-2.5 sm:flex-row sm:items-start sm:justify-between">
             <CardTitle className="font-[var(--font-display)] text-xl leading-tight">{project.title}</CardTitle>
             {project.role && (

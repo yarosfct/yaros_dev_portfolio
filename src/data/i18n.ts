@@ -81,6 +81,7 @@ export type PortfolioDictionary = {
     nextImage: string;
     closeViewer: string;
     enlargedAlt: string;
+    codeProjectLabel: string;
   };
   nav: NavItem[];
   hero: {
@@ -138,7 +139,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       previousImage: "Previous image",
       nextImage: "Next image",
       closeViewer: "Close image viewer",
-      enlargedAlt: "enlarged screenshot"
+      enlargedAlt: "enlarged screenshot",
+      codeProjectLabel: "Code project"
     },
     nav: [
       { id: "hero", label: "Home" },
@@ -173,7 +175,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       stack: {
         eyebrow: "Tech stack",
         title: "Tools behind the work on this page",
-        description: "What the projects on this page use: web apps, and a smaller set for 3D."
+        description: "What the projects on this page use: web apps, mobile, 3D, and machine learning."
       },
       about: {
         eyebrow: "About me",
@@ -242,6 +244,38 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         note: "Shown as screenshots under NDA. No public demo or code."
       },
       {
+        id: "project-ecotrecko",
+        title: "EcoTrecko",
+        summary:
+          "A mobile app for tracking more eco-friendly habits, built as a 3rd-year team project at NOVA FCT. The image is the project poster.",
+        stack: ["Flutter", "Dart", "Firebase", "Figma"],
+        role: "3rd-year team project",
+        image: "/images/ecotrecko_poster.jpeg",
+        imageAlt: "EcoTrecko project poster",
+        imageFit: "contain",
+        note: "Ranked 2nd of more than 20 projects that year. Offline now — no demo; repository is on another account; depended on Google Cloud services that are no longer available."
+      },
+      {
+        id: "project-goal-tracker",
+        title: "GoalTracker",
+        summary:
+          "A goal-tracking web app for a UX course group project, with a dashboard, goals, weekly schedule, and analytics.",
+        stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+        role: "UX course group project",
+        image: "/images/goaltracker-dashboard.webp",
+        imageAlt: "GoalTracker dashboard",
+        github: "https://github.com/yarosfct/GoalTracker_UX_PWR"
+      },
+      {
+        id: "project-census-ml",
+        title: "Census ML",
+        summary:
+          "A university course team project: we train classical ML models on the UCI Adult Census Income dataset to predict whether income exceeds $50,000, comparing preprocessing and hyperparameter tuning.",
+        stack: ["Python", "scikit-learn", "pandas"],
+        role: "University course · team project",
+        github: "https://github.com/yarosfct/census_ml_project"
+      },
+      {
         id: "project-polski-od-zera",
         title: "PolskiOdZera",
         summary:
@@ -264,8 +298,16 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vite", "Motion", "Zustand"]
       },
       {
+        title: "Mobile",
+        items: ["Flutter", "Dart", "Firebase", "Figma"]
+      },
+      {
         title: "3D",
         items: ["Three.js", "Spline"]
+      },
+      {
+        title: "Python & ML",
+        items: ["Python", "scikit-learn", "pandas"]
       }
     ],
     about: {
@@ -377,7 +419,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       previousImage: "Imagem anterior",
       nextImage: "Imagem seguinte",
       closeViewer: "Fechar visualizador",
-      enlargedAlt: "captura ampliada"
+      enlargedAlt: "captura ampliada",
+      codeProjectLabel: "Projeto de código"
     },
     nav: [
       { id: "hero", label: "Início" },
@@ -412,7 +455,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       stack: {
         eyebrow: "Tecnologias",
         title: "Ferramentas por trás do que está nesta página",
-        description: "O que os projetos desta página usam: aplicações web, e um conjunto mais pequeno para 3D."
+        description: "O que os projetos desta página usam: aplicações web, telemóvel, 3D e machine learning."
       },
       about: {
         eyebrow: "Sobre mim",
@@ -481,6 +524,38 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         note: "Mostrado em capturas sob NDA. Sem demonstração pública nem código."
       },
       {
+        id: "project-ecotrecko",
+        title: "EcoTrecko",
+        summary:
+          "Uma aplicação móvel para acompanhar hábitos mais ecológicos, feita como projeto de equipa do 3.º ano na NOVA FCT. A imagem é o póster do projeto.",
+        stack: ["Flutter", "Dart", "Firebase", "Figma"],
+        role: "Projeto de equipa, 3.º ano",
+        image: "/images/ecotrecko_poster.jpeg",
+        imageAlt: "Póster do projeto EcoTrecko",
+        imageFit: "contain",
+        note: "Classificado em 2.º lugar entre mais de 20 projetos desse ano. Está offline — sem demonstração; o repositório está noutra conta; dependia de serviços Google Cloud que já não existem."
+      },
+      {
+        id: "project-goal-tracker",
+        title: "GoalTracker",
+        summary:
+          "Uma aplicação web de acompanhamento de objetivos, feita como projeto de grupo de uma cadeira de UX, com painel, objetivos, horário semanal e análise.",
+        stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+        role: "Projeto de grupo, cadeira de UX",
+        image: "/images/goaltracker-dashboard.webp",
+        imageAlt: "Painel do GoalTracker",
+        github: "https://github.com/yarosfct/GoalTracker_UX_PWR"
+      },
+      {
+        id: "project-census-ml",
+        title: "Census ML",
+        summary:
+          "Um projeto de equipa de uma cadeira universitária: treinamos modelos clássicos de ML no conjunto UCI Adult Census Income para prever se o rendimento ultrapassa 50 000 dólares, comparando pré-processamento e ajuste de hiperparâmetros.",
+        stack: ["Python", "scikit-learn", "pandas"],
+        role: "Cadeira universitária · projeto de equipa",
+        github: "https://github.com/yarosfct/census_ml_project"
+      },
+      {
         id: "project-polski-od-zera",
         title: "PolskiOdZera",
         summary:
@@ -503,8 +578,16 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vite", "Motion", "Zustand"]
       },
       {
+        title: "Telemóvel",
+        items: ["Flutter", "Dart", "Firebase", "Figma"]
+      },
+      {
         title: "3D",
         items: ["Three.js", "Spline"]
+      },
+      {
+        title: "Python e ML",
+        items: ["Python", "scikit-learn", "pandas"]
       }
     ],
     about: {

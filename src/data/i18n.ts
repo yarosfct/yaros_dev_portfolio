@@ -91,10 +91,9 @@ export type PortfolioDictionary = {
     ctas: {
       projects: string;
       contact: string;
-      experience: string;
       github: string;
     };
-    highlights: Array<{ value: string; label: string }>;
+    highlights: Array<{ value: string; label: string; href?: string }>;
   };
   sectionHeadings: Record<"projects" | "stack" | "about" | "experience" | "achievements" | "contact", SectionHeading>;
   projects: Project[];
@@ -154,18 +153,17 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     hero: {
       name: "Yaroslav Hayduk",
-      title: "Finishing Computer Engineering at NOVA FCT, and building CrestPoint Tech",
+      title: "I build clean web products with a creative edge.",
       pitch:
-        "I co-founded CrestPoint Tech with two colleagues. I also build for the web and for mobile, with some machine-learning work: client projects at Fractory, public repositories, and university projects at NOVA FCT.",
+        "Computer engineer from NOVA FCT and co-founder of CrestPoint Tech. Based in Aveiro, open to roles (remote preferred).",
       ctas: {
         projects: "View projects",
         contact: "Get in touch",
-        experience: "See experience",
         github: "GitHub"
       },
       highlights: [
-        { value: "2021 – 2026", label: "Integrated Master's in Computer Engineering, NOVA FCT" },
-        { value: "Apr 2026", label: "Co-founder of CrestPoint Tech" }
+        { value: "2021 – 2026", label: "Integrated Master's, NOVA FCT" },
+        { value: "CrestPoint", label: "Co-founder", href: crestPointHref }
       ]
     },
     sectionHeadings: {
@@ -435,18 +433,17 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     hero: {
       name: "Yaroslav Hayduk",
-      title: "A terminar Engenharia Informática na NOVA FCT, e a construir a CrestPoint Tech",
+      title: "Construo produtos web limpos, com um toque criativo.",
       pitch:
-        "Cofundei a CrestPoint Tech com dois colegas. Também desenvolvo para a web e para telemóvel, com algum trabalho de machine learning: projetos de cliente na Fractory, repositórios públicos e projetos na NOVA FCT.",
+        "Engenheiro informático da NOVA FCT e cofundador da CrestPoint Tech. Em Aveiro, aberto a oportunidades (remoto de preferência).",
       ctas: {
         projects: "Ver projetos",
         contact: "Falar comigo",
-        experience: "Ver percurso",
         github: "GitHub"
       },
       highlights: [
-        { value: "2021 – 2026", label: "Mestrado Integrado em Engenharia Informática na NOVA FCT" },
-        { value: "Abr 2026", label: "Cofundador da CrestPoint Tech" }
+        { value: "2021 – 2026", label: "Mestrado Integrado, NOVA FCT" },
+        { value: "CrestPoint", label: "Cofundador", href: crestPointHref }
       ]
     },
     sectionHeadings: {

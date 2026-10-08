@@ -173,9 +173,9 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         description: "Client work and public repositories."
       },
       stack: {
-        eyebrow: "Tech stack",
-        title: "Tools behind the work on this page",
-        description: "What the projects on this page use: web apps, mobile, 3D, and machine learning."
+        eyebrow: "Skills",
+        title: "What I work with",
+        description: "Languages, frameworks, data tools, and platforms."
       },
       about: {
         eyebrow: "About me",
@@ -295,20 +295,20 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     techGroups: [
       {
-        title: "Web",
-        items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vite", "Motion", "Zustand"]
+        title: "Languages",
+        items: ["Java", "OCaml", "C", "C#", "Python", "JavaScript", "TypeScript", "SQL", "Dart"]
       },
       {
-        title: "Mobile",
-        items: ["Flutter", "Dart", "Firebase", "Figma"]
+        title: "Frameworks & Libraries",
+        items: ["Next.js", "Node.js", "React", "Tailwind CSS", "Three.js", "Flutter"]
       },
       {
-        title: "3D",
-        items: ["Three.js", "Spline"]
+        title: "Data & ML",
+        items: ["scikit-learn", "pandas", "CUDA"]
       },
       {
-        title: "Python & ML",
-        items: ["Python", "scikit-learn", "pandas"]
+        title: "Tools & Platforms",
+        items: ["Figma", "Firebase", "Spline", "UI design"]
       }
     ],
     about: {
@@ -453,9 +453,9 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         description: "Trabalho de cliente e repositórios públicos."
       },
       stack: {
-        eyebrow: "Tecnologias",
-        title: "Ferramentas por trás do que está nesta página",
-        description: "O que os projetos desta página usam: aplicações web, telemóvel, 3D e machine learning."
+        eyebrow: "Competências",
+        title: "Com o que trabalho",
+        description: "Linguagens, frameworks, ferramentas de dados e plataformas."
       },
       about: {
         eyebrow: "Sobre mim",
@@ -575,20 +575,20 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     techGroups: [
       {
-        title: "Web",
-        items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vite", "Motion", "Zustand"]
+        title: "Linguagens",
+        items: ["Java", "OCaml", "C", "C#", "Python", "JavaScript", "TypeScript", "SQL", "Dart"]
       },
       {
-        title: "Telemóvel",
-        items: ["Flutter", "Dart", "Firebase", "Figma"]
+        title: "Frameworks e bibliotecas",
+        items: ["Next.js", "Node.js", "React", "Tailwind CSS", "Three.js", "Flutter"]
       },
       {
-        title: "3D",
-        items: ["Three.js", "Spline"]
+        title: "Dados e ML",
+        items: ["scikit-learn", "pandas", "CUDA"]
       },
       {
-        title: "Python e ML",
-        items: ["Python", "scikit-learn", "pandas"]
+        title: "Ferramentas e plataformas",
+        items: ["Figma", "Firebase", "Spline", "UI design"]
       }
     ],
     about: {

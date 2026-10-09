@@ -155,7 +155,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     hero: {
       name: "Yaroslav Hayduk",
-      title: "I build clean web products with a creative edge.",
+      title: "I build clean web applications with a creative edge.",
       pitch:
         "Computer engineer from NOVA FCT and co-founder of CrestPoint Tech. Based in Aveiro, open to roles (remote preferred).",
       ctas: {
@@ -468,7 +468,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     hero: {
       name: "Yaroslav Hayduk",
-      title: "Construo produtos web limpos, com um toque criativo.",
+      title: "Crio aplicações web cuidadas, com um toque criativo.",
       pitch:
         "Engenheiro informático da NOVA FCT e cofundador da CrestPoint Tech. Em Aveiro, aberto a oportunidades (remoto de preferência).",
       ctas: {

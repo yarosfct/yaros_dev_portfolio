@@ -62,30 +62,19 @@ body {
 }
 
 /*
- * Compositor-native folk spotlight:
- * - pattern: absolute, full document height, scrolls with the page (no JS)
+ * Folk spotlight:
+ * - pattern: normal scrolling background on .page-shell (no giant promoted layer)
  * - mask: fixed 300vmax radial hole, moved only via translate3d on pointermove
  */
-.spotlight-root {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.spotlight-pattern {
-  position: absolute;
-  inset: 0;
-  background-color: transparent;
-  background-image: url("/patterns/folk-outline.webp");
+.dark .page-shell {
+  background-color: hsl(var(--background));
+  /* Dim overlay + tile — attachment: scroll (default), no will-change / translateZ */
+  background-image:
+    linear-gradient(hsl(var(--background) / 0.45), hsl(var(--background) / 0.45)),
+    url("/patterns/folk-outline.webp");
   background-repeat: repeat;
-  background-size: 800px 800px;
-  background-position: 0 0;
-  opacity: 0.55;
-  /* Own compositor layer so scroll stays in sync with content */
-  transform: translateZ(0);
-  will-change: transform;
-  backface-visibility: hidden;
+  background-size: auto, 800px 800px;
+  background-position: 0 0, 0 0;
 }
 
 .spotlight-mask {
@@ -96,7 +85,6 @@ body {
   height: 300vmax;
   z-index: 1;
   pointer-events: none;
-  will-change: transform;
   transform: translate3d(55vw, 35vh, 0);
   /* Soft hole at center → exact page bg at rim (no visible box edge) */
   background:
@@ -121,7 +109,6 @@ body {
 
 /* Touch / coarse pointer: soft static reveal, no tracking */
 .spotlight-mask--static {
-  will-change: auto;
   background:
     radial-gradient(
       circle 220px at center,
@@ -139,9 +126,46 @@ body {
     );
 }
 
+/*
+ * Section reveal — opacity + translateY only, once.
+ * Default (ssr / no-js): fully visible. Never re-hide after --in.
+ * Animate header then body (slight stagger); never animate the section
+ * wrapper itself (avoids double opacity).
+ */
+.section-reveal--pending .section-reveal__header,
+.section-reveal--pending .section-reveal__body {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.section-reveal--in .section-reveal__header {
+  animation: section-reveal 600ms ease-out both;
+}
+
+.section-reveal--in .section-reveal__body {
+  animation: section-reveal 600ms ease-out both;
+  animation-delay: 90ms;
+}
+
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .spotlight-mask {
-    transition: none;
+  .section-reveal--pending .section-reveal__header,
+  .section-reveal--pending .section-reveal__body,
+  .section-reveal--in .section-reveal__header,
+  .section-reveal--in .section-reveal__body {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }
 
@@ -193,18 +217,13 @@ body {
   }
 
   /*
-   * Soft dark vignette behind copy — hugs the real text box (fit-content)
-   * with the same ~32px padding on all sides. Centered gradient for both
-   * left-aligned and centered headers.
+   * Soft dark vignette behind copy — radial only (no filter:blur).
+   * isolation + z-index:-1 keeps the fade strictly under the text glyphs.
    */
   .dark .spotlight-copy {
     position: relative;
     isolation: isolate;
     width: fit-content;
-    text-shadow:
-      0 0 10px hsl(var(--background) / 0.95),
-      0 0 22px hsl(var(--background) / 0.7),
-      0 1px 2px hsl(var(--background) / 0.85);
   }
 
   .dark .spotlight-copy--center {
@@ -214,13 +233,15 @@ body {
   .dark .spotlight-copy::before {
     content: "";
     position: absolute;
-    /* Soft pad ~32px: inner inset + blur radius, even on short/wide lines */
-    inset: -12px;
+    inset: -32px;
     z-index: -1;
     pointer-events: none;
-    border-radius: 999px;
-    background: hsl(var(--background) / 0.78);
-    filter: blur(22px);
+    background: radial-gradient(
+      ellipse farthest-side at 50% 50%,
+      hsl(var(--background) / 0.88) 0%,
+      hsl(var(--background) / 0.55) 52%,
+      transparent 100%
+    );
   }
 
   .tech-chip-daily {

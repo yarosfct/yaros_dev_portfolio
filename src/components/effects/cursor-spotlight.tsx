@@ -24,9 +24,10 @@ function useMedia(query: string) {
 }
 
 /**
- * Dark-theme cursor spotlight (compositor-native).
- * Pattern lives in document flow and scrolls with the page — no JS on scroll.
- * A fixed radial-mask overlay follows the cursor via transform only.
+ * Dark-theme cursor spotlight.
+ * Pattern is a normal scrolling background on the page shell (no giant
+ * promoted layer). This component only renders the fixed radial mask,
+ * moved via translate3d on pointermove — no scroll listener.
  */
 export function CursorSpotlight() {
   const { resolvedTheme } = useTheme();
@@ -96,7 +97,6 @@ export function CursorSpotlight() {
       frame.current = window.requestAnimationFrame(tick);
     };
 
-    // Touch / coarse pointer: static faint reveal, no tracking.
     if (!canHover) {
       apply(current.current);
       return undefined;
@@ -126,12 +126,10 @@ export function CursorSpotlight() {
   if (!mounted || !isDark) return null;
 
   return (
-    <div className="spotlight-root" aria-hidden>
-      <div className="spotlight-pattern" />
-      <div
-        ref={maskRef}
-        className={canHover ? "spotlight-mask" : "spotlight-mask spotlight-mask--static"}
-      />
-    </div>
+    <div
+      ref={maskRef}
+      className={canHover ? "spotlight-mask" : "spotlight-mask spotlight-mask--static"}
+      aria-hidden
+    />
   );
 }

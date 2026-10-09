@@ -22,14 +22,28 @@ export function SectionShell({
   headerExtra,
   children
 }: SectionShellProps) {
-  const { ref, isVisible } = useReveal<HTMLElement>();
+  const { ref, state } = useReveal<HTMLElement>();
   const centered = align === "center";
 
   return (
-    <section id={id} ref={ref} className={cn("scroll-mt-28 py-14 md:py-20", isVisible && "animate-fade-in-up")}>
+    <section
+      id={id}
+      ref={ref}
+      data-reveal={state}
+      className={cn(
+        "section-reveal scroll-mt-28 py-14 md:py-20",
+        state === "pending" && "section-reveal--pending",
+        state === "in" && "section-reveal--in"
+      )}
+    >
       <div className="container space-y-10 md:space-y-12">
         {(title || description || headerExtra) && (
-          <div className={cn("space-y-2 md:space-y-3", centered && "text-center")}>
+          <div
+            className={cn(
+              "section-reveal__header space-y-2 md:space-y-3",
+              centered && "text-center"
+            )}
+          >
             {(eyebrow || title || description) && (
               <header className={cn("space-y-2 md:space-y-3", centered && "text-center")}>
                 {eyebrow && (
@@ -45,7 +59,7 @@ export function SectionShell({
                 {title && (
                   <h2
                     className={cn(
-                      "spotlight-copy section-title w-fit max-w-full font-[var(--font-display)] text-balance",
+                      "spotlight-copy section-title w-fit max-w-full font-[var(--font-display)] text-balance text-foreground",
                       centered && "spotlight-copy--center"
                     )}
                   >
@@ -67,7 +81,7 @@ export function SectionShell({
             {headerExtra}
           </div>
         )}
-        {children}
+        <div className="section-reveal__body">{children}</div>
       </div>
     </section>
   );

@@ -19,7 +19,7 @@ export default function HomePage() {
   const content = useMemo(() => getDictionary(locale), [locale]);
 
   return (
-    <div className="relative">
+    <div className="page-shell relative">
       <CursorSpotlight />
       <div className="relative z-10">
         <Navbar content={content} locale={locale} setLocale={setLocale} />

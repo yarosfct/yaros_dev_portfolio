@@ -132,11 +132,11 @@ export function CursorSpotlight() {
       const y = point.y;
 
       // Soft glow — larger than pattern fade, fully transparent at edge.
-      const glowR = FADE_RADIUS + 16;
+      const glowR = FADE_RADIUS + 28;
       const glow = ctx.createRadialGradient(x, y, 0, x, y, glowR);
-      glow.addColorStop(0, "rgba(59, 130, 246, 0.06)");
-      glow.addColorStop(0.45, "rgba(59, 130, 246, 0.025)");
-      glow.addColorStop(0.85, "rgba(59, 130, 246, 0.008)");
+      glow.addColorStop(0, "rgba(59, 130, 246, 0.05)");
+      glow.addColorStop(0.5, "rgba(59, 130, 246, 0.02)");
+      glow.addColorStop(0.82, "rgba(59, 130, 246, 0.006)");
       glow.addColorStop(1, "rgba(59, 130, 246, 0)");
       ctx.fillStyle = glow;
       ctx.fillRect(x - glowR, y - glowR, glowR * 2, glowR * 2);
@@ -157,7 +157,7 @@ export function CursorSpotlight() {
       const startRow = Math.floor(docTop / TILE);
       const endRow = Math.floor(docBottom / TILE);
 
-      ctx.globalAlpha = 0.72;
+      ctx.globalAlpha = 0.68;
       for (let row = startRow; row <= endRow; row++) {
         for (let col = startCol; col <= endCol; col++) {
           ctx.drawImage(tile, col * TILE - scrollX, row * TILE - scrollY, TILE, TILE);
@@ -165,14 +165,16 @@ export function CursorSpotlight() {
       }
 
       // Smooth falloff to 0 — softer at dead center for text readability,
-      // no hard clip circle (draw pad > fade radius so nothing is cut off).
+      // long tail near the rim so no isophote/ring reads as an edge.
+      // Draw pad > fade radius so the gradient is never clipped.
       ctx.globalCompositeOperation = "destination-in";
       const falloff = ctx.createRadialGradient(x, y, 0, x, y, FADE_RADIUS);
-      falloff.addColorStop(0, "rgba(0,0,0,0.34)");
-      falloff.addColorStop(0.22, "rgba(0,0,0,0.7)");
-      falloff.addColorStop(0.48, "rgba(0,0,0,0.52)");
-      falloff.addColorStop(0.7, "rgba(0,0,0,0.28)");
-      falloff.addColorStop(0.88, "rgba(0,0,0,0.08)");
+      falloff.addColorStop(0, "rgba(0,0,0,0.28)");
+      falloff.addColorStop(0.2, "rgba(0,0,0,0.62)");
+      falloff.addColorStop(0.42, "rgba(0,0,0,0.48)");
+      falloff.addColorStop(0.62, "rgba(0,0,0,0.28)");
+      falloff.addColorStop(0.8, "rgba(0,0,0,0.12)");
+      falloff.addColorStop(0.92, "rgba(0,0,0,0.035)");
       falloff.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = falloff;
       ctx.fillRect(x - DRAW_PAD, y - DRAW_PAD, DRAW_PAD * 2, DRAW_PAD * 2);

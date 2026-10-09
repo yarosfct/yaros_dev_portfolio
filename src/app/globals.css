@@ -118,9 +118,31 @@ body {
   }
 
   /*
-   * Soft dark halo behind copy so folk lines don't cut through text.
-   * Pure text-shadow — no boxes, borders, or solid backings.
+   * Soft dark vignette behind copy so folk lines don't cut through text.
+   * Radial fade only — no borders, shadows-as-boxes, or solid panels.
    */
+  .dark #hero .space-y-4,
+  .dark main section > .container > header {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .dark #hero .space-y-4::before,
+  .dark main section > .container > header::before {
+    content: "";
+    position: absolute;
+    inset: -1.75rem -1.25rem;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 72% 68% at 32% 38%,
+      hsl(var(--background) / 0.9) 0%,
+      hsl(var(--background) / 0.62) 38%,
+      hsl(var(--background) / 0.28) 62%,
+      transparent 78%
+    );
+  }
+
   .dark #hero h1,
   .dark #hero p,
   .dark .section-title,
@@ -129,19 +151,19 @@ body {
   .dark main h2,
   .dark main h3 {
     text-shadow:
-      0 0 18px hsl(var(--background) / 0.95),
-      0 0 36px hsl(var(--background) / 0.75),
-      0 0 56px hsl(var(--background) / 0.45),
-      0 1px 2px hsl(var(--background) / 0.85);
+      0 0 14px hsl(var(--background) / 0.98),
+      0 0 28px hsl(var(--background) / 0.85),
+      0 0 44px hsl(var(--background) / 0.55),
+      0 1px 2px hsl(var(--background) / 0.9);
   }
 
   .dark #hero .text-primary,
   .dark main .text-primary {
     text-shadow:
-      0 0 16px hsl(var(--background) / 0.98),
-      0 0 32px hsl(var(--background) / 0.8),
-      0 0 48px hsl(var(--background) / 0.5),
-      0 1px 2px hsl(var(--background) / 0.9);
+      0 0 12px hsl(var(--background) / 1),
+      0 0 26px hsl(var(--background) / 0.9),
+      0 0 42px hsl(var(--background) / 0.6),
+      0 1px 2px hsl(var(--background) / 0.95);
   }
 
   .tech-chip-daily {

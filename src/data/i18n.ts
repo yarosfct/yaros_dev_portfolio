@@ -217,7 +217,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         id: "project-nato-interpret",
         title: "Nato·Interpret",
-        summary: "A professional German–Georgian interpreting and translation website, multilingual (i18n).",
+        summary:
+          "A website for a German-Georgian interpreting and translation service, available in German and English. It helps courts, authorities, clinics, and families learn about the interpreter and get in touch.",
         stack: ["React", "TypeScript"],
         role: "CrestPoint Tech · client work",
         image: "/images/nato-hero.webp",
@@ -228,22 +229,24 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         id: "project-safetyscope",
         title: "SafetyScope",
-        summary: "Marketing site for a safety product: homepage, about, and contact pages.",
+        summary:
+          "Web development at Fractory for SafetyScope, a safety product. Screenshots show the OMNI marketing site: See what matters. Act when it counts.",
         stack: [],
         role: "Fractory · client work",
         image: "/images/SafetyMain.png",
         gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"],
-        note: "Shown as screenshots under NDA. No public demo or code."
+        note: "Client work under NDA, shown as screenshots."
       },
       {
         id: "project-kinesis",
         title: "Kinesis",
-        summary: "An events product: public landing page and sign-in screen.",
+        summary:
+          "Web development at Fractory for Kinesis, a platform for discovering events, artists, and venues.",
         stack: [],
         role: "Fractory · client work",
         image: "/images/KinesisHero.png",
         gallery: ["/images/KinesisHero.png", "/images/KinesisLogin.png"],
-        note: "Shown as screenshots under NDA. No public demo or code."
+        note: "Client work under NDA, shown as screenshots."
       },
       {
         id: "project-ecotrecko",
@@ -526,7 +529,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         id: "project-nato-interpret",
         title: "Nato·Interpret",
-        summary: "Um site profissional de interpretação e tradução alemão–georgiano, multilingue (i18n).",
+        summary:
+          "Um site para um serviço de interpretação e tradução alemão-georgiano, disponível em alemão e inglês. Ajuda tribunais, autoridades, clínicas e famílias a conhecer a intérprete e a entrar em contacto.",
         stack: ["React", "TypeScript"],
         role: "CrestPoint Tech · trabalho de cliente",
         image: "/images/nato-hero.webp",
@@ -537,22 +541,24 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         id: "project-safetyscope",
         title: "SafetyScope",
-        summary: "Site de apresentação de um produto de segurança: página inicial, sobre e contacto.",
+        summary:
+          "Desenvolvimento web na Fractory para a SafetyScope, um produto de segurança. As capturas mostram o site da OMNI: See what matters. Act when it counts.",
         stack: [],
         role: "Fractory · trabalho de cliente",
         image: "/images/SafetyMain.png",
         gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"],
-        note: "Mostrado em capturas sob NDA. Sem demonstração pública nem código."
+        note: "Trabalho de cliente sob NDA, mostrado em capturas de ecrã."
       },
       {
         id: "project-kinesis",
         title: "Kinesis",
-        summary: "Um produto de eventos: página pública de apresentação e ecrã de início de sessão.",
+        summary:
+          "Desenvolvimento web na Fractory para a Kinesis, uma plataforma para descobrir eventos, artistas e espaços.",
         stack: [],
         role: "Fractory · trabalho de cliente",
         image: "/images/KinesisHero.png",
         gallery: ["/images/KinesisHero.png", "/images/KinesisLogin.png"],
-        note: "Mostrado em capturas sob NDA. Sem demonstração pública nem código."
+        note: "Trabalho de cliente sob NDA, mostrado em capturas de ecrã."
       },
       {
         id: "project-ecotrecko",

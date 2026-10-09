@@ -65,7 +65,6 @@ export type PortfolioDictionary = {
   ui: {
     languageLabel: string;
     themeLabel: string;
-    availability: string;
     demoLabel: string;
     navGitHub: string;
     sectionsLabel: string;
@@ -128,7 +127,6 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ui: {
       languageLabel: "Language",
       themeLabel: "Toggle theme",
-      availability: "Open to roles · remote preferred",
       demoLabel: "Demo",
       navGitHub: "GitHub",
       sectionsLabel: "Sections",
@@ -323,7 +321,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         items: ["Cursor", "Figma", "VS Code", "Android Studio", "Postman", "LaTeX"]
       },
       {
-        title: "Software Modelling",
+        title: "Software Engineering",
         items: ["Software Modelling", "UML", "Requirements Engineering"]
       },
       {
@@ -438,7 +436,6 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ui: {
       languageLabel: "Idioma",
       themeLabel: "Alternar tema",
-      availability: "Aberto a oportunidades · remoto de preferência",
       demoLabel: "Demonstração",
       navGitHub: "GitHub",
       sectionsLabel: "Secções",
@@ -633,7 +630,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         items: ["Cursor", "Figma", "VS Code", "Android Studio", "Postman", "LaTeX"]
       },
       {
-        title: "Modelação de Software",
+        title: "Engenharia de Software",
         items: ["Modelação de Software", "UML", "Engenharia de Requisitos"]
       },
       {

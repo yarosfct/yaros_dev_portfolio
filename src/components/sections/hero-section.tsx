@@ -19,10 +19,6 @@ export function HeroSection({ content }: HeroSectionProps) {
       <div className="container">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_auto] lg:gap-14">
           <div className="space-y-8 md:space-y-10">
-            <div className="card-surface-soft inline-flex items-center rounded-full border border-border/80 px-4 py-1.5 text-xs font-medium text-muted-foreground dark:bg-card/75 dark:shadow-sm">
-              {content.ui.availability}
-            </div>
-
             <div className="space-y-4 md:space-y-5">
               <h1 className="spotlight-copy w-fit max-w-full font-[var(--font-display)] text-balance text-4xl font-semibold tracking-tight text-foreground md:text-6xl md:leading-[1.05]">
                 {content.hero.name}

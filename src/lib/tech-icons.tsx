@@ -41,6 +41,7 @@ import {
   Cpu,
   Database,
   Gauge,
+  Layers,
   Layout,
   MonitorSmartphone,
   Palette,
@@ -139,7 +140,7 @@ export const groupHeaderIcons: LucideIcon[] = [
   Cpu,
   Cloud,
   Wrench,
-  Workflow,
+  Layers,
   Palette
 ];
 

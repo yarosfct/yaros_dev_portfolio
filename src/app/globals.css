@@ -163,18 +163,18 @@ html[data-spotlight-ready] .page-shell::before {
   background:
     radial-gradient(
       circle 42.5vw at center,
-      hsl(var(--spotlight-wash) / 0.11) 0%,
-      hsl(var(--spotlight-wash) / 0.05) 24%,
-      transparent 46%
+      hsl(var(--spotlight-wash) / 0.12) 0%,
+      hsl(var(--spotlight-wash) / 0.055) 28%,
+      transparent 52%
     ),
     radial-gradient(
       circle 42.5vw at center,
       transparent 0%,
-      transparent 16%,
-      hsl(var(--background) / 0.12) 32%,
-      hsl(var(--background) / 0.48) 50%,
-      hsl(var(--background) / 0.86) 66%,
-      hsl(var(--background) / 0.97) 80%,
+      transparent 28%,
+      hsl(var(--background) / 0.1) 42%,
+      hsl(var(--background) / 0.42) 56%,
+      hsl(var(--background) / 0.84) 70%,
+      hsl(var(--background) / 0.96) 82%,
       hsl(var(--background)) 92%,
       hsl(var(--background)) 100%
     );
@@ -234,18 +234,18 @@ html[data-spotlight-ready] .page-shell::before {
   background:
     radial-gradient(
       circle 42.5vw at center,
-      rgba(59, 130, 246, 0.09) 0%,
-      rgba(59, 130, 246, 0.035) 22%,
-      transparent 44%
+      rgba(59, 130, 246, 0.1) 0%,
+      rgba(59, 130, 246, 0.04) 26%,
+      transparent 50%
     ),
     radial-gradient(
       circle 42.5vw at center,
       transparent 0%,
-      transparent 16%,
-      hsl(var(--background) / 0.12) 32%,
-      hsl(var(--background) / 0.48) 50%,
-      hsl(var(--background) / 0.86) 66%,
-      hsl(var(--background) / 0.97) 80%,
+      transparent 28%,
+      hsl(var(--background) / 0.1) 42%,
+      hsl(var(--background) / 0.42) 56%,
+      hsl(var(--background) / 0.84) 70%,
+      hsl(var(--background) / 0.96) 82%,
       hsl(var(--background)) 92%,
       hsl(var(--background)) 100%
     );

@@ -33,7 +33,8 @@ export function SectionShell({
       className={cn(
         "section-reveal scroll-mt-28 py-14 md:py-20",
         state === "pending" && "section-reveal--pending",
-        state === "in" && "section-reveal--in"
+        state === "in" && "section-reveal--in",
+        state === "shown" && "section-reveal--shown"
       )}
     >
       <div className="container space-y-10 md:space-y-12">

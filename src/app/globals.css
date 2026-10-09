@@ -138,6 +138,13 @@ body {
   transform: translateY(14px);
 }
 
+/* Already on-screen at mount — stay visible, never animate from 0 */
+.section-reveal--shown .section-reveal__header,
+.section-reveal--shown .section-reveal__body {
+  opacity: 1;
+  transform: none;
+}
+
 .section-reveal--in .section-reveal__header {
   animation: section-reveal 600ms ease-out both;
 }
@@ -162,7 +169,9 @@ body {
   .section-reveal--pending .section-reveal__header,
   .section-reveal--pending .section-reveal__body,
   .section-reveal--in .section-reveal__header,
-  .section-reveal--in .section-reveal__body {
+  .section-reveal--in .section-reveal__body,
+  .section-reveal--shown .section-reveal__header,
+  .section-reveal--shown .section-reveal__body {
     opacity: 1;
     transform: none;
     animation: none;

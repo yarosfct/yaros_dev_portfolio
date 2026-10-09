@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type RevealState = "ssr" | "pending" | "in";
+/** ssr = visible default; pending = hidden off-screen; in = animate in; shown = visible, no anim */
+export type RevealState = "ssr" | "pending" | "in" | "shown";
 
 /**
  * One-shot viewport reveal.
- * - SSR / no-JS: visible (state "ssr")
- * - After mount: if already in view or reduced-motion → "in" immediately (no hide flash)
- * - Otherwise: "pending" (opacity 0) until first intersection → "in" forever
+ * - SSR / no-JS: visible ("ssr")
+ * - Already in view or reduced-motion at mount: "shown" (never hide, no animation flash)
+ * - Off-screen: "pending" until first intersection → "in" (animate once), never re-hide
  */
 export function useReveal<T extends HTMLElement>(options?: { rootMargin?: string; threshold?: number }) {
   const ref = useRef<T | null>(null);
@@ -23,19 +24,18 @@ export function useReveal<T extends HTMLElement>(options?: { rootMargin?: string
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
     if (reduced) {
-      setState("in");
+      setState("shown");
       return undefined;
     }
 
     const rootMargin = options?.rootMargin ?? "0px 0px -8% 0px";
     const threshold = options?.threshold ?? 0.12;
 
-    // If already on screen at mount, reveal immediately — never hide first.
     const rect = node.getBoundingClientRect();
     const vh = window.innerHeight || 0;
     const alreadyIn = rect.top < vh * 0.92 && rect.bottom > 0;
     if (alreadyIn) {
-      setState("in");
+      setState("shown");
       return undefined;
     }
 
@@ -55,5 +55,5 @@ export function useReveal<T extends HTMLElement>(options?: { rootMargin?: string
     return () => observer.disconnect();
   }, [options?.rootMargin, options?.threshold]);
 
-  return { ref, state, isVisible: state === "in" || state === "ssr" };
+  return { ref, state };
 }

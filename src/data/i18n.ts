@@ -206,7 +206,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         id: "project-crestpoint-tech",
         title: "CrestPoint Tech",
         summary:
-          "I designed and built the CrestPoint Tech company site end to end, including the interactive 3D coin models in the hero. CrestPoint is my digital studio: managed monthly software for SMEs.",
+          "I designed and built the CrestPoint Tech website end to end, including the interactive 3D coin models in the hero. CrestPoint Tech is the company I co-founded, delivering managed monthly software for SMEs.",
         stack: ["React", "Vite", "Tailwind CSS", "Three.js"],
         role: "CrestPoint Tech · company site",
         image: "/images/crestpoint-hero.webp",
@@ -519,7 +519,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         id: "project-crestpoint-tech",
         title: "CrestPoint Tech",
         summary:
-          "Desenhei e construí o site da CrestPoint Tech de ponta a ponta, incluindo os modelos 3D interativos das moedas no hero. A CrestPoint é o meu estúdio digital: software gerido mensalmente para PMEs.",
+          "Desenhei e construí o site da CrestPoint Tech de ponta a ponta, incluindo os modelos 3D interativos das moedas no hero. A CrestPoint Tech é a empresa que cofundei, com software gerido mensalmente para PMEs.",
         stack: ["React", "Vite", "Tailwind CSS", "Three.js"],
         role: "CrestPoint Tech · site da empresa",
         image: "/images/crestpoint-hero.webp",

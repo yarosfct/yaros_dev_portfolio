@@ -183,7 +183,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                   href={project.demo}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-border/70 px-2.5 py-1.5 text-sm text-primary transition-all duration-200 hover:border-primary/30 hover:bg-primary/5"
+                  className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-all duration-200 hover:border-primary/55 hover:bg-primary/15"
                 >
                   <ExternalLink className="h-4 w-4" /> {content.ui.demoLabel}
                 </a>

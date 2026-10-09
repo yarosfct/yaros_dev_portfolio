@@ -127,7 +127,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ui: {
       languageLabel: "Language",
       themeLabel: "Toggle theme",
-      demoLabel: "Demo",
+      demoLabel: "Visit site",
       navGitHub: "GitHub",
       sectionsLabel: "Sections",
       openMenu: "Open menu",
@@ -203,6 +203,18 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     projects: [
       {
+        id: "project-crestpoint-tech",
+        title: "CrestPoint Tech",
+        summary:
+          "I designed and built the CrestPoint Tech company site end to end, including the interactive 3D coin models in the hero. CrestPoint is my digital studio: managed monthly software for SMEs.",
+        stack: ["React", "Vite", "Tailwind CSS", "Three.js"],
+        role: "CrestPoint Tech · company site",
+        image: "/images/crestpoint-hero.webp",
+        imageAlt: "CrestPoint Tech homepage hero with 3D coin",
+        gallery: ["/images/crestpoint-hero.webp", "/images/crestpoint-services.webp"],
+        demo: "https://crestpoint.pt/"
+      },
+      {
         id: "project-soregi",
         title: "Soregi",
         summary:
@@ -235,17 +247,6 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         role: "Fractory · client work",
         image: "/images/SafetyMain.png",
         gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"],
-        note: "Client work under NDA, shown as screenshots."
-      },
-      {
-        id: "project-kinesis",
-        title: "Kinesis",
-        summary:
-          "Web development at Fractory for Kinesis, a platform for discovering events, artists, and venues.",
-        stack: [],
-        role: "Fractory · client work",
-        image: "/images/KinesisHero.png",
-        gallery: ["/images/KinesisHero.png", "/images/KinesisLogin.png"],
         note: "Client work under NDA, shown as screenshots."
       },
       {
@@ -439,7 +440,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ui: {
       languageLabel: "Idioma",
       themeLabel: "Alternar tema",
-      demoLabel: "Demonstração",
+      demoLabel: "Ver site",
       navGitHub: "GitHub",
       sectionsLabel: "Secções",
       openMenu: "Abrir menu",
@@ -515,6 +516,18 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     projects: [
       {
+        id: "project-crestpoint-tech",
+        title: "CrestPoint Tech",
+        summary:
+          "Desenhei e construí o site da CrestPoint Tech de ponta a ponta, incluindo os modelos 3D interativos das moedas no hero. A CrestPoint é o meu estúdio digital: software gerido mensalmente para PMEs.",
+        stack: ["React", "Vite", "Tailwind CSS", "Three.js"],
+        role: "CrestPoint Tech · site da empresa",
+        image: "/images/crestpoint-hero.webp",
+        imageAlt: "Hero da página inicial da CrestPoint Tech com moeda 3D",
+        gallery: ["/images/crestpoint-hero.webp", "/images/crestpoint-services.webp"],
+        demo: "https://crestpoint.pt/"
+      },
+      {
         id: "project-soregi",
         title: "Soregi",
         summary:
@@ -547,17 +560,6 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         role: "Fractory · trabalho de cliente",
         image: "/images/SafetyMain.png",
         gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"],
-        note: "Trabalho de cliente sob NDA, mostrado em capturas de ecrã."
-      },
-      {
-        id: "project-kinesis",
-        title: "Kinesis",
-        summary:
-          "Desenvolvimento web na Fractory para a Kinesis, uma plataforma para descobrir eventos, artistas e espaços.",
-        stack: [],
-        role: "Fractory · trabalho de cliente",
-        image: "/images/KinesisHero.png",
-        gallery: ["/images/KinesisHero.png", "/images/KinesisLogin.png"],
         note: "Trabalho de cliente sob NDA, mostrado em capturas de ecrã."
       },
       {

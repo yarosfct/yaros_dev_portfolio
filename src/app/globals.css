@@ -117,6 +117,33 @@ body {
     -webkit-backdrop-filter: none !important;
   }
 
+  /*
+   * Soft dark halo behind copy so folk lines don't cut through text.
+   * Pure text-shadow — no boxes, borders, or solid backings.
+   */
+  .dark #hero h1,
+  .dark #hero p,
+  .dark .section-title,
+  .dark .section-subtitle,
+  .dark .section-copy,
+  .dark main h2,
+  .dark main h3 {
+    text-shadow:
+      0 0 18px hsl(var(--background) / 0.95),
+      0 0 36px hsl(var(--background) / 0.75),
+      0 0 56px hsl(var(--background) / 0.45),
+      0 1px 2px hsl(var(--background) / 0.85);
+  }
+
+  .dark #hero .text-primary,
+  .dark main .text-primary {
+    text-shadow:
+      0 0 16px hsl(var(--background) / 0.98),
+      0 0 32px hsl(var(--background) / 0.8),
+      0 0 48px hsl(var(--background) / 0.5),
+      0 1px 2px hsl(var(--background) / 0.9);
+  }
+
   .tech-chip-daily {
     position: relative;
     border-color: hsl(var(--primary) / 0.55);

@@ -5,8 +5,10 @@ import { useEffect, useRef, useState } from "react";
 
 type Point = { x: number; y: number };
 
-const SPOT_SIZE = 460;
-const SPOT_RADIUS = SPOT_SIZE / 2;
+/** Visual spotlight radius (soft falloff reaches 0 here). */
+const FADE_RADIUS = 270;
+/** Clear/draw pad — larger than fade so the gradient isn't clipped. */
+const DRAW_PAD = FADE_RADIUS + 40;
 const TILE = 800;
 const LERP = 0.2;
 const SETTLE_PX = 0.5;
@@ -28,8 +30,8 @@ function useMedia(query: string) {
 
 /**
  * Dark-theme cursor spotlight.
- * Draws only a small circular region each frame onto a canvas, using a
- * pre-rasterized pattern tile (no full-viewport SVG mask updates).
+ * Pattern is document-anchored (scrolls with the page); the spotlight stays
+ * under the cursor in viewport space. Only the spotlight region is redrawn.
  */
 export function CursorSpotlight() {
   const { resolvedTheme } = useTheme();
@@ -62,6 +64,8 @@ export function CursorSpotlight() {
     if (!ctx) return undefined;
 
     let running = false;
+    /** Keep the rAF loop alive for one more frame (scroll while settled). */
+    let keepAlive = false;
     let tileReady = false;
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
     let prev: Point | null = null;
@@ -76,7 +80,7 @@ export function CursorSpotlight() {
       canvas.style.height = `${h}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       prev = null;
-      paint(current.current);
+      schedulePaint();
     };
 
     const ensureTile = () =>
@@ -105,67 +109,84 @@ export function CursorSpotlight() {
         img.onerror = () => resolve();
       });
 
+    const clearSpot = (point: Point) => {
+      ctx.clearRect(point.x - DRAW_PAD, point.y - DRAW_PAD, DRAW_PAD * 2, DRAW_PAD * 2);
+    };
+
     const paint = (point: Point) => {
-      const pad = SPOT_RADIUS * 1.15;
-      if (prev) {
-        ctx.clearRect(prev.x - pad, prev.y - pad, pad * 2, pad * 2);
-      } else {
+      const scrollX = window.scrollX;
+      const scrollY = window.scrollY;
+
+      if (prev) clearSpot(prev);
+      if (!prev) {
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       }
 
       const tile = tileRef.current;
       if (!tileReady || !tile) {
-        prev = point;
+        prev = { ...point };
         return;
       }
 
       const x = point.x;
       const y = point.y;
 
-      // Soft spotlight glow (cheap fill).
-      const glow = ctx.createRadialGradient(x, y, 0, x, y, SPOT_RADIUS * 1.05);
-      glow.addColorStop(0, "rgba(59, 130, 246, 0.10)");
-      glow.addColorStop(0.45, "rgba(59, 130, 246, 0.04)");
+      // Soft glow — larger than pattern fade, fully transparent at edge.
+      const glowR = FADE_RADIUS + 16;
+      const glow = ctx.createRadialGradient(x, y, 0, x, y, glowR);
+      glow.addColorStop(0, "rgba(59, 130, 246, 0.06)");
+      glow.addColorStop(0.45, "rgba(59, 130, 246, 0.025)");
+      glow.addColorStop(0.85, "rgba(59, 130, 246, 0.008)");
       glow.addColorStop(1, "rgba(59, 130, 246, 0)");
       ctx.fillStyle = glow;
-      ctx.fillRect(x - SPOT_RADIUS * 1.05, y - SPOT_RADIUS * 1.05, SPOT_SIZE * 1.1, SPOT_SIZE * 1.1);
+      ctx.fillRect(x - glowR, y - glowR, glowR * 2, glowR * 2);
 
-      // Pattern clipped to soft circle.
+      // Document-anchored pattern: viewport (x,y) → document (x+scrollX, y+scrollY).
+      // Pattern origin = (-scrollX, -scrollY) so tiles scroll with the page.
       ctx.save();
-      const clip = ctx.createRadialGradient(x, y, 0, x, y, SPOT_RADIUS);
-      clip.addColorStop(0, "rgba(0,0,0,1)");
-      clip.addColorStop(0.42, "rgba(0,0,0,1)");
-      clip.addColorStop(0.72, "rgba(0,0,0,0)");
       ctx.beginPath();
-      ctx.arc(x, y, SPOT_RADIUS, 0, Math.PI * 2);
+      ctx.rect(x - DRAW_PAD, y - DRAW_PAD, DRAW_PAD * 2, DRAW_PAD * 2);
       ctx.clip();
 
-      ctx.globalAlpha = 0.95;
-      const left = x - SPOT_RADIUS;
-      const top = y - SPOT_RADIUS;
-      const startCol = Math.floor(left / TILE);
-      const endCol = Math.floor((x + SPOT_RADIUS) / TILE);
-      const startRow = Math.floor(top / TILE);
-      const endRow = Math.floor((y + SPOT_RADIUS) / TILE);
+      const docLeft = x - FADE_RADIUS + scrollX;
+      const docTop = y - FADE_RADIUS + scrollY;
+      const docRight = x + FADE_RADIUS + scrollX;
+      const docBottom = y + FADE_RADIUS + scrollY;
+      const startCol = Math.floor(docLeft / TILE);
+      const endCol = Math.floor(docRight / TILE);
+      const startRow = Math.floor(docTop / TILE);
+      const endRow = Math.floor(docBottom / TILE);
 
+      ctx.globalAlpha = 0.72;
       for (let row = startRow; row <= endRow; row++) {
         for (let col = startCol; col <= endCol; col++) {
-          ctx.drawImage(tile, col * TILE, row * TILE, TILE, TILE);
+          ctx.drawImage(tile, col * TILE - scrollX, row * TILE - scrollY, TILE, TILE);
         }
       }
 
-      // Soft edge fade using destination-in gradient.
+      // Smooth falloff to 0 — softer at dead center for text readability,
+      // no hard clip circle (draw pad > fade radius so nothing is cut off).
       ctx.globalCompositeOperation = "destination-in";
-      ctx.fillStyle = clip;
-      ctx.fillRect(left, top, SPOT_SIZE, SPOT_SIZE);
+      const falloff = ctx.createRadialGradient(x, y, 0, x, y, FADE_RADIUS);
+      falloff.addColorStop(0, "rgba(0,0,0,0.34)");
+      falloff.addColorStop(0.22, "rgba(0,0,0,0.7)");
+      falloff.addColorStop(0.48, "rgba(0,0,0,0.52)");
+      falloff.addColorStop(0.7, "rgba(0,0,0,0.28)");
+      falloff.addColorStop(0.88, "rgba(0,0,0,0.08)");
+      falloff.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = falloff;
+      ctx.fillRect(x - DRAW_PAD, y - DRAW_PAD, DRAW_PAD * 2, DRAW_PAD * 2);
+
       ctx.restore();
       ctx.globalAlpha = 1;
       ctx.globalCompositeOperation = "source-over";
+
       prev = { x, y };
     };
 
     const stop = () => {
       running = false;
+      keepAlive = false;
       if (frame.current) {
         window.cancelAnimationFrame(frame.current);
         frame.current = 0;
@@ -176,7 +197,6 @@ export function CursorSpotlight() {
       if (!running) return;
 
       if (!canHover) {
-        // Static center for touch — paint once then stop.
         paint(current.current);
         stop();
         return;
@@ -189,19 +209,37 @@ export function CursorSpotlight() {
 
       const dx = target.current.x - current.current.x;
       const dy = target.current.y - current.current.y;
-      if (dx * dx + dy * dy < SETTLE_PX * SETTLE_PX) {
+      const settled = dx * dx + dy * dy < SETTLE_PX * SETTLE_PX;
+
+      if (settled) {
         current.current.x = target.current.x;
         current.current.y = target.current.y;
         paint(current.current);
-        stop();
+      }
+
+      // Scroll (or another move) arrived while this frame was in flight — keep going.
+      if (!settled || keepAlive) {
+        keepAlive = false;
+        frame.current = window.requestAnimationFrame(tick);
         return;
       }
 
-      frame.current = window.requestAnimationFrame(tick);
+      stop();
     };
 
-    const start = () => {
-      if (running || document.hidden) return;
+    const schedulePaint = () => {
+      if (document.hidden) return;
+
+      if (!canHover) {
+        paint(current.current);
+        return;
+      }
+
+      if (running) {
+        keepAlive = true;
+        return;
+      }
+
       running = true;
       frame.current = window.requestAnimationFrame(tick);
     };
@@ -209,7 +247,11 @@ export function CursorSpotlight() {
     const onPointerMove = (event: PointerEvent) => {
       if (!canHover) return;
       target.current = { x: event.clientX, y: event.clientY };
-      start();
+      schedulePaint();
+    };
+
+    const onScroll = () => {
+      schedulePaint();
     };
 
     const onVisibility = () => {
@@ -220,12 +262,11 @@ export function CursorSpotlight() {
     ensureTile().then(() => {
       if (cancelled) return;
       resize();
-      if (!canHover) {
-        paint(current.current);
-      }
+      if (!canHover) paint(current.current);
     });
 
     window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", resize);
     document.addEventListener("visibilitychange", onVisibility);
 
@@ -233,6 +274,7 @@ export function CursorSpotlight() {
       cancelled = true;
       stop();
       window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
       document.removeEventListener("visibilitychange", onVisibility);
     };

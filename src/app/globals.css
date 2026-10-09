@@ -24,23 +24,26 @@
 }
 
 .dark {
-  --background: 226 30% 6%;
+  /* Pitch-dark canvas for the folk-outline spotlight */
+  --background: 230 18% 2.5%;
   --foreground: 210 40% 96%;
-  --card: 226 28% 9%;
+  --card: 228 22% 7.5%;
   --card-foreground: 210 40% 96%;
-  --popover: 226 28% 9%;
+  --popover: 228 22% 7.5%;
   --popover-foreground: 210 40% 96%;
   --primary: 217 91% 62%;
   --primary-foreground: 210 40% 98%;
-  --secondary: 225 17% 15%;
+  --secondary: 225 16% 12%;
   --secondary-foreground: 210 40% 96%;
-  --muted: 225 17% 15%;
-  --muted-foreground: 216 18% 68%;
-  --accent: 225 18% 19%;
+  --muted: 225 16% 12%;
+  --muted-foreground: 216 16% 70%;
+  --accent: 225 16% 14%;
   --accent-foreground: 210 40% 96%;
-  --border: 225 16% 21%;
-  --input: 225 16% 21%;
+  --border: 224 14% 18%;
+  --input: 224 14% 18%;
   --ring: 217 91% 62%;
+  /* Pattern outlines: deeper/desaturated vs primary accent */
+  --folk-outline: 223 42% 58%;
 }
 
 html {
@@ -51,6 +54,100 @@ body {
   @apply bg-background text-foreground antialiased;
   background-image: radial-gradient(circle at 20% 0%, hsl(var(--primary) / 0.12), transparent 40%),
     radial-gradient(circle at 80% 0%, hsl(var(--primary) / 0.08), transparent 35%);
+}
+
+.dark body {
+  background-image: none;
+}
+
+.cursor-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cursor-spotlight__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 260px at var(--spotlight-x) var(--spotlight-y),
+    hsl(var(--primary) / 0.09),
+    hsl(var(--primary) / 0.03) 42%,
+    transparent 72%
+  );
+}
+
+.cursor-spotlight__reveal {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: radial-gradient(
+    circle 230px at var(--spotlight-x) var(--spotlight-y),
+    #000 0%,
+    #000 34%,
+    rgba(0, 0, 0, 0.45) 52%,
+    transparent 74%
+  );
+  mask-image: radial-gradient(
+    circle 230px at var(--spotlight-x) var(--spotlight-y),
+    #000 0%,
+    #000 34%,
+    rgba(0, 0, 0, 0.45) 52%,
+    transparent 74%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.cursor-spotlight__pattern {
+  position: absolute;
+  inset: 0;
+  background-color: hsl(var(--folk-outline) / 0.42);
+  -webkit-mask-image: url("/patterns/folk-outline.svg");
+  mask-image: url("/patterns/folk-outline.svg");
+  -webkit-mask-size: var(--folk-tile, 380px) var(--folk-tile, 380px);
+  mask-size: var(--folk-tile, 380px) var(--folk-tile, 380px);
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
+}
+
+@media (max-width: 768px) {
+  .cursor-spotlight__glow {
+    background: radial-gradient(
+      circle 180px at var(--spotlight-x) var(--spotlight-y),
+      hsl(var(--primary) / 0.07),
+      transparent 72%
+    );
+  }
+
+  .cursor-spotlight__reveal {
+    -webkit-mask-image: radial-gradient(
+      circle 170px at var(--spotlight-x) var(--spotlight-y),
+      #000 0%,
+      #000 40%,
+      transparent 78%
+    );
+    mask-image: radial-gradient(
+      circle 170px at var(--spotlight-x) var(--spotlight-y),
+      #000 0%,
+      #000 40%,
+      transparent 78%
+    );
+  }
+
+  .cursor-spotlight__pattern {
+    background-color: hsl(var(--folk-outline) / 0.28);
+    -webkit-mask-size: 280px 280px;
+    mask-size: 280px 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-spotlight__glow,
+  .cursor-spotlight__reveal {
+    transition: none;
+  }
 }
 
 ::selection {
@@ -85,6 +182,10 @@ body {
 
   .surface {
     @apply border border-border/80 bg-card/70 shadow-sm backdrop-blur;
+  }
+
+  .dark .surface {
+    @apply border-border/90 bg-card/80;
   }
 
   .tech-chip-daily {

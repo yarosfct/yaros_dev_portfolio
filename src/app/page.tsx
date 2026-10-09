@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 
+import { CursorSpotlight } from "@/components/effects/cursor-spotlight";
 import { Navbar } from "@/components/layout/navbar";
 import { AboutSection } from "@/components/sections/about-section";
 import { AchievementsSection } from "@/components/sections/achievements-section";
@@ -19,17 +20,20 @@ export default function HomePage() {
 
   return (
     <div className="relative">
-      <Navbar content={content} locale={locale} setLocale={setLocale} />
-      <main>
-        <HeroSection content={content} />
-        <ProjectsSection content={content} />
-        <TimelineSection id="experience" content={content} items={content.experience} />
-        <AchievementsSection content={content} />
-        <AboutSection content={content} />
-        <StackSection content={content} />
-        <ContactSection content={content} />
-      </main>
-      <footer className="container pb-10 pt-4 text-sm text-muted-foreground">{content.footer}</footer>
+      <CursorSpotlight />
+      <div className="relative z-10">
+        <Navbar content={content} locale={locale} setLocale={setLocale} />
+        <main>
+          <HeroSection content={content} />
+          <ProjectsSection content={content} />
+          <TimelineSection id="experience" content={content} items={content.experience} />
+          <AchievementsSection content={content} />
+          <AboutSection content={content} />
+          <StackSection content={content} />
+          <ContactSection content={content} />
+        </main>
+        <footer className="container pb-10 pt-4 text-sm text-muted-foreground">{content.footer}</footer>
+      </div>
     </div>
   );
 }

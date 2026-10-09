@@ -8,7 +8,7 @@ type Point = { x: number; y: number };
 /** Visual spotlight radius (soft falloff reaches 0 here). */
 const FADE_RADIUS = 270;
 /** Clear/draw pad — larger than fade so the gradient isn't clipped. */
-const DRAW_PAD = FADE_RADIUS + 40;
+const DRAW_PAD = FADE_RADIUS + 48;
 const TILE = 800;
 const LERP = 0.2;
 const SETTLE_PX = 0.5;
@@ -131,23 +131,21 @@ export function CursorSpotlight() {
       const x = point.x;
       const y = point.y;
 
-      // Soft glow — larger than pattern fade, fully transparent at edge.
-      const glowR = FADE_RADIUS + 28;
-      const glow = ctx.createRadialGradient(x, y, 0, x, y, glowR);
-      glow.addColorStop(0, "rgba(59, 130, 246, 0.05)");
-      glow.addColorStop(0.5, "rgba(59, 130, 246, 0.02)");
-      glow.addColorStop(0.82, "rgba(59, 130, 246, 0.006)");
-      glow.addColorStop(1, "rgba(59, 130, 246, 0)");
-      ctx.fillStyle = glow;
-      ctx.fillRect(x - glowR, y - glowR, glowR * 2, glowR * 2);
-
-      // Document-anchored pattern: viewport (x,y) → document (x+scrollX, y+scrollY).
-      // Pattern origin = (-scrollX, -scrollY) so tiles scroll with the page.
+      // Draw glow + pattern into the pad, then mask both with one soft falloff
+      // so their edges match (avoids a glow/pattern double-ring).
       ctx.save();
       ctx.beginPath();
       ctx.rect(x - DRAW_PAD, y - DRAW_PAD, DRAW_PAD * 2, DRAW_PAD * 2);
       ctx.clip();
 
+      const glow = ctx.createRadialGradient(x, y, 0, x, y, FADE_RADIUS);
+      glow.addColorStop(0, "rgba(59, 130, 246, 0.05)");
+      glow.addColorStop(0.45, "rgba(59, 130, 246, 0.02)");
+      glow.addColorStop(1, "rgba(59, 130, 246, 0)");
+      ctx.fillStyle = glow;
+      ctx.fillRect(x - DRAW_PAD, y - DRAW_PAD, DRAW_PAD * 2, DRAW_PAD * 2);
+
+      // Document-anchored pattern: origin = (-scrollX, -scrollY).
       const docLeft = x - FADE_RADIUS + scrollX;
       const docTop = y - FADE_RADIUS + scrollY;
       const docRight = x + FADE_RADIUS + scrollX;
@@ -163,9 +161,9 @@ export function CursorSpotlight() {
           ctx.drawImage(tile, col * TILE - scrollX, row * TILE - scrollY, TILE, TILE);
         }
       }
+      ctx.globalAlpha = 1;
 
-      // Smooth falloff to 0 — softer at dead center for text readability,
-      // long tail near the rim so no isophote/ring reads as an edge.
+      // Smooth falloff to 0 — softer at dead center for text readability.
       // Draw pad > fade radius so the gradient is never clipped.
       ctx.globalCompositeOperation = "destination-in";
       const falloff = ctx.createRadialGradient(x, y, 0, x, y, FADE_RADIUS);
@@ -180,7 +178,6 @@ export function CursorSpotlight() {
       ctx.fillRect(x - DRAW_PAD, y - DRAW_PAD, DRAW_PAD * 2, DRAW_PAD * 2);
 
       ctx.restore();
-      ctx.globalAlpha = 1;
       ctx.globalCompositeOperation = "source-over";
 
       prev = { x, y };

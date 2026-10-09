@@ -23,14 +23,14 @@ export function HeroSection({ content }: HeroSectionProps) {
               {content.ui.availability}
             </div>
 
-            <div className="spotlight-copy space-y-4 md:space-y-5">
+            <div className="spotlight-copy max-w-xl space-y-4 md:space-y-5">
               <h1 className="font-[var(--font-display)] text-balance text-4xl font-semibold tracking-tight text-foreground md:text-6xl md:leading-[1.05]">
                 {content.hero.name}
               </h1>
               <p className="font-[var(--font-display)] text-balance text-xl font-medium tracking-tight text-primary md:text-3xl">
                 {content.hero.title}
               </p>
-              <p className="max-w-xl text-balance text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p className="text-balance text-base leading-relaxed text-muted-foreground md:text-lg">
                 {content.hero.pitch}
               </p>
             </div>

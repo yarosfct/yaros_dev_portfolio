@@ -58,16 +58,91 @@ body {
 
 .dark body {
   background-image: none;
+  background-color: hsl(var(--background));
 }
 
-.cursor-spotlight {
-  position: fixed;
+/*
+ * Compositor-native folk spotlight:
+ * - pattern: absolute, full document height, scrolls with the page (no JS)
+ * - mask: fixed 300vmax radial hole, moved only via translate3d on pointermove
+ */
+.spotlight-root {
+  position: absolute;
   inset: 0;
   z-index: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
-  contain: strict;
+}
+
+.spotlight-pattern {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  background-image: url("/patterns/folk-outline.webp");
+  background-repeat: repeat;
+  background-size: 800px 800px;
+  background-position: 0 0;
+  opacity: 0.55;
+  /* Own compositor layer so scroll stays in sync with content */
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.spotlight-mask {
+  position: fixed;
+  top: -150vmax;
+  left: -150vmax;
+  width: 300vmax;
+  height: 300vmax;
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform;
+  transform: translate3d(55vw, 35vh, 0);
+  /* Soft hole at center → exact page bg at rim (no visible box edge) */
+  background:
+    radial-gradient(
+      circle 270px at center,
+      rgba(59, 130, 246, 0.05) 0%,
+      rgba(59, 130, 246, 0.02) 18%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle 270px at center,
+      transparent 0%,
+      transparent 14%,
+      hsl(var(--background) / 0.15) 32%,
+      hsl(var(--background) / 0.55) 48%,
+      hsl(var(--background) / 0.88) 64%,
+      hsl(var(--background) / 0.98) 78%,
+      hsl(var(--background)) 90%,
+      hsl(var(--background)) 100%
+    );
+}
+
+/* Touch / coarse pointer: soft static reveal, no tracking */
+.spotlight-mask--static {
+  will-change: auto;
+  background:
+    radial-gradient(
+      circle 220px at center,
+      rgba(59, 130, 246, 0.035) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle 220px at center,
+      transparent 0%,
+      transparent 10%,
+      hsl(var(--background) / 0.35) 36%,
+      hsl(var(--background) / 0.82) 58%,
+      hsl(var(--background)) 78%,
+      hsl(var(--background)) 100%
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-mask {
+    transition: none;
+  }
 }
 
 ::selection {
@@ -118,26 +193,33 @@ body {
   }
 
   /*
-   * Soft dark vignette behind copy so folk lines don't cut through text.
-   * Radial fade only — no borders, shadows-as-boxes, or solid panels.
+   * Soft dark vignette behind copy — hugs the real text box (fit-content)
+   * with the same ~32px padding on all sides. Centered gradient for both
+   * left-aligned and centered headers.
    */
   .dark .spotlight-copy {
     position: relative;
     isolation: isolate;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .dark .spotlight-copy--center {
+    margin-inline: auto;
   }
 
   .dark .spotlight-copy::before {
     content: "";
     position: absolute;
-    inset: -2rem -1.5rem;
+    inset: -32px;
     z-index: -1;
     pointer-events: none;
     background: radial-gradient(
-      ellipse 78% 72% at 30% 36%,
-      hsl(var(--background) / 0.96) 0%,
-      hsl(var(--background) / 0.82) 34%,
-      hsl(var(--background) / 0.4) 58%,
-      transparent 76%
+      ellipse 72% 70% at 50% 50%,
+      hsl(var(--background) / 0.9) 0%,
+      hsl(var(--background) / 0.62) 42%,
+      hsl(var(--background) / 0.28) 64%,
+      transparent 78%
     );
   }
 
@@ -148,10 +230,9 @@ body {
   .dark .spotlight-copy .section-title,
   .dark .spotlight-copy .section-subtitle {
     text-shadow:
-      0 0 12px hsl(var(--background) / 1),
-      0 0 24px hsl(var(--background) / 0.92),
-      0 0 40px hsl(var(--background) / 0.65),
-      0 1px 2px hsl(var(--background) / 0.95);
+      0 0 10px hsl(var(--background) / 0.95),
+      0 0 22px hsl(var(--background) / 0.7),
+      0 1px 2px hsl(var(--background) / 0.85);
   }
 
   .tech-chip-daily {

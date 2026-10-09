@@ -1,6 +1,6 @@
 import type { ComponentType, SVGProps } from "react";
 import type { IconType } from "react-icons";
-import { DiAngularSimple } from "react-icons/di";
+import { DiAngularSimple, DiJava } from "react-icons/di";
 import { FaAws } from "react-icons/fa";
 import {
   SiAndroidstudio,
@@ -20,7 +20,6 @@ import {
   SiNumpy,
   SiOcaml,
   SiOpengl,
-  SiOpenjdk,
   SiPandas,
   SiPostgresql,
   SiPostman,
@@ -85,7 +84,7 @@ function IconCursor(props: SVGProps<SVGSVGElement>) {
 }
 
 const techIconMap: Record<string, TechIcon> = {
-  Java: SiOpenjdk,
+  Java: DiJava,
   OCaml: SiOcaml,
   C: IconClang,
   "C#": IconCsharp,

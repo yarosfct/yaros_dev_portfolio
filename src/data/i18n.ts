@@ -148,10 +148,11 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     nav: [
       { id: "hero", label: "Home" },
-      { id: "projects", label: "Projects" },
+      { id: "projects", label: "Selected work" },
       { id: "experience", label: "Experience" },
       { id: "achievements", label: "Achievements" },
-      { id: "about", label: "About" },
+      { id: "about", label: "About me" },
+      { id: "stack", label: "Skills" },
       { id: "contact", label: "Contact" }
     ],
     hero: {
@@ -457,10 +458,11 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     nav: [
       { id: "hero", label: "Início" },
-      { id: "projects", label: "Projetos" },
+      { id: "projects", label: "Trabalho selecionado" },
       { id: "experience", label: "Percurso" },
       { id: "achievements", label: "Prémios" },
-      { id: "about", label: "Sobre" },
+      { id: "about", label: "Sobre mim" },
+      { id: "stack", label: "Competências" },
       { id: "contact", label: "Contacto" }
     ],
     hero: {

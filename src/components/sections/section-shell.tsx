@@ -33,7 +33,7 @@ export function SectionShell({
             {(eyebrow || title || description) && (
               <header
                 className={cn(
-                  "spotlight-copy max-w-3xl space-y-2 md:space-y-3",
+                  "spotlight-copy w-fit max-w-full space-y-2 md:space-y-3",
                   centered && "spotlight-copy--center text-center"
                 )}
               >

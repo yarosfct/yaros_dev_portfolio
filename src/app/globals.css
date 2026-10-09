@@ -201,7 +201,6 @@ body {
     position: relative;
     isolation: isolate;
     width: fit-content;
-    max-width: 100%;
   }
 
   .dark .spotlight-copy--center {

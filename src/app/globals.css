@@ -155,31 +155,57 @@ html[data-spotlight-ready] .page-shell::before {
     );
 }
 
-/* Touch / coarse pointer — ~60vw floating hole, transform glide only */
+/* Touch / coarse pointer — ~85vw floating hole, JS physics sets transform */
 .spotlight-mask--touch {
+  --sx: 70vw;
+  --sy: 30vh;
+  --ss: 1;
   background:
     radial-gradient(
-      circle 30vw at center,
-      hsl(var(--spotlight-wash) / 0.07) 0%,
-      hsl(var(--spotlight-wash) / 0.03) 22%,
-      transparent 42%
+      circle 42.5vw at center,
+      hsl(var(--spotlight-wash) / 0.11) 0%,
+      hsl(var(--spotlight-wash) / 0.05) 24%,
+      transparent 46%
     ),
     radial-gradient(
-      circle 30vw at center,
+      circle 42.5vw at center,
       transparent 0%,
-      transparent 12%,
-      hsl(var(--background) / 0.18) 30%,
-      hsl(var(--background) / 0.55) 48%,
-      hsl(var(--background) / 0.88) 64%,
-      hsl(var(--background) / 0.98) 78%,
-      hsl(var(--background)) 90%,
+      transparent 16%,
+      hsl(var(--background) / 0.12) 32%,
+      hsl(var(--background) / 0.48) 50%,
+      hsl(var(--background) / 0.86) 66%,
+      hsl(var(--background) / 0.97) 80%,
+      hsl(var(--background)) 92%,
       hsl(var(--background)) 100%
     );
-  transition: transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translate3d(var(--sx), var(--sy), 0) scale(var(--ss));
+  transition: none;
 }
 
 .spotlight-mask--touch-instant {
   transition: none;
+  animation: none !important;
+}
+
+/* Slow idle breathe — CSS only while at rest (JS removes class when moving) */
+.spotlight-mask--touch-idle {
+  animation: spotlight-touch-breathe 5.5s ease-in-out infinite;
+}
+
+@keyframes spotlight-touch-breathe {
+  0%,
+  100% {
+    transform: translate3d(var(--sx), var(--sy), 0) scale(1);
+  }
+  50% {
+    transform: translate3d(var(--sx), var(--sy), 0) scale(1.035);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-mask--touch-idle {
+    animation: none;
+  }
 }
 
 /* Dark mask glow — keep the previous blue values exactly */
@@ -207,20 +233,20 @@ html[data-spotlight-ready] .page-shell::before {
 .dark .spotlight-mask--touch:not(.spotlight-mask--sealed) {
   background:
     radial-gradient(
-      circle 30vw at center,
-      rgba(59, 130, 246, 0.05) 0%,
-      rgba(59, 130, 246, 0.02) 18%,
-      transparent 38%
+      circle 42.5vw at center,
+      rgba(59, 130, 246, 0.09) 0%,
+      rgba(59, 130, 246, 0.035) 22%,
+      transparent 44%
     ),
     radial-gradient(
-      circle 30vw at center,
+      circle 42.5vw at center,
       transparent 0%,
-      transparent 12%,
-      hsl(var(--background) / 0.18) 30%,
-      hsl(var(--background) / 0.55) 48%,
-      hsl(var(--background) / 0.88) 64%,
-      hsl(var(--background) / 0.98) 78%,
-      hsl(var(--background)) 90%,
+      transparent 16%,
+      hsl(var(--background) / 0.12) 32%,
+      hsl(var(--background) / 0.48) 50%,
+      hsl(var(--background) / 0.86) 66%,
+      hsl(var(--background) / 0.97) 80%,
+      hsl(var(--background)) 92%,
       hsl(var(--background)) 100%
     );
 }

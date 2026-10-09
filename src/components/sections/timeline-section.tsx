@@ -19,7 +19,7 @@ function EntryCard({
   return (
     <article
       className={cn(
-        "rounded-xl border border-border/70 bg-card/70 p-5 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 md:p-6",
+        "rounded-xl border border-border/70 bg-card p-5 shadow-sm shadow-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 md:p-6 dark:bg-card/70",
         align === "right" && "md:text-right"
       )}
     >

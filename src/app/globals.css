@@ -3,28 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --background: 220 25% 98%;
-  --foreground: 222 47% 11%;
+  /* Porcelain paper — warm off-white, not yellow */
+  --background: 40 22% 96.5%; /* ~#f7f5f0 */
+  --foreground: 222 35% 14%;
   --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
+  --card-foreground: 222 35% 14%;
   --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
-  --primary: 224 82% 58%;
+  --popover-foreground: 222 35% 14%;
+  /* Brighter accent blue — distinct from embroidery-red outlines */
+  --primary: 221 83% 48%;
   --primary-foreground: 210 40% 98%;
-  --secondary: 220 16% 95%;
-  --secondary-foreground: 222 47% 11%;
-  --muted: 220 15% 94%;
-  --muted-foreground: 216 14% 42%;
-  --accent: 220 18% 92%;
-  --accent-foreground: 222 47% 11%;
-  --border: 220 14% 88%;
-  --input: 220 14% 88%;
-  --ring: 224 82% 58%;
+  --secondary: 40 16% 93%;
+  --secondary-foreground: 222 35% 14%;
+  --muted: 40 14% 92%;
+  --muted-foreground: 220 12% 38%;
+  --accent: 40 18% 93%;
+  --accent-foreground: 222 35% 14%;
+  --border: 35 12% 84%;
+  --input: 35 12% 84%;
+  --ring: 221 83% 48%;
   --radius: 1rem;
+  /* Slavic embroidery red — deep crimson (~#b82028) */
+  --folk-outline: 356 70% 42%;
+  /* Soft warm wash under the porcelain spotlight */
+  --spotlight-wash: 12 40% 48%;
 }
 
 .dark {
-  /* Pitch-dark canvas for the folk-outline spotlight */
+  /* Pitch-dark canvas for the folk-outline spotlight — unchanged */
   --background: 230 18% 2.5%;
   --foreground: 210 40% 96%;
   --card: 228 22% 7.5%;
@@ -44,6 +50,7 @@
   --ring: 217 91% 62%;
   /* Pattern outlines: brighter/bluer, still distinct from primary accent */
   --folk-outline: 218 72% 68%;
+  --spotlight-wash: 217 91% 60%;
 }
 
 html {
@@ -52,13 +59,8 @@ html {
 
 body {
   @apply bg-background text-foreground antialiased;
-  background-image: radial-gradient(circle at 20% 0%, hsl(var(--primary) / 0.12), transparent 40%),
-    radial-gradient(circle at 80% 0%, hsl(var(--primary) / 0.08), transparent 35%);
-}
-
-.dark body {
-  background-image: none;
   background-color: hsl(var(--background));
+  background-image: none;
 }
 
 /*
@@ -66,9 +68,21 @@ body {
  * - pattern: normal scrolling background on .page-shell (no giant promoted layer)
  * - mask: fixed 300vmax radial hole, moved only via translate3d on pointermove
  */
+
+/* Light — porcelain + embroidery-red tile */
+.page-shell {
+  background-color: hsl(var(--background));
+  background-image:
+    linear-gradient(hsl(var(--background) / 0.42), hsl(var(--background) / 0.42)),
+    url("/patterns/folk-outline-red.webp");
+  background-repeat: repeat;
+  background-size: auto, 800px 800px;
+  background-position: 0 0, 0 0;
+}
+
+/* Dark — unchanged blue tile + dim overlay */
 .dark .page-shell {
   background-color: hsl(var(--background));
-  /* Dim overlay + tile — attachment: scroll (default), no will-change / translateZ */
   background-image:
     linear-gradient(hsl(var(--background) / 0.45), hsl(var(--background) / 0.45)),
     url("/patterns/folk-outline.webp");
@@ -77,6 +91,7 @@ body {
   background-position: 0 0, 0 0;
 }
 
+/* Light mask: warm wash + porcelain hole (matches --background exactly at rim) */
 .spotlight-mask {
   position: fixed;
   top: -150vmax;
@@ -86,7 +101,46 @@ body {
   z-index: 1;
   pointer-events: none;
   transform: translate3d(55vw, 35vh, 0);
-  /* Soft hole at center → exact page bg at rim (no visible box edge) */
+  background:
+    radial-gradient(
+      circle 270px at center,
+      hsl(var(--spotlight-wash) / 0.07) 0%,
+      hsl(var(--spotlight-wash) / 0.03) 22%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle 270px at center,
+      transparent 0%,
+      transparent 14%,
+      hsl(var(--background) / 0.15) 32%,
+      hsl(var(--background) / 0.55) 48%,
+      hsl(var(--background) / 0.88) 64%,
+      hsl(var(--background) / 0.98) 78%,
+      hsl(var(--background)) 90%,
+      hsl(var(--background)) 100%
+    );
+}
+
+.spotlight-mask--static {
+  background:
+    radial-gradient(
+      circle 220px at center,
+      hsl(var(--spotlight-wash) / 0.05) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle 220px at center,
+      transparent 0%,
+      transparent 10%,
+      hsl(var(--background) / 0.35) 36%,
+      hsl(var(--background) / 0.82) 58%,
+      hsl(var(--background)) 78%,
+      hsl(var(--background)) 100%
+    );
+}
+
+/* Dark mask glow — keep the previous blue values exactly */
+.dark .spotlight-mask {
   background:
     radial-gradient(
       circle 270px at center,
@@ -107,8 +161,7 @@ body {
     );
 }
 
-/* Touch / coarse pointer: soft static reveal, no tracking */
-.spotlight-mask--static {
+.dark .spotlight-mask--static {
   background:
     radial-gradient(
       circle 220px at center,
@@ -129,8 +182,6 @@ body {
 /*
  * Section reveal — opacity + translateY only, once.
  * Default (ssr / no-js): fully visible. Never re-hide after --in.
- * Animate header then body (slight stagger); never animate the section
- * wrapper itself (avoids double opacity).
  */
 .section-reveal--pending .section-reveal__header,
 .section-reveal--pending .section-reveal__body {
@@ -138,7 +189,6 @@ body {
   transform: translateY(14px);
 }
 
-/* Already on-screen at mount — stay visible, never animate from 0 */
 .section-reveal--shown .section-reveal__header,
 .section-reveal--shown .section-reveal__body {
   opacity: 1;
@@ -209,13 +259,20 @@ body {
   }
 
   .surface {
-    @apply border border-border/80 bg-card/70 shadow-sm backdrop-blur;
+    @apply border border-border/80 bg-card/90 shadow-sm;
   }
 
   .dark .surface {
     @apply border-border/90 bg-card/85;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  /* Light cards over porcelain — solid white, soft border/shadow */
+  :root:not(.dark) main [class*="backdrop-blur"],
+  :root:not(.dark) header [class*="backdrop-blur"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   /* Solidify dark cards/nav that sit over the spotlight (skip modal overlays). */
@@ -226,20 +283,20 @@ body {
   }
 
   /*
-   * Soft dark vignette behind copy — radial only (no filter:blur).
-   * isolation + z-index:-1 keeps the fade strictly under the text glyphs.
+   * Soft vignette behind copy — both themes, uses --background (porcelain or pitch).
+   * isolation + z-index:-1 keeps the fade under the glyphs.
    */
-  .dark .spotlight-copy {
+  .spotlight-copy {
     position: relative;
     isolation: isolate;
     width: fit-content;
   }
 
-  .dark .spotlight-copy--center {
+  .spotlight-copy--center {
     margin-inline: auto;
   }
 
-  .dark .spotlight-copy::before {
+  .spotlight-copy::before {
     content: "";
     position: absolute;
     inset: -32px;
@@ -247,8 +304,8 @@ body {
     pointer-events: none;
     background: radial-gradient(
       ellipse farthest-side at 50% 50%,
-      hsl(var(--background) / 0.88) 0%,
-      hsl(var(--background) / 0.55) 52%,
+      hsl(var(--background) / 0.9) 0%,
+      hsl(var(--background) / 0.58) 52%,
       transparent 100%
     );
   }
@@ -257,7 +314,7 @@ body {
     position: relative;
     border-color: hsl(var(--primary) / 0.55);
     background:
-      linear-gradient(hsl(var(--background) / 0.72), hsl(var(--background) / 0.72)) padding-box,
+      linear-gradient(hsl(var(--card) / 0.96), hsl(var(--card) / 0.96)) padding-box,
       linear-gradient(
           120deg,
           hsl(var(--primary) / 0.95),
@@ -269,7 +326,7 @@ body {
     color: hsl(var(--foreground));
     box-shadow:
       0 0 0 1px hsl(var(--primary) / 0.12),
-      0 0 22px hsl(var(--primary) / 0.18);
+      0 0 18px hsl(var(--primary) / 0.16);
     animation: tech-chip-glow 3.2s ease-in-out infinite;
   }
 
@@ -278,7 +335,7 @@ body {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.16), transparent 55%);
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.14), transparent 55%);
     pointer-events: none;
   }
 

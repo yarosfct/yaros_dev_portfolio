@@ -10,7 +10,7 @@ type AboutSectionProps = {
 };
 
 const cardClass =
-  "rounded-2xl border border-border/80 bg-card/75 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10";
+  "rounded-2xl border border-border/80 bg-card shadow-sm shadow-black/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10 dark:bg-card/75";
 
 function LinkedIntro({
   text,

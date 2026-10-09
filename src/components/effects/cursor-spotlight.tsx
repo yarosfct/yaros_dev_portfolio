@@ -24,10 +24,10 @@ function useMedia(query: string) {
 }
 
 /**
- * Dark-theme cursor spotlight.
- * Pattern is a normal scrolling background on the page shell (no giant
- * promoted layer). This component only renders the fixed radial mask,
- * moved via translate3d on pointermove — no scroll listener.
+ * Cursor spotlight for dark (pitch + blue folk) and light (porcelain + red folk).
+ * Pattern lives on .page-shell as a scrolling background. This component only
+ * renders the fixed radial mask, moved via translate3d — no scroll listener.
+ * Overlay colors come from CSS variables so theme toggles apply instantly.
  */
 export function CursorSpotlight() {
   const { resolvedTheme } = useTheme();
@@ -39,7 +39,7 @@ export function CursorSpotlight() {
 
   const canHover = useMedia("(hover: hover) and (pointer: fine)");
   const reducedMotion = useMedia("(prefers-reduced-motion: reduce)");
-  const isDark = resolvedTheme === "dark";
+  const themeReady = resolvedTheme === "dark" || resolvedTheme === "light";
 
   useEffect(() => {
     setMounted(true);
@@ -50,7 +50,7 @@ export function CursorSpotlight() {
   }, []);
 
   useEffect(() => {
-    if (!mounted || !isDark) return undefined;
+    if (!mounted || !themeReady) return undefined;
 
     const mask = maskRef.current;
     if (!mask) return undefined;
@@ -121,9 +121,9 @@ export function CursorSpotlight() {
       window.removeEventListener("pointermove", onPointerMove);
       document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, [mounted, isDark, canHover, reducedMotion]);
+  }, [mounted, themeReady, canHover, reducedMotion]);
 
-  if (!mounted || !isDark) return null;
+  if (!mounted || !themeReady) return null;
 
   return (
     <div

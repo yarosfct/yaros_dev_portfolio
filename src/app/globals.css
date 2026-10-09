@@ -121,48 +121,36 @@ body {
    * Soft dark vignette behind copy so folk lines don't cut through text.
    * Radial fade only — no borders, shadows-as-boxes, or solid panels.
    */
-  .dark #hero .space-y-4,
-  .dark main section > .container > header {
+  .dark .spotlight-copy {
     position: relative;
     isolation: isolate;
   }
 
-  .dark #hero .space-y-4::before,
-  .dark main section > .container > header::before {
+  .dark .spotlight-copy::before {
     content: "";
     position: absolute;
-    inset: -1.75rem -1.25rem;
+    inset: -2rem -1.5rem;
     z-index: -1;
     pointer-events: none;
     background: radial-gradient(
-      ellipse 72% 68% at 32% 38%,
-      hsl(var(--background) / 0.9) 0%,
-      hsl(var(--background) / 0.62) 38%,
-      hsl(var(--background) / 0.28) 62%,
-      transparent 78%
+      ellipse 78% 72% at 30% 36%,
+      hsl(var(--background) / 0.96) 0%,
+      hsl(var(--background) / 0.82) 34%,
+      hsl(var(--background) / 0.4) 58%,
+      transparent 76%
     );
   }
 
-  .dark #hero h1,
-  .dark #hero p,
-  .dark .section-title,
-  .dark .section-subtitle,
-  .dark .section-copy,
-  .dark main h2,
-  .dark main h3 {
-    text-shadow:
-      0 0 14px hsl(var(--background) / 0.98),
-      0 0 28px hsl(var(--background) / 0.85),
-      0 0 44px hsl(var(--background) / 0.55),
-      0 1px 2px hsl(var(--background) / 0.9);
-  }
-
-  .dark #hero .text-primary,
-  .dark main .text-primary {
+  .dark .spotlight-copy h1,
+  .dark .spotlight-copy h2,
+  .dark .spotlight-copy h3,
+  .dark .spotlight-copy p,
+  .dark .spotlight-copy .section-title,
+  .dark .spotlight-copy .section-subtitle {
     text-shadow:
       0 0 12px hsl(var(--background) / 1),
-      0 0 26px hsl(var(--background) / 0.9),
-      0 0 42px hsl(var(--background) / 0.6),
+      0 0 24px hsl(var(--background) / 0.92),
+      0 0 40px hsl(var(--background) / 0.65),
       0 1px 2px hsl(var(--background) / 0.95);
   }
 

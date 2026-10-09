@@ -23,7 +23,7 @@ export function HeroSection({ content }: HeroSectionProps) {
               {content.ui.availability}
             </div>
 
-            <div className="space-y-4 md:space-y-5">
+            <div className="spotlight-copy space-y-4 md:space-y-5">
               <h1 className="font-[var(--font-display)] text-balance text-4xl font-semibold tracking-tight text-foreground md:text-6xl md:leading-[1.05]">
                 {content.hero.name}
               </h1>

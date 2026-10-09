@@ -201,6 +201,10 @@ body {
     position: relative;
     isolation: isolate;
     width: fit-content;
+    text-shadow:
+      0 0 10px hsl(var(--background) / 0.95),
+      0 0 22px hsl(var(--background) / 0.7),
+      0 1px 2px hsl(var(--background) / 0.85);
   }
 
   .dark .spotlight-copy--center {
@@ -220,18 +224,6 @@ body {
       hsl(var(--background) / 0.28) 64%,
       transparent 78%
     );
-  }
-
-  .dark .spotlight-copy h1,
-  .dark .spotlight-copy h2,
-  .dark .spotlight-copy h3,
-  .dark .spotlight-copy p,
-  .dark .spotlight-copy .section-title,
-  .dark .spotlight-copy .section-subtitle {
-    text-shadow:
-      0 0 10px hsl(var(--background) / 0.95),
-      0 0 22px hsl(var(--background) / 0.7),
-      0 1px 2px hsl(var(--background) / 0.85);
   }
 
   .tech-chip-daily {

@@ -31,17 +31,37 @@ export function SectionShell({
         {(title || description || headerExtra) && (
           <div className={cn("space-y-2 md:space-y-3", centered && "text-center")}>
             {(eyebrow || title || description) && (
-              <header
-                className={cn(
-                  "spotlight-copy w-fit max-w-full space-y-2 md:space-y-3",
-                  centered && "spotlight-copy--center text-center"
-                )}
-              >
+              <header className={cn("space-y-2 md:space-y-3", centered && "text-center")}>
                 {eyebrow && (
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
+                  <p
+                    className={cn(
+                      "spotlight-copy w-fit max-w-full text-xs font-semibold uppercase tracking-[0.2em] text-primary",
+                      centered && "spotlight-copy--center"
+                    )}
+                  >
+                    {eyebrow}
+                  </p>
                 )}
-                {title && <h2 className="section-title font-[var(--font-display)] text-balance">{title}</h2>}
-                {description && <p className="section-subtitle text-balance">{description}</p>}
+                {title && (
+                  <h2
+                    className={cn(
+                      "spotlight-copy section-title w-fit max-w-full font-[var(--font-display)] text-balance",
+                      centered && "spotlight-copy--center"
+                    )}
+                  >
+                    {title}
+                  </h2>
+                )}
+                {description && (
+                  <p
+                    className={cn(
+                      "spotlight-copy section-subtitle w-fit max-w-3xl text-balance",
+                      centered && "spotlight-copy--center"
+                    )}
+                  >
+                    {description}
+                  </p>
+                )}
               </header>
             )}
             {headerExtra}

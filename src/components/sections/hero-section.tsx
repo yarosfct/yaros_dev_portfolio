@@ -11,7 +11,7 @@ type HeroSectionProps = {
 };
 
 const highlightCardClass =
-  "rounded-2xl border border-border/80 bg-card p-4 shadow-sm shadow-black/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10 md:p-5 dark:bg-card/75";
+  "card-surface rounded-2xl border border-border/80 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10 md:p-5 dark:bg-card/75 dark:shadow-sm";
 
 export function HeroSection({ content }: HeroSectionProps) {
   return (
@@ -19,7 +19,7 @@ export function HeroSection({ content }: HeroSectionProps) {
       <div className="container">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_auto] lg:gap-14">
           <div className="space-y-8 md:space-y-10">
-            <div className="inline-flex items-center rounded-full border border-border/80 bg-card px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm shadow-black/[0.03] dark:bg-card/75">
+            <div className="card-surface-soft inline-flex items-center rounded-full border border-border/80 px-4 py-1.5 text-xs font-medium text-muted-foreground dark:bg-card/75 dark:shadow-sm">
               {content.ui.availability}
             </div>
 

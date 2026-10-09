@@ -25,7 +25,7 @@ export function StackSection({ content }: StackSectionProps) {
         </div>
       }
     >
-      <div className="divide-y divide-border/70 overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm shadow-black/[0.03] dark:bg-card/75">
+      <div className="card-surface divide-y divide-border/70 overflow-hidden rounded-2xl border border-border/80 dark:bg-card/75 dark:shadow-sm">
         {content.techGroups.map((group, index) => {
           const HeaderIcon = groupHeaderIcons[index % groupHeaderIcons.length];
           const items = sortGroupItems(group.items, dailyDrivers);
@@ -61,7 +61,7 @@ export function StackSection({ content }: StackSectionProps) {
                           "group/chip inline-flex max-w-full items-center gap-2 rounded-xl px-2.5 py-1.5 text-xs transition-all duration-200 md:px-2.5 md:py-1.5 md:text-[0.8125rem]",
                           isDaily
                             ? "tech-chip-daily font-semibold hover:-translate-y-0.5"
-                            : "border border-border/80 bg-background/60 text-foreground/85 hover:-translate-y-0.5 hover:border-primary/30 hover:bg-background/85 hover:text-foreground"
+                            : "card-surface-soft border border-border/80 text-foreground/85 hover:-translate-y-0.5 hover:border-primary/30 hover:text-foreground dark:bg-background/60 dark:hover:bg-background/85"
                         )}
                       >
                         <Icon

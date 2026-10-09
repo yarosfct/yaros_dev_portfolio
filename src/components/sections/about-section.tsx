@@ -10,7 +10,7 @@ type AboutSectionProps = {
 };
 
 const cardClass =
-  "rounded-2xl border border-border/80 bg-card shadow-sm shadow-black/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10 dark:bg-card/75";
+  "card-surface rounded-2xl border border-border/80 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10 dark:bg-card/75 dark:shadow-sm";
 
 function LinkedIntro({
   text,
@@ -89,7 +89,7 @@ export function AboutSection({ content }: AboutSectionProps) {
             {about.languages.map((language) => (
               <li
                 key={language.name}
-                className="flex items-baseline justify-between gap-3 rounded-xl border border-border/60 bg-background/35 px-3.5 py-2.5"
+                className="card-surface-soft flex items-baseline justify-between gap-3 rounded-xl border border-border/60 px-3.5 py-2.5 dark:bg-background/35"
               >
                 <span className="text-sm font-medium text-foreground">{language.name}</span>
                 <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{language.level}</span>

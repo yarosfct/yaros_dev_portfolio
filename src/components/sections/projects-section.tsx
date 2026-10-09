@@ -102,14 +102,14 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
     return (
       <Card
         key={project.id}
-        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm shadow-black/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10 dark:bg-card/75"
+        className="card-surface group flex h-full flex-col overflow-hidden rounded-2xl border border-border/80 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10 dark:bg-card/75 dark:shadow-sm"
       >
         {mainImage ? (
           <button
             type="button"
             onClick={() => openLightbox(media, project.title)}
             aria-label={`${content.ui.expandLabel}: ${project.title}`}
-            className="relative block w-full cursor-pointer overflow-hidden border-b border-border/80 bg-muted/20 text-left"
+            className="relative block w-full cursor-pointer overflow-hidden border-b border-border/80 bg-white text-left dark:bg-muted/20"
           >
             <div className="relative aspect-[16/10]">
               <Image
@@ -124,7 +124,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                 )}
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/45 via-transparent to-transparent" />
-              <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/90 px-2.5 py-1 text-[11px] font-medium text-foreground">
+              <div className="card-surface-nav pointer-events-none absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-border/80 px-2.5 py-1 text-[11px] font-medium text-foreground dark:bg-background/90">
                 <Maximize2 className="h-3.5 w-3.5" />
                 {mediaCount > 1
                   ? content.ui.screenshotsLabel.replace("{count}", String(mediaCount))
@@ -159,7 +159,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
           {project.stack.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
               {project.stack.map((item) => (
-                <Badge key={item} variant="outline" className="border-border/70 bg-background/25 text-[11px]">
+                <Badge key={item} variant="outline" className="card-surface-soft border-border/70 text-[11px] dark:bg-background/25">
                   {item}
                 </Badge>
               ))}

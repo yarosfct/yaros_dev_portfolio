@@ -19,7 +19,7 @@ function EntryCard({
   return (
     <article
       className={cn(
-        "rounded-xl border border-border/70 bg-card p-5 shadow-sm shadow-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 md:p-6 dark:bg-card/70",
+        "card-surface rounded-xl border border-border/70 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 md:p-6 dark:bg-card/70 dark:shadow-sm",
         align === "right" && "md:text-right"
       )}
     >
@@ -97,7 +97,7 @@ export function TimelineSection({ id, content, items }: TimelineSectionProps) {
                   >
                     <div
                       className={cn(
-                        "rounded-lg border border-border/50 bg-muted/40 px-3 py-2",
+                        "card-surface-soft rounded-lg border border-border/50 px-3 py-2 dark:bg-muted/40",
                         cardOnLeft ? "text-left" : "text-right"
                       )}
                     >

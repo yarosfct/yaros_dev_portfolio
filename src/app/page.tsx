@@ -2,12 +2,15 @@
 
 import { useMemo } from "react";
 
+import { CursorSpotlight } from "@/components/effects/cursor-spotlight";
 import { Navbar } from "@/components/layout/navbar";
 import { AboutSection } from "@/components/sections/about-section";
+import { AchievementsSection } from "@/components/sections/achievements-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { StackSection } from "@/components/sections/stack-section";
+import { TimelineSection } from "@/components/sections/timeline-section";
 import { getDictionary } from "@/data/i18n";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -16,16 +19,23 @@ export default function HomePage() {
   const content = useMemo(() => getDictionary(locale), [locale]);
 
   return (
-    <div className="relative">
-      <Navbar content={content} locale={locale} setLocale={setLocale} />
-      <main>
-        <HeroSection content={content} />
-        <ProjectsSection content={content} />
-        <StackSection content={content} />
-        <AboutSection content={content} />
-        <ContactSection content={content} />
-      </main>
-      <footer className="container pb-10 pt-4 text-sm text-muted-foreground">{content.footer}</footer>
+    <div className="page-shell relative">
+      <CursorSpotlight />
+      <div className="relative z-10">
+        <Navbar content={content} locale={locale} setLocale={setLocale} />
+        <main>
+          <HeroSection content={content} />
+          <ProjectsSection content={content} />
+          <TimelineSection id="experience" content={content} items={content.experience} />
+          <AchievementsSection content={content} />
+          <AboutSection content={content} />
+          <StackSection content={content} />
+          <ContactSection content={content} />
+        </main>
+        <footer className="container pb-8 pt-2 text-center text-sm text-muted-foreground md:pb-10 md:pt-4 md:text-left">
+          {content.footer}
+        </footer>
+      </div>
     </div>
   );
 }

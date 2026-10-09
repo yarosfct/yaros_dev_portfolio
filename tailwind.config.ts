@@ -10,7 +10,11 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "1.25rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.25rem",
+        md: "1.25rem"
+      },
       screens: {
         "2xl": "1280px"
       }
@@ -39,15 +43,6 @@ const config: Config = {
         xl: "var(--radius)",
         lg: "calc(var(--radius) - 2px)",
         md: "calc(var(--radius) - 4px)"
-      },
-      keyframes: {
-        "fade-in-up": {
-          "0%": { opacity: "0", transform: "translateY(12px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" }
-        }
-      },
-      animation: {
-        "fade-in-up": "fade-in-up 0.6s ease-out forwards"
       }
     }
   },

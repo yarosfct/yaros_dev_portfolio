@@ -62,12 +62,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   @apply bg-background text-foreground antialiased;
   background-color: hsl(var(--background));
   background-image: none;
+  overflow-x: clip;
 }
 
 /*
@@ -254,11 +256,11 @@ body {
   }
 
   .section-title {
-    @apply text-2xl font-semibold tracking-tight md:text-3xl;
+    @apply text-[1.65rem] font-semibold tracking-tight md:text-3xl;
   }
 
   .section-subtitle {
-    @apply text-base font-medium leading-relaxed text-muted-foreground md:text-lg;
+    @apply text-[0.9375rem] font-medium leading-relaxed text-muted-foreground md:text-lg;
   }
 
   .section-copy {

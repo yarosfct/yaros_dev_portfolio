@@ -31,13 +31,13 @@ export function SectionShell({
       ref={ref}
       data-reveal={state}
       className={cn(
-        "section-reveal scroll-mt-28 py-14 md:py-20",
+        "section-reveal scroll-mt-24 py-12 md:scroll-mt-28 md:py-20",
         state === "pending" && "section-reveal--pending",
         state === "in" && "section-reveal--in",
         state === "shown" && "section-reveal--shown"
       )}
     >
-      <div className="container space-y-10 md:space-y-12">
+      <div className="container space-y-8 md:space-y-12">
         {(title || description || headerExtra) && (
           <div
             className={cn(

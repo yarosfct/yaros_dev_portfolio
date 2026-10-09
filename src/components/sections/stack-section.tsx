@@ -33,7 +33,7 @@ export function StackSection({ content }: StackSectionProps) {
           return (
             <section
               key={group.title}
-              className="flex flex-col gap-2.5 px-4 py-3 transition-colors duration-200 hover:bg-primary/[0.03] sm:px-5 md:flex-row md:items-center md:gap-5 md:px-6 md:py-3.5"
+              className="flex flex-col gap-3 px-4 py-3.5 transition-colors duration-200 hover:bg-primary/[0.03] sm:px-5 md:flex-row md:items-center md:gap-5 md:px-6 md:py-3.5"
             >
               <div className="flex min-w-0 items-center gap-2.5 md:w-48 md:shrink-0 lg:w-52">
                 <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary">
@@ -49,7 +49,7 @@ export function StackSection({ content }: StackSectionProps) {
                 </div>
               </div>
 
-              <ul className="flex min-w-0 flex-1 flex-wrap content-center gap-1.5 md:gap-2">
+              <ul className="flex min-w-0 flex-1 flex-wrap content-center gap-2 md:gap-2">
                 {items.map((item) => {
                   const Icon = getTechIcon(item);
                   const isDaily = dailyDrivers.has(item);
@@ -58,7 +58,7 @@ export function StackSection({ content }: StackSectionProps) {
                     <li key={item} className="max-w-full">
                       <span
                         className={cn(
-                          "group/chip inline-flex max-w-full items-center gap-2 rounded-xl px-2.5 py-1.5 text-xs transition-all duration-200 md:px-2.5 md:py-1.5 md:text-[0.8125rem]",
+                          "group/chip inline-flex min-h-9 max-w-full items-center gap-2 rounded-xl px-2.5 py-2 text-xs transition-all duration-200 md:min-h-0 md:px-2.5 md:py-1.5 md:text-[0.8125rem]",
                           isDaily
                             ? "tech-chip-daily font-semibold hover:-translate-y-0.5"
                             : "card-surface-soft border border-border/80 text-foreground/85 hover:-translate-y-0.5 hover:border-primary/30 hover:text-foreground dark:bg-background/60 dark:hover:bg-background/85"

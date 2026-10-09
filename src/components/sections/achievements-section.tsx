@@ -18,7 +18,7 @@ export function AchievementsSection({ content }: AchievementsSectionProps) {
       <div className="grid gap-4 md:grid-cols-2">
         {content.achievements.map((achievement) => (
           <Card key={achievement.title} className="surface rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10">
-            <CardContent className="space-y-4 p-6">
+            <CardContent className="space-y-4 p-4 md:p-6">
               {achievement.image && (
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/70 bg-muted/30">
                   <Image

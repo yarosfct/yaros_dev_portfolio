@@ -32,7 +32,9 @@ export default function HomePage() {
           <StackSection content={content} />
           <ContactSection content={content} />
         </main>
-        <footer className="container pb-10 pt-4 text-sm text-muted-foreground">{content.footer}</footer>
+        <footer className="container pb-8 pt-2 text-center text-sm text-muted-foreground md:pb-10 md:pt-4 md:text-left">
+          {content.footer}
+        </footer>
       </div>
     </div>
   );

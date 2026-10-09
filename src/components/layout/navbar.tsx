@@ -131,12 +131,12 @@ export function Navbar({ content, locale, setLocale }: NavbarProps) {
 
   return (
     <header data-site-nav className="fixed inset-x-0 top-0 z-50">
-      <div className="container pt-4">
-        <div className="surface rounded-2xl px-4 md:px-5">
-          <div className="flex h-14 items-center justify-between gap-3">
+      <div className="container pt-3 md:pt-4">
+        <div className="surface rounded-2xl px-3 md:px-5">
+          <div className="flex h-12 items-center justify-between gap-2 md:h-14 md:gap-3">
             <a
               href="#hero"
-              className="font-[var(--font-display)] text-sm font-bold tracking-[0.14em] text-primary"
+              className="inline-flex min-h-10 min-w-10 items-center font-[var(--font-display)] text-sm font-bold tracking-[0.14em] text-primary"
               onClick={(event) => onNavClick(event, "hero")}
             >
               YH
@@ -173,7 +173,7 @@ export function Navbar({ content, locale, setLocale }: NavbarProps) {
               ))}
             </nav>
 
-            <div className="flex items-center gap-1.5 md:gap-2">
+            <div className="flex items-center gap-1 md:gap-2">
               <LanguageToggle locale={locale} setLocale={setLocale} label={content.ui.languageLabel} />
               <ThemeToggle label={content.ui.themeLabel} />
               <a
@@ -190,7 +190,7 @@ export function Navbar({ content, locale, setLocale }: NavbarProps) {
               </a>
               <button
                 type="button"
-                className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "h-9 w-9 rounded-full p-0 md:hidden")}
+                className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "h-10 w-10 rounded-full p-0 md:hidden")}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-nav"
                 aria-label={menuOpen ? content.ui.closeMenu : content.ui.openMenu}
@@ -202,15 +202,15 @@ export function Navbar({ content, locale, setLocale }: NavbarProps) {
           </div>
 
           {menuOpen && (
-            <nav id="mobile-nav" aria-label={content.ui.sectionsLabel} className="flex flex-col gap-1 pb-3 md:hidden">
+            <nav id="mobile-nav" aria-label={content.ui.sectionsLabel} className="flex flex-col gap-0.5 pb-3 pt-1 md:hidden">
               {content.nav.map((item) => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
                   className={cn(
-                    "rounded-lg px-3 py-2 text-sm transition-colors",
+                    "inline-flex min-h-10 items-center rounded-lg px-3 py-2.5 text-sm transition-colors",
                     activeSection === item.id
-                      ? "bg-primary/15 text-foreground"
+                      ? "bg-primary/15 font-medium text-foreground"
                       : "text-muted-foreground hover:bg-accent/60 hover:text-foreground"
                   )}
                   aria-current={activeSection === item.id ? "true" : undefined}

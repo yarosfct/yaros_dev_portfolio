@@ -111,7 +111,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
             aria-label={`${content.ui.expandLabel}: ${project.title}`}
             className="relative block w-full cursor-pointer overflow-hidden border-b border-border/80 bg-white text-left dark:bg-muted/20"
           >
-            <div className="relative aspect-[16/10]">
+            <div className="relative aspect-[16/9] md:aspect-[16/10]">
               <Image
                 src={mainImage}
                 alt={project.imageAlt ?? `${project.title} preview`}
@@ -124,11 +124,13 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                 )}
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/45 via-transparent to-transparent" />
-              <div className="card-surface-nav pointer-events-none absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-border/80 px-2.5 py-1 text-[11px] font-medium text-foreground dark:bg-background/90">
-                <Maximize2 className="h-3.5 w-3.5" />
-                {mediaCount > 1
-                  ? content.ui.screenshotsLabel.replace("{count}", String(mediaCount))
-                  : content.ui.expandLabel}
+              <div className="card-surface-nav pointer-events-none absolute right-2.5 top-2.5 inline-flex max-w-[calc(100%-1.25rem)] items-center gap-1.5 truncate rounded-full border border-border/80 px-2.5 py-1 text-[11px] font-medium text-foreground dark:bg-background/90">
+                <Maximize2 className="h-3.5 w-3.5 shrink-0" />
+                <span className="truncate">
+                  {mediaCount > 1
+                    ? content.ui.screenshotsLabel.replace("{count}", String(mediaCount))
+                    : content.ui.expandLabel}
+                </span>
               </div>
             </div>
           </button>
@@ -143,11 +145,11 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
           </div>
         )}
 
-        <CardHeader className="space-y-3 p-5">
+        <CardHeader className="space-y-3 p-4 md:p-5">
           <div className="flex flex-col items-start gap-2.5 sm:flex-row sm:items-start sm:justify-between">
             <CardTitle className="font-[var(--font-display)] text-xl leading-tight">{project.title}</CardTitle>
             {project.role && (
-              <p className="shrink-0 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary">
+              <p className="max-w-full shrink-0 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[11px] font-medium leading-snug text-primary">
                 {project.role}
               </p>
             )}
@@ -155,7 +157,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
           <CardDescription className="text-sm leading-relaxed">{project.summary}</CardDescription>
         </CardHeader>
 
-        <CardContent className="mt-auto space-y-3 p-5 pt-0 md:p-5 md:pt-0">
+        <CardContent className="mt-auto space-y-3 p-4 pt-0 md:p-5 md:pt-0">
           {project.stack.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
               {project.stack.map((item) => (
@@ -173,7 +175,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                   href={project.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-border/70 px-2.5 py-1.5 text-sm text-primary transition-all duration-200 hover:border-primary/30 hover:bg-primary/5"
+                  className="inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-md border border-border/70 px-3 py-2 text-sm text-primary transition-all duration-200 hover:border-primary/30 hover:bg-primary/5"
                 >
                   <Github className="h-4 w-4" /> GitHub
                 </a>
@@ -183,7 +185,7 @@ export function ProjectsSection({ content }: ProjectsSectionProps) {
                   href={project.demo}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-all duration-200 hover:border-primary/55 hover:bg-primary/15"
+                  className="inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-sm font-medium text-primary transition-all duration-200 hover:border-primary/55 hover:bg-primary/15"
                 >
                   <ExternalLink className="h-4 w-4" /> {content.ui.demoLabel}
                 </a>

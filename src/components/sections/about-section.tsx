@@ -56,7 +56,7 @@ export function AboutSection({ content }: AboutSectionProps) {
   return (
     <SectionShell id="about" {...heading}>
       <div className="grid gap-4 lg:grid-cols-12">
-        <article className={cn(cardClass, "flex flex-col justify-center p-6 md:p-7 lg:col-span-5")}>
+        <article className={cn(cardClass, "flex flex-col justify-center p-5 md:p-7 lg:col-span-5")}>
           <div className="space-y-4">
             {about.intro.map((paragraph) => (
               <p key={paragraph} className="text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -66,14 +66,14 @@ export function AboutSection({ content }: AboutSectionProps) {
           </div>
         </article>
 
-        <blockquote className={cn(cardClass, "relative overflow-hidden p-6 md:p-7 lg:col-span-7")}>
+        <blockquote className={cn(cardClass, "relative overflow-hidden p-5 md:p-7 lg:col-span-7")}>
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-transparent"
           />
           <div className="relative space-y-4">
             <Quote className="h-5 w-5 text-primary" aria-hidden />
-            <p className="font-[var(--font-display)] text-2xl font-semibold leading-snug tracking-tight text-foreground md:text-3xl">
+            <p className="font-[var(--font-display)] text-xl font-semibold leading-snug tracking-tight text-foreground md:text-3xl">
               “{about.quote.text}”
             </p>
             {about.quote.latin && (
@@ -83,9 +83,9 @@ export function AboutSection({ content }: AboutSectionProps) {
           </div>
         </blockquote>
 
-        <article className={cn(cardClass, "p-6 md:p-7 lg:col-span-4")}>
+        <article className={cn(cardClass, "p-5 md:p-7 lg:col-span-4")}>
           <h3 className="font-[var(--font-display)] text-lg font-semibold tracking-tight">{about.languagesLabel}</h3>
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+          <ul className="mt-4 grid gap-3">
             {about.languages.map((language) => (
               <li
                 key={language.name}
@@ -98,7 +98,7 @@ export function AboutSection({ content }: AboutSectionProps) {
           </ul>
         </article>
 
-        <div className="grid gap-4 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3 lg:col-span-8">
           {about.highlights.map((highlight, index) => {
             const Icon = highlightIcons[index % highlightIcons.length];
 

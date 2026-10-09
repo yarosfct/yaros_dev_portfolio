@@ -38,7 +38,7 @@ function EntryCard({
           {item.link.label}
         </a>
       )}
-      <p className="mt-4 border-t border-border/50 pt-3 text-sm font-medium text-muted-foreground/80 md:text-base">
+      <p className="mt-4 border-t border-border/50 pt-3 text-sm font-medium text-muted-foreground/80 md:text-base max-md:mt-3">
         {item.period}
       </p>
     </article>
@@ -71,7 +71,7 @@ export function TimelineSection({ id, content, items }: TimelineSectionProps) {
                   className="absolute left-3 top-6 z-10 h-2.5 w-2.5 -translate-x-1/2 rounded-full border border-primary/40 bg-primary ring-4 ring-background md:left-1/2"
                 />
 
-                {/* Mobile */}
+                {/* Mobile — date once inside the card; left rail + dot only */}
                 <div className="pl-8 md:hidden">
                   <EntryCard item={item} align="left" />
                 </div>

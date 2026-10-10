@@ -25,7 +25,7 @@ export function StackSection({ content }: StackSectionProps) {
         </div>
       }
     >
-      <div className="card-surface divide-y divide-border/70 overflow-hidden rounded-2xl border border-border/80 dark:bg-card/75 dark:shadow-sm">
+      <div className="skills-panel card-surface divide-y divide-border/70 overflow-hidden rounded-2xl border border-border/80 dark:bg-card/75 dark:shadow-sm">
         {content.techGroups.map((group, index) => {
           const HeaderIcon = groupHeaderIcons[index % groupHeaderIcons.length];
           const items = sortGroupItems(group.items, dailyDrivers);

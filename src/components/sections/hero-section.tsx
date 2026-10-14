@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight, Github, Mail } from "lucide-react";
 
+import { CvDownloads } from "@/components/cv-downloads";
 import { PortfolioDictionary } from "@/data/i18n";
 import { cn } from "@/lib/utils";
 
@@ -93,6 +94,8 @@ export function HeroSection({ content }: HeroSectionProps) {
                 <span className="hidden md:inline">{content.hero.ctas.github}</span>
               </a>
             </div>
+
+            <CvDownloads content={content} layout="hero" />
 
             <div className="mx-auto grid gap-3 sm:grid-cols-2 sm:max-w-lg md:mx-0">
               {content.hero.highlights.map((item) => {

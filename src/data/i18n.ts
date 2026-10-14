@@ -41,7 +41,14 @@ type Contact = {
   linkedin: string;
   github: string;
   location: string;
-  cv?: { href: string; label: string };
+};
+
+type CvOption = {
+  /** Compact label for the hero buttons. */
+  shortLabel: string;
+  /** Fuller label for the contact rows. */
+  label: string;
+  ariaLabel: string;
 };
 
 type Achievement = {
@@ -116,6 +123,10 @@ export type PortfolioDictionary = {
   experience: TimelineItem[];
   achievements: Achievement[];
   contact: Contact;
+  cv: {
+    label: string;
+    options: Record<"en" | "pt", CvOption>;
+  };
   footer: string;
 };
 
@@ -434,6 +445,21 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       github: "https://github.com/yarosfct",
       location: "Aveiro, Portugal"
     },
+    cv: {
+      label: "Download CV",
+      options: {
+        en: {
+          shortLabel: "English",
+          label: "English PDF",
+          ariaLabel: "Download CV in English"
+        },
+        pt: {
+          shortLabel: "Portuguese",
+          label: "Portuguese PDF",
+          ariaLabel: "Download CV in Portuguese"
+        }
+      }
+    },
     footer: "© 2026 Yaroslav Hayduk. Built with Next.js and Tailwind CSS."
   },
   pt: {
@@ -746,6 +772,21 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
       github: "https://github.com/yarosfct",
       location: "Aveiro, Portugal"
+    },
+    cv: {
+      label: "Descarregar CV",
+      options: {
+        en: {
+          shortLabel: "Inglês",
+          label: "PDF em inglês",
+          ariaLabel: "Descarregar CV em inglês"
+        },
+        pt: {
+          shortLabel: "Português",
+          label: "PDF em português",
+          ariaLabel: "Descarregar CV em português"
+        }
+      }
     },
     footer: "© 2026 Yaroslav Hayduk. Feito com Next.js e Tailwind CSS."
   }

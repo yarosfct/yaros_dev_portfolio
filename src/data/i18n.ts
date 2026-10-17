@@ -175,7 +175,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         github: "GitHub"
       },
       highlights: [
-        { value: "2021 – 2026", label: "Integrated Master's, NOVA FCT" },
+        { value: "2020 – 2026", label: "Integrated Master's, NOVA FCT" },
         { value: "CrestPoint", label: "Co-founder", href: crestPointHref }
       ]
     },
@@ -372,8 +372,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       languagesLabel: "Languages",
       languages: [
         { name: "Portuguese", level: "Native" },
-        { name: "English", level: "Native" },
-        { name: "Ukrainian", level: "Fluent" },
+        { name: "English", level: "Fluent" },
+        { name: "Ukrainian", level: "Native" },
         { name: "Polish", level: "Conversational" }
       ],
       highlights: [
@@ -393,7 +393,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     experience: [
       {
-        period: "April 2026 – Present",
+        period: "May 2026 – Present",
         title: "Co-founder",
         subtitle: "CrestPoint Tech",
         description:
@@ -415,13 +415,13 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         description: "Exchange while managing my thesis and courses."
       },
       {
-        period: "May 2025 – January 2026",
+        period: "May 2025 – February 2026",
         title: "Web Developer",
         subtitle: "Fractory",
         description: "Web developer at a studio founded by university colleagues."
       },
       {
-        period: "2021 – 2026",
+        period: "2020 – 2026",
         title: "Integrated Master's in Computer Engineering",
         subtitle: "NOVA FCT",
         description: "Engenharia Informática at Faculdade de Ciências e Tecnologia, Universidade NOVA de Lisboa."
@@ -441,7 +441,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     contact: {
       email: "yaroslav.hayduk8@gmail.com",
-      linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
+      linkedin: "https://www.linkedin.com/in/yaroslav-hayduk/",
       github: "https://github.com/yarosfct",
       location: "Aveiro, Portugal"
     },
@@ -503,7 +503,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         github: "GitHub"
       },
       highlights: [
-        { value: "2021 – 2026", label: "Mestrado Integrado, NOVA FCT" },
+        { value: "2020 – 2026", label: "Mestrado Integrado, NOVA FCT" },
         { value: "CrestPoint", label: "Cofundador", href: crestPointHref }
       ]
     },
@@ -700,8 +700,8 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       languagesLabel: "Línguas",
       languages: [
         { name: "Português", level: "Nativo" },
-        { name: "Inglês", level: "Nativo" },
-        { name: "Ucraniano", level: "Fluente" },
+        { name: "Inglês", level: "Fluente" },
+        { name: "Ucraniano", level: "Nativo" },
         { name: "Polaco", level: "Conversacional" }
       ],
       highlights: [
@@ -721,7 +721,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     },
     experience: [
       {
-        period: "Abril 2026 – Presente",
+        period: "Maio 2026 – Presente",
         title: "Cofundador",
         subtitle: "CrestPoint Tech",
         description:
@@ -743,13 +743,13 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         description: "Intercâmbio a gerir a tese e as cadeiras."
       },
       {
-        period: "Maio 2025 – Janeiro 2026",
+        period: "Maio 2025 – Fevereiro 2026",
         title: "Programador web",
         subtitle: "Fractory",
         description: "Programador web num estúdio fundado por colegas da universidade."
       },
       {
-        period: "2021 – 2026",
+        period: "2020 – 2026",
         title: "Mestrado Integrado em Engenharia Informática",
         subtitle: "NOVA FCT",
         description: "Engenharia Informática na Faculdade de Ciências e Tecnologia da Universidade NOVA de Lisboa."
@@ -769,7 +769,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
     ],
     contact: {
       email: "yaroslav.hayduk8@gmail.com",
-      linkedin: "https://www.linkedin.com/in/yaroslav-hayduk-a1a563206/",
+      linkedin: "https://www.linkedin.com/in/yaroslav-hayduk/",
       github: "https://github.com/yarosfct",
       location: "Aveiro, Portugal"
     },

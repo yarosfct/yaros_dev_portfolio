@@ -253,9 +253,9 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         id: "project-safetyscope",
         title: "SafetyScope",
         summary:
-          "Web development at Fractory for SafetyScope, a safety product. Screenshots show the OMNI marketing site: See what matters. Act when it counts.",
+          "Web development at Fraqtory for SafetyScope, a safety product. Screenshots show the OMNI marketing site: See what matters. Act when it counts.",
         stack: [],
-        role: "Fractory · client work",
+        role: "Fraqtory · client work",
         image: "/images/SafetyMain.png",
         gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"],
         note: "Client work under NDA, shown as screenshots."
@@ -417,7 +417,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         period: "May 2025 – February 2026",
         title: "Web Developer",
-        subtitle: "Fractory",
+        subtitle: "Fraqtory",
         description: "Web developer at a studio founded by university colleagues."
       },
       {
@@ -581,9 +581,9 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
         id: "project-safetyscope",
         title: "SafetyScope",
         summary:
-          "Desenvolvimento web na Fractory para a SafetyScope, um produto de segurança. As capturas mostram o site da OMNI: See what matters. Act when it counts.",
+          "Desenvolvimento web na Fraqtory para a SafetyScope, um produto de segurança. As capturas mostram o site da OMNI: See what matters. Act when it counts.",
         stack: [],
-        role: "Fractory · trabalho de cliente",
+        role: "Fraqtory · trabalho de cliente",
         image: "/images/SafetyMain.png",
         gallery: ["/images/SafetyMain.png", "/images/SafetyAbout.png", "/images/SafetyContact.png"],
         note: "Trabalho de cliente sob NDA, mostrado em capturas de ecrã."
@@ -745,7 +745,7 @@ export const dictionaries: Record<Locale, PortfolioDictionary> = {
       {
         period: "Maio 2025 – Fevereiro 2026",
         title: "Programador web",
-        subtitle: "Fractory",
+        subtitle: "Fraqtory",
         description: "Programador web num estúdio fundado por colegas da universidade."
       },
       {
